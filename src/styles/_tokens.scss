@@ -1,0 +1,73 @@
+// ============================================================================
+// DESIGN TOKENS — extracted verbatim from docs/portfolio-index.html
+// Structural tokens (radii, spacing, type stacks, easing) are theme-agnostic
+// and live on :root. Color tokens live in _themes.scss (dark default, light
+// override). Names are kept identical to the reference for line-by-line audit.
+// ============================================================================
+
+// ---- SCSS-side maps (used by mixins/functions, not emitted directly) ----
+$radii: (
+  xs: 8px,
+  sm: 12px,
+  base: 16px,
+  lg: 20px,
+  xl: 28px,
+);
+
+$space: (
+  1: 6px,
+  2: 12px,
+  3: 20px,
+  4: 32px,
+  5: 48px,
+  6: 72px,
+);
+
+$breakpoint-tablet: 1080px;
+$breakpoint-mobile: 680px;
+$breakpoint-contact: 900px;
+
+$font-display: 'Archivo', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+$font-body: 'IBM Plex Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+$font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+$font-body-arabic: 'IBM Plex Sans Arabic', #{$font-body};
+$font-display-arabic: 'IBM Plex Sans Arabic', #{$font-display};
+
+:root {
+  // brand navy retained from the source mark (unused directly by components,
+  // kept for parity with the reference token set)
+  --navy: #1f3864;
+
+  // radii
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r: 16px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  // type stacks
+  --f-display: #{$font-display};
+  --f-body: #{$font-body};
+  --f-mono: #{$font-mono};
+
+  // layout
+  --wrap: 1240px;
+  --head: 66px;
+  --ease: cubic-bezier(0.2, 0.8, 0.24, 1);
+
+  // spacing scale
+  --s1: 6px;
+  --s2: 12px;
+  --s3: 20px;
+  --s4: 32px;
+  --s5: 48px;
+  --s6: 72px;
+  --sec: clamp(80px, 8.5vw, 122px);
+
+  // directional hover nudge — flips sign under [dir="rtl"], see _mixins.scss
+  --dx: 4px;
+}
+
+html[dir='rtl'] {
+  --dx: -4px;
+}

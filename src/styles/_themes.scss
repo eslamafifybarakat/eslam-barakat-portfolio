@@ -1,0 +1,74 @@
+// ============================================================================
+// THEME PALETTES — dark is the :root default (the reference ships
+// data-theme="dark"); light overrides under [data-theme="light"].
+// See README.md "Decisions" for why dark stays the default.
+// ============================================================================
+
+html[data-theme='dark'] {
+  --bg: #071018;
+  --bg-2: #0a1621;
+  --surface: #0f1e2c;
+  --surface-2: #142836;
+  --surface-3: #1c3345;
+  --text: #e9f1f7;
+  --muted: #97abbc;
+  --dim: #64798c;
+  --line: rgba(151, 171, 188, 0.16);
+  --line-2: rgba(151, 171, 188, 0.31);
+  --accent: #67b4e3;
+  --accent-2: #a9d7f3;
+  --accent-soft: rgba(103, 180, 227, 0.13);
+  --accent-ink: #06131d;
+  --cta: #e0894a;
+  --cta-ink: #2a1405;
+  --cta-soft: rgba(224, 137, 74, 0.14);
+  --brass: #e0894a;
+  --brass-soft: rgba(224, 137, 74, 0.14);
+  --metal: linear-gradient(115deg, #ffffff 0%, #d9e8f3 44%, #9ebace 100%);
+  --lift: 0 26px 62px -34px rgba(2, 8, 14, 0.92);
+  --dot: rgba(151, 171, 188, 0.1);
+  --halo: rgba(103, 180, 227, 0.15);
+  --halo-2: rgba(224, 137, 74, 0.1);
+  --weave: rgba(151, 171, 188, 0.055);
+  --wmark: rgba(103, 180, 227, 0.06);
+  --art: 0.46;
+  --art-line: rgba(151, 171, 188, 0.3);
+  --art-grid: rgba(151, 171, 188, 0.1);
+}
+
+html[data-theme='light'] {
+  --bg: #fcfbf9;
+  --bg-2: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f7f6f3;
+  --surface-3: #f1efeb;
+  --text: #0a2540;
+  --muted: #54636f;
+  --dim: #8e98a3;
+  --line: rgba(10, 37, 64, 0.085);
+  --line-2: rgba(10, 37, 64, 0.17);
+  --accent: #0d4a78;
+  --accent-2: #0a2540;
+  --accent-soft: rgba(13, 74, 120, 0.08);
+  --accent-ink: #ffffff;
+  --cta: #c1652b;
+  --cta-ink: #ffffff;
+  --cta-soft: rgba(193, 101, 43, 0.1);
+  --brass: #c1652b;
+  --brass-soft: rgba(193, 101, 43, 0.1);
+  --metal: linear-gradient(115deg, #0a2540 0%, #2b5c82 52%, #9cadbb 100%);
+  --lift: 0 20px 44px -30px rgba(10, 37, 64, 0.16);
+  --dot: rgba(10, 37, 64, 0.04);
+  --halo: rgba(13, 74, 120, 0.08);
+  --halo-2: rgba(193, 101, 43, 0.07);
+  --weave: rgba(10, 37, 64, 0.03);
+  --wmark: rgba(13, 74, 120, 0.05);
+  --art: 0.8;
+  --art-line: rgba(13, 74, 120, 0.14);
+  --art-grid: rgba(10, 37, 64, 0.042);
+}
+
+// theme-color meta swap targets (read by ThemeService, not CSS, kept here
+// as the single documented source so markup and script never drift)
+// dark:  #071018
+// light: #FCFBF9

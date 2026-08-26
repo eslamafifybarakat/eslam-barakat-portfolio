@@ -1,0 +1,19 @@
+// ============================================================================
+// FUNCTIONS — small SCSS helpers over the token maps in _tokens.scss.
+// ============================================================================
+@use 'sass:map';
+@use 'tokens' as t;
+
+@function radius($key) {
+  @if not map.has-key(t.$radii, $key) {
+    @error 'Unknown radius token: #{$key}';
+  }
+  @return map.get(t.$radii, $key);
+}
+
+@function space($key) {
+  @if not map.has-key(t.$space, $key) {
+    @error 'Unknown space token: #{$key}';
+  }
+  @return map.get(t.$space, $key);
+}

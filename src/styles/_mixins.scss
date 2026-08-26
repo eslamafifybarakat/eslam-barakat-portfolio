@@ -1,0 +1,97 @@
+// ============================================================================
+// MIXINS — layout primitives shared by shell chrome and every domain.
+// Logical properties only; no [dir] branches (the reference's rule, kept).
+// ============================================================================
+@use 'tokens' as t;
+
+@mixin wrap {
+  width: min(var(--wrap), 100% - 9vw);
+  margin-inline: auto;
+
+  @media (max-width: #{t.$breakpoint-mobile}) {
+    width: min(var(--wrap), 100% - 8vw);
+  }
+}
+
+@mixin section-spacing {
+  padding-block: var(--sec);
+  position: relative;
+}
+
+@mixin section-divider {
+  content: '';
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 1px;
+  background: linear-gradient(
+    to var(--flow, right),
+    transparent,
+    var(--line) 16%,
+    var(--line) 84%,
+    transparent
+  );
+}
+
+// the editorial two-column section grid: sticky eyebrow/heading rail + body
+@mixin section-grid {
+  display: grid;
+  grid-template-columns: minmax(230px, 285px) minmax(0, 1fr);
+  gap: clamp(26px, 4.5vw, 70px);
+  align-items: start;
+
+  @media (max-width: #{t.$breakpoint-tablet}) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s4);
+  }
+}
+
+@mixin sticky-section-head {
+  position: sticky;
+  inset-block-start: calc(var(--head) + 26px);
+
+  @media (max-width: #{t.$breakpoint-tablet}) {
+    position: static;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin scrollbar-hide {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}

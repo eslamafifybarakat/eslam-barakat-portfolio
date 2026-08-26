@@ -1,0 +1,145 @@
+// ============================================================================
+// GLOBAL STYLE ENTRY POINT — forwards the token/theme layer, then the
+// document-level chrome that isn't owned by any single component: the
+// ambient halo + dot background, reveal-on-scroll utility, and the shared
+// keyframes used by the modal, mobile sheet and language-flip transition.
+// ============================================================================
+@forward 'tokens';
+@forward 'themes';
+@forward 'typography';
+@forward 'mixins';
+@forward 'functions';
+@use 'reset';
+@use 'mixins' as m;
+
+html,
+body {
+  height: 100%;
+}
+
+// two fixed radial halos + a fine dot field, masked to fade by mid-viewport;
+// content sits above it at z-index 1 (set per-root in app.component.scss)
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  background:
+    radial-gradient(44% 32% at 84% -6%, var(--halo), transparent 66%),
+    radial-gradient(38% 28% at 2% 8%, var(--halo-2), transparent 68%);
+}
+
+html[data-theme='light'] body::before {
+  background:
+    radial-gradient(52% 40% at 88% -8%, var(--halo), transparent 64%),
+    radial-gradient(46% 34% at -4% 6%, var(--halo-2), transparent 66%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), transparent 30%);
+}
+
+body::after {
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 55%);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent 55%);
+}
+
+// reveal-on-scroll utility, driven by the RevealOnScrollDirective
+.rv {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease);
+}
+
+.rv.in {
+  opacity: 1;
+  transform: none;
+}
+
+@include m.reduced-motion {
+  .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slidein {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// direction-flip wipe played on the <main> host when the language toggles
+@keyframes wipe {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  46% {
+    clip-path: inset(0 0 0 100%);
+    opacity: 0.3;
+  }
+  54% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.3;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.flipping main {
+  animation: wipe 0.58s var(--ease);
+}
+
+@include m.reduced-motion {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+  }
+}
+
+@media print {
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+}

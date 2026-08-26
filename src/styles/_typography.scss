@@ -1,0 +1,163 @@
+// ============================================================================
+// TYPOGRAPHY — self-hosted @font-face declarations, display/mono utility
+// classes, and RTL typographic overrides. Fonts are self-hosted (not linked
+// from Google Fonts — see README "Decisions": a render-blocking third-party
+// stylesheet plus two preconnects is real LCP cost this project doesn't
+// need). Archivo and IBM Plex Sans ship as the single variable-font file
+// Google itself serves for their whole weight range; IBM Plex Mono and IBM
+// Plex Sans Arabic ship as the discrete static weights actually used, each
+// still split into its Latin/Arabic unicode-range subset so a page that
+// never renders Arabic never fetches the Arabic glyphs.
+// ============================================================================
+@use 'tokens' as t;
+
+$-latin-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+  U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+$-arabic-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF,
+  U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB,
+  U+10E60-10E7E, U+10EC2-10EC4, U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22,
+  U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49,
+  U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F,
+  U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E,
+  U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url('/fonts/archivo-var-latin.woff2') format('woff2');
+  unicode-range: $-latin-range;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-var-latin.woff2') format('woff2');
+  unicode-range: $-latin-range;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-400-latin.woff2') format('woff2');
+  unicode-range: $-latin-range;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-500-latin.woff2') format('woff2');
+  unicode-range: $-latin-range;
+}
+
+@each $weight in 400, 500, 600, 700 {
+  @font-face {
+    font-family: 'IBM Plex Sans Arabic';
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url('/fonts/ibm-plex-sans-arabic-#{$weight}-latin.woff2') format('woff2');
+    unicode-range: $-latin-range;
+  }
+
+  @font-face {
+    font-family: 'IBM Plex Sans Arabic';
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url('/fonts/ibm-plex-sans-arabic-#{$weight}-arabic.woff2') format('woff2');
+    unicode-range: $-arabic-range;
+  }
+}
+
+body {
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[dir='rtl'] body {
+  font-family: #{t.$font-body-arabic};
+}
+
+.display {
+  font-family: var(--f-display);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.04;
+}
+
+html[dir='rtl'] .display {
+  font-family: #{t.$font-display-arabic};
+}
+
+.mono {
+  font-family: var(--f-mono);
+  font-size: 0.69rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+// Latin-only mono/label runs lose their letter-spacing and uppercase
+// treatment under Arabic — matches the reference's RTL typography rules
+// exactly (selector list kept 1:1 with the source).
+html[dir='rtl'] {
+  .mono,
+  .tag,
+  .count,
+  .when,
+  .kv dt,
+  .spec dt,
+  .row__k,
+  .skill__k,
+  .navlink,
+  .hero__role,
+  .gal__cap,
+  .cap {
+    letter-spacing: 0;
+    font-family: #{t.$font-body-arabic};
+    text-transform: none;
+  }
+
+  .navlink {
+    font-size: 0.86rem;
+  }
+
+  .kv dt,
+  .spec dt,
+  .row__k,
+  .skill__k {
+    font-size: 0.78rem;
+  }
+}
+
+// LTR-locked runs (phone numbers, emails, URLs, stat digits, gallery
+// captions) stay left-to-right and isolated even inside an RTL document.
+.ltr,
+.row__v--ltr,
+.stat b,
+.gal__cap {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
+}
+
+.when,
+.count,
+.card__when {
+  unicode-bidi: isolate;
+}
+
+@media (max-width: #{t.$breakpoint-mobile}) {
+  body {
+    font-size: 15.5px;
+  }
+}
