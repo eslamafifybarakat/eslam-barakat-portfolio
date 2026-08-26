@@ -1,0 +1,43 @@
+:host {
+  display: contents;
+}
+
+.chip {
+  font-size: 0.81rem;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  background: var(--surface);
+  display: inline-block;
+  transition:
+    color 0.22s,
+    border-color 0.22s,
+    transform 0.22s,
+    background 0.22s;
+}
+
+.chip:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.tag {
+  font-family: var(--f-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--dim);
+  display: inline-block;
+}
+
+html[dir='rtl'] .tag {
+  letter-spacing: 0;
+  font-family: 'IBM Plex Sans Arabic', var(--f-body);
+  text-transform: none;
+}

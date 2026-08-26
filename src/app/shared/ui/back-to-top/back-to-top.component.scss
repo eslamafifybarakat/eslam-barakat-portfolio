@@ -1,0 +1,22 @@
+// The positioning classes land on <app-icon-button>, which renders
+// `display: contents` (no box of its own) — style its real inner .iconbtn
+// button instead. ::ng-deep here is scoped to this component's own
+// rendered subtree via :host, so it can't leak to icon-buttons elsewhere.
+:host ::ng-deep app-icon-button.top-btn .iconbtn {
+  position: fixed;
+  inset-block-end: 18px;
+  inset-inline-end: 18px;
+  z-index: 70;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+
+:host ::ng-deep app-icon-button.top-btn.is-up .iconbtn {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}

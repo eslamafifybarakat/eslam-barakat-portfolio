@@ -66,8 +66,11 @@ $font-display-arabic: 'IBM Plex Sans Arabic', #{$font-display};
 
   // directional hover nudge — flips sign under [dir="rtl"], see _mixins.scss
   --dx: 4px;
+  // gradient/scroll-progress flow direction — flips under [dir="rtl"]
+  --flow: right;
 }
 
 html[dir='rtl'] {
   --dx: -4px;
+  --flow: left;
 }

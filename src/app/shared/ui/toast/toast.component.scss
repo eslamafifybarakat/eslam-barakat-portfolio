@@ -1,0 +1,27 @@
+:host {
+  display: contents;
+}
+
+.toast {
+  position: fixed;
+  inset-block-end: 22px;
+  inset-inline-start: 50%;
+  transform: translate(-50%, 90px);
+  background: var(--text);
+  color: var(--bg);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  z-index: 130;
+  opacity: 0;
+  transition:
+    transform 0.4s var(--ease),
+    opacity 0.4s;
+  pointer-events: none;
+}
+
+.toast.is-up {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}

@@ -1,0 +1,33 @@
+<svg viewBox="0 0 440 275" preserveAspectRatio="xMidYMid meet" role="img" [attr.aria-label]="projectName">
+  <defs>
+    <pattern [attr.id]="ids.grid" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="var(--dot)" />
+    </pattern>
+    <radialGradient [attr.id]="ids.washA" cx=".14" cy=".04" r=".72">
+      <stop offset="0" stop-color="var(--accent)" stop-opacity=".17" />
+      <stop offset="1" stop-color="var(--accent)" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient [attr.id]="ids.washB" cx=".94" cy=".96" r=".62">
+      <stop offset="0" stop-color="var(--cta)" stop-opacity=".15" />
+      <stop offset="1" stop-color="var(--cta)" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="440" height="275" fill="var(--surface-2)" />
+  <rect width="440" height="275" [attr.fill]="'url(#' + ids.grid + ')'" />
+  <rect width="440" height="275" [attr.fill]="'url(#' + ids.washA + ')'" />
+  <rect width="440" height="275" [attr.fill]="'url(#' + ids.washB + ')'" />
+  <rect x="14" y="14" width="412" height="247" rx="16" fill="none" stroke="var(--line)" stroke-width="1" />
+  <g transform="translate(0,30)" [innerHTML]="markup() | safeHtml"></g>
+  <text
+    x="26"
+    y="254"
+    direction="ltr"
+    text-anchor="start"
+    font-family="IBM Plex Mono, monospace"
+    font-size="11"
+    letter-spacing="1.6"
+    fill="var(--dim)"
+  >
+    {{ hostLabel }}
+  </text>
+</svg>

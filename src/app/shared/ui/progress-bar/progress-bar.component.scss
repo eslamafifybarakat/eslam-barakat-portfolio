@@ -1,0 +1,14 @@
+:host {
+  display: contents;
+}
+
+.progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  height: 2px;
+  width: 0;
+  z-index: 95;
+  background: linear-gradient(to var(--flow, right), var(--accent), var(--cta));
+  transition: width 0.1s linear;
+}

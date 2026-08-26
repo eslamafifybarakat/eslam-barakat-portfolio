@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  line-height: 0;
+}
+
+.brand-lockup {
+  height: 100%;
+  width: auto;
+}
+
+.frame {
+  stroke: var(--brand-frame);
+}
+
+.inner {
+  stroke: var(--brand-inner);
+}
+
+.frame-fill {
+  fill: var(--brand-frame);
+}
+
+.inner-fill {
+  fill: var(--brand-inner);
+}
+
+.wordmark {
+  fill: var(--brand-wordmark);
+}
+
+.subtitle {
+  fill: var(--brand-subtitle);
+}

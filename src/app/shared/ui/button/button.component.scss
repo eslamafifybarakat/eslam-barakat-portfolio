@@ -1,0 +1,68 @@
+:host {
+  --icon-size: 17px;
+  display: contents;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 20px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.93rem;
+  border: 1px solid transparent;
+  min-height: 46px;
+  transition:
+    transform 0.28s var(--ease),
+    box-shadow 0.28s,
+    background 0.25s,
+    border-color 0.25s,
+    color 0.25s;
+}
+
+// Piercing into app-icon's internal .i element — CSS custom properties
+// (--icon-size above) cover styling; a hover-driven transform on a child
+// component's element still needs ::ng-deep, there's no encapsulation-safe
+// alternative for this in Angular yet.
+.btn:hover ::ng-deep .i {
+  transform: translateX(var(--dx));
+}
+
+.btn--primary {
+  background: var(--cta);
+  color: var(--cta-ink);
+  box-shadow:
+    0 14px 32px -16px var(--cta),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+}
+
+.btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 42px -16px var(--cta);
+}
+
+.btn--ghost {
+  border-color: var(--line-2);
+  color: var(--text);
+  background: var(--surface);
+}
+
+.btn--ghost:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.btn--sm {
+  padding: 9px 14px;
+  font-size: 0.83rem;
+  min-height: 38px;
+  border-radius: 11px;
+}
+
+.btn[disabled] {
+  opacity: 0.55;
+  pointer-events: none;
+}

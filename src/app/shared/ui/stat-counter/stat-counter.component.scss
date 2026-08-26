@@ -1,0 +1,27 @@
+:host {
+  display: contents;
+}
+
+.stat b {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.stat span {
+  font-family: var(--f-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+html[dir='rtl'] .stat span {
+  letter-spacing: 0;
+  font-family: 'IBM Plex Sans Arabic', var(--f-body);
+  font-size: 0.7rem;
+  white-space: normal;
+}

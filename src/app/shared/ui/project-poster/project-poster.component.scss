@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+// scene fragments arrive via [innerHTML], so they never receive Angular's
+// emulated-encapsulation attribute — :host ::ng-deep still keeps these
+// rules from leaking to other components' markup.
+:host ::ng-deep .pn {
+  fill: none;
+  stroke: var(--line-2);
+  stroke-width: 2;
+}
+
+:host ::ng-deep .pn2 {
+  fill: none;
+  stroke: var(--cta);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+:host ::ng-deep .pl {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+:host ::ng-deep .pl2 {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+}
+
+:host ::ng-deep .pa {
+  fill: var(--cta);
+  opacity: 0.92;
+}
+
+:host ::ng-deep .pd {
+  fill: none;
+  stroke: var(--line-2);
+  stroke-width: 2;
+  stroke-linecap: round;
+}

@@ -1,0 +1,25 @@
+@switch (variant) {
+  @case ('text') {
+    <span class="sk sk--text"></span>
+  }
+  @case ('avatar') {
+    <span class="sk sk--avatar"></span>
+  }
+  @case ('image') {
+    <span class="sk sk--image"></span>
+  }
+  @case ('card') {
+    <span class="sk-card">
+      <span class="sk sk--image"></span>
+      <span class="sk sk--text sk--w70"></span>
+      <span class="sk sk--text sk--w40"></span>
+    </span>
+  }
+  @case ('list') {
+    <span class="sk-list">
+      @for (line of lineArray(); track $index) {
+        <span class="sk sk--text" [class.sk--w70]="$index % 2 === 1"></span>
+      }
+    </span>
+  }
+}

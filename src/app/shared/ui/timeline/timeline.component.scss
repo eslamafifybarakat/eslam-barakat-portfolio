@@ -1,0 +1,114 @@
+.job {
+  position: relative;
+  padding-block-end: var(--s6);
+}
+
+.job--last {
+  padding-block-end: 0;
+}
+
+.job::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: -26px;
+  inset-block-start: 11px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.job__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+}
+
+.job__co {
+  font-family: var(--f-display);
+  font-size: clamp(1.15rem, 2.2vw, 1.44rem);
+  font-weight: 600;
+}
+
+.when {
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-inline-start: auto;
+}
+
+.job__role {
+  font-weight: 600;
+  margin-block: var(--s1) 2px;
+}
+
+.job__meta {
+  color: var(--dim);
+  font-size: 0.85rem;
+  margin-block-end: var(--s3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.job ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 11px;
+}
+
+.job li {
+  color: var(--muted);
+  position: relative;
+  padding-inline-start: 17px;
+}
+
+.job li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--line-2);
+}
+
+.job li ::ng-deep strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.act {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.79rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 6px 9px;
+  border-radius: 9px;
+  transition: background 0.25s;
+}
+
+.act:hover {
+  background: var(--accent-soft);
+}
+
+.act ::ng-deep .i {
+  width: 14px;
+  height: 14px;
+}
+
+html[dir='rtl'] .when {
+  letter-spacing: 0;
+  font-family: 'IBM Plex Sans Arabic', var(--f-body);
+  text-transform: none;
+}

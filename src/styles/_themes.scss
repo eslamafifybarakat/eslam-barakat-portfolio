@@ -34,6 +34,14 @@ html[data-theme='dark'] {
   --art: 0.46;
   --art-line: rgba(151, 171, 188, 0.3);
   --art-grid: rgba(151, 171, 188, 0.1);
+
+  // brand mark colors — distinct from --accent/--cta on dark surfaces (the
+  // mark uses a pure-white frame and a lighter, mark-specific brass so the
+  // monogram reads correctly regardless of accent-color theming elsewhere)
+  --brand-frame: #ffffff;
+  --brand-inner: #efa469;
+  --brand-wordmark: #ffffff;
+  --brand-subtitle: #a9becd;
 }
 
 html[data-theme='light'] {
@@ -66,6 +74,11 @@ html[data-theme='light'] {
   --art: 0.8;
   --art-line: rgba(13, 74, 120, 0.14);
   --art-grid: rgba(10, 37, 64, 0.042);
+
+  --brand-frame: #0d4a78;
+  --brand-inner: #c1652b;
+  --brand-wordmark: #0a2540;
+  --brand-subtitle: #5b6b7c;
 }
 
 // theme-color meta swap targets (read by ThemeService, not CSS, kept here

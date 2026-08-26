@@ -1,0 +1,15 @@
+.i {
+  width: var(--icon-size, 19px);
+  height: var(--icon-size, 19px);
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+  transition: transform 0.3s var(--ease);
+}
+
+html[dir='rtl'] .i--dir {
+  transform: scaleX(-1);
+}

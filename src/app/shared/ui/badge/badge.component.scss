@@ -1,0 +1,30 @@
+:host {
+  display: contents;
+}
+
+.cap {
+  position: absolute;
+  inset-block-start: 9px;
+  inset-inline-start: 9px;
+  font-family: var(--f-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(6px);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+.cap--flag {
+  color: var(--brass);
+  border-color: var(--brass-soft);
+}
+
+html[dir='rtl'] .cap {
+  letter-spacing: 0;
+  font-family: 'IBM Plex Sans Arabic', var(--f-body);
+  text-transform: none;
+}

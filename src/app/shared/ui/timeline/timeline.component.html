@@ -1,0 +1,21 @@
+<article class="job" [class.job--last]="last" appRevealOnScroll>
+  <div class="job__top">
+    <span class="job__co">{{ item.company }}</span>
+    <span class="when">{{ item.when }}</span>
+  </div>
+  <p class="job__role">{{ item.role }}</p>
+  <p class="job__meta">
+    <span>{{ item.meta }}</span>
+    @if (item.site) {
+      <a class="act" [href]="item.site" target="_blank" rel="noopener">
+        <app-icon name="external" />
+        <span class="ltr">{{ item.siteHost }}</span>
+      </a>
+    }
+  </p>
+  <ul>
+    @for (bullet of item.bullets; track $index) {
+      <li [innerHTML]="bullet | safeHtml"></li>
+    }
+  </ul>
+</article>
