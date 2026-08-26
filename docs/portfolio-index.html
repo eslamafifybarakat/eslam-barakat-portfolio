@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eslam Afify Barakat — Senior Angular Frontend Developer</title>
+<meta name="description" content="Senior Angular Frontend Developer. Interfaces that work in both directions — bilingual Arabic/English SSR platforms built with Angular, Signals and Domain-Driven architecture.">
+<meta name="theme-color" content="#071018">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiIgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkVzbGFtIEFmaWZ5IEJhcmFrYXQiPgogIDx0aXRsZT5FQiBtb25vZ3JhbTwvdGl0bGU+CiAgPHJlY3QgeD0iMi44IiB5PSIyLjgiIHdpZHRoPSI5MC40IiBoZWlnaHQ9IjkwLjQiIHJ4PSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEQ0QTc4IiBzdHJva2Utd2lkdGg9IjMuMiIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9Ijc2IiBoZWlnaHQ9Ijc2IiByeD0iMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MxNjUyQiIgc3Ryb2tlLXdpZHRoPSIxLjciCiAgICAgICAgc3Ryb2tlLWRhc2hhcnJheT0iMC4wMSA0LjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjQ4IiB5PSI2NC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgICAgIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCdIZWx2ZXRpY2EgTmV1ZScsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC1zaXplPSI0NiIgZm9udC13ZWlnaHQ9IjgwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xLjYiPgogICAgPHRzcGFuIGZpbGw9IiMwRDRBNzgiPkU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjQzE2NTJCIj5CPC90c3Bhbj4KICA8L3RleHQ+Cjwvc3ZnPgo=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   IDENTITY TOKENS
+   Navy structure + steel neutrals from the EB mark, one cyan accent taken
+   from the seam in the logo, one brass tone reserved for "flagship".
+   ========================================================================== */
+:root{
+  --navy:#1F3864;
+  --r-xs:8px; --r-sm:12px; --r:16px; --r-lg:20px; --r-xl:28px;
+  --f-display:'Archivo','IBM Plex Sans Arabic',system-ui,sans-serif;
+  --f-body:'IBM Plex Sans','IBM Plex Sans Arabic',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,monospace;
+  --wrap:1240px; --head:66px;
+  --ease:cubic-bezier(.2,.8,.24,1);
+  --s1:6px; --s2:12px; --s3:20px; --s4:32px; --s5:48px; --s6:72px;
+  --sec:clamp(80px,8.5vw,122px);
+  --dx:4px;
+}
+html[dir="rtl"]{--dx:-4px}
+
+html[data-theme="dark"]{
+  --bg:#071018; --bg-2:#0A1621; --surface:#0F1E2C; --surface-2:#142836; --surface-3:#1C3345;
+  --text:#E9F1F7; --muted:#97ABBC; --dim:#64798C;
+  --line:rgba(151,171,188,.16); --line-2:rgba(151,171,188,.31);
+  --accent:#67B4E3; --accent-2:#A9D7F3; --accent-soft:rgba(103,180,227,.13);
+  --cta:#E0894A; --cta-ink:#2A1405; --cta-soft:rgba(224,137,74,.14);
+  --accent-ink:#06131D;
+  --brass:#E0894A; --brass-soft:rgba(224,137,74,.14);
+  --metal:linear-gradient(115deg,#FFFFFF 0%,#D9E8F3 44%,#9EBACE 100%);
+  --lift:0 26px 62px -34px rgba(2,8,14,.92);
+  --dot:rgba(151,171,188,.10);
+  --halo:rgba(103,180,227,.15); --halo-2:rgba(224,137,74,.10);
+}
+html[data-theme="light"]{
+  --bg:#FCFBF9; --bg-2:#FFFFFF; --surface:#FFFFFF; --surface-2:#F7F6F3; --surface-3:#F1EFEB;
+  --text:#0A2540; --muted:#54636F; --dim:#8E98A3;
+  --line:rgba(10,37,64,.085); --line-2:rgba(10,37,64,.17);
+  --accent:#0D4A78; --accent-2:#0A2540; --accent-soft:rgba(13,74,120,.08);
+  --cta:#C1652B; --cta-ink:#FFFFFF; --cta-soft:rgba(193,101,43,.10);
+  --accent-ink:#FFFFFF;
+  --brass:#C1652B; --brass-soft:rgba(193,101,43,.10);
+  --metal:linear-gradient(115deg,#0A2540 0%,#2B5C82 52%,#9CADBB 100%);
+  --lift:0 20px 44px -30px rgba(10,37,64,.16);
+  --dot:rgba(10,37,64,.04);
+  --halo:rgba(13,74,120,.08); --halo-2:rgba(193,101,43,.07);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html[dir="rtl"] body{font-family:'IBM Plex Sans Arabic',var(--f-body)}
+html[dir="rtl"] .display{font-family:'IBM Plex Sans Arabic',var(--f-display)}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+::selection{background:var(--accent);color:var(--accent-ink)}
+
+/* ambient: two halos, a fine dot field, a whisper of grain */
+body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0}
+body::before{background:
+  radial-gradient(44% 32% at 84% -6%,var(--halo),transparent 66%),
+  radial-gradient(38% 28% at 2% 8%,var(--halo-2),transparent 68%)}
+body::after{
+  background-image:radial-gradient(var(--dot) 1px,transparent 1px);
+  background-size:24px 24px;
+  mask-image:linear-gradient(to bottom,#000,transparent 55%);
+  -webkit-mask-image:linear-gradient(to bottom,#000,transparent 55%)}
+main,footer,.top,.sheet{position:relative;z-index:1}
+
+.display{font-family:var(--f-display);font-weight:600;letter-spacing:-.022em;line-height:1.04}
+.mono{font-family:var(--f-mono);font-size:.69rem;letter-spacing:.16em;text-transform:uppercase}
+html[dir="rtl"] .mono,html[dir="rtl"] .tag,html[dir="rtl"] .count,html[dir="rtl"] .when,
+html[dir="rtl"] .kv dt,html[dir="rtl"] .spec dt,html[dir="rtl"] .row__k,html[dir="rtl"] .skill__k,
+html[dir="rtl"] .navlink,html[dir="rtl"] .hero__role,html[dir="rtl"] .gal__cap,html[dir="rtl"] .cap{
+  letter-spacing:0;font-family:'IBM Plex Sans Arabic',var(--f-body);text-transform:none}
+html[dir="rtl"] .navlink{font-size:.86rem}
+html[dir="rtl"] .kv dt,html[dir="rtl"] .spec dt,html[dir="rtl"] .row__k,
+html[dir="rtl"] .skill__k{font-size:.78rem}
+.ltr,#dirLabel,.kv dd a,.row__v--ltr,.stat b,.gal__cap{direction:ltr;unicode-bidi:isolate;text-align:start}
+.when,.count,.card__when{unicode-bidi:isolate}
+
+#progress{position:fixed;inset-block-start:0;inset-inline-start:0;height:2px;width:0;z-index:95;
+  background:linear-gradient(to var(--flow,right),var(--accent),var(--cta));transition:width .1s linear}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.top{position:fixed;inset-block-start:0;inset-inline:0;height:var(--head);z-index:80;
+  display:flex;align-items:center;gap:var(--s3);padding-inline:clamp(16px,4vw,40px);
+  background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px) saturate(1.4);
+  border-block-end:1px solid var(--line)}
+.lock{display:flex;align-items:center;gap:11px}
+.lock img{height:34px;width:auto}
+.lock__txt{display:flex;flex-direction:column;line-height:1.16}
+.lock__txt b{font-family:var(--f-display);font-size:.96rem;font-weight:600;letter-spacing:-.018em}
+.lock__txt i{font-size:.53rem;letter-spacing:.12em;color:var(--dim);font-style:normal;
+  text-transform:uppercase;font-family:var(--f-mono)}
+html[dir="rtl"] .lock__txt i{letter-spacing:.04em}
+.nav{display:flex;gap:var(--s1);margin-inline-start:auto}
+.navlink{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--dim);padding:9px 12px;border-radius:9px;transition:color .25s,background .25s}
+.navlink:hover{color:var(--text);background:var(--surface-2)}
+.navlink[aria-current="true"]{color:var(--accent);background:var(--accent-soft)}
+.top__tools{display:flex;gap:7px;margin-inline-start:var(--s3)}
+.iconbtn{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);
+  border-radius:11px;color:var(--muted);background:var(--surface);
+  transition:color .25s,border-color .25s,transform .25s}
+.iconbtn:hover{color:var(--text);border-color:var(--line-2);transform:translateY(-2px)}
+.langbtn{font-family:var(--f-mono);font-size:.66rem;font-weight:600}
+.i{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+
+
+/* ==========================================================================
+   SHELL + EDITORIAL SECTION GRID
+   ========================================================================== */
+.wrap{width:min(var(--wrap),100% - 9vw);margin-inline:auto}
+section{padding-block:var(--sec);position:relative}
+section[id]{scroll-margin-block-start:calc(var(--head) + 12px)}
+section + section::before{content:"";position:absolute;inset-block-start:0;inset-inline:0;height:1px;
+  background:linear-gradient(to var(--flow,right),transparent,var(--line) 16%,var(--line) 84%,transparent)}
+.sec{display:grid;grid-template-columns:minmax(230px,285px) minmax(0,1fr);gap:clamp(26px,4.5vw,70px);align-items:start}
+.sec__head{position:sticky;inset-block-start:calc(var(--head) + 26px)}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--accent);margin-block-end:var(--s2)}
+.eyebrow::before{content:"";width:20px;height:1px;background:currentColor;flex:none}
+h2.sec-t{font-size:clamp(1.7rem,3.4vw,2.5rem);margin:0;font-family:var(--f-display);
+  font-weight:700;letter-spacing:-.025em;line-height:1.08}
+.sec-lede{color:var(--muted);font-size:.96rem;margin:var(--s3) 0 0}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{padding-block:calc(var(--head) + 66px) var(--sec);border:0}
+.hero::before{display:none}
+.hero__grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:clamp(30px,5vw,68px);align-items:center}
+.hero h1{font-size:clamp(2.5rem,6.6vw,4.7rem);margin:var(--s3) 0 0}
+.hero h1 .metal{background:var(--metal);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent}
+.hero__role{font-family:var(--f-mono);font-size:clamp(.7rem,1.4vw,.84rem);letter-spacing:.26em;
+  text-transform:uppercase;color:var(--accent);margin-block:var(--s3) 0}
+.hero__lede{color:var(--muted);font-size:clamp(1rem,1.6vw,1.11rem);max-width:52ch;margin-block-start:var(--s3)}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-block-start:var(--s4)}
+
+/* identity panel: portrait + a mono spec sheet, replacing the old demo card */
+.panel{border:1px solid var(--line);border-radius:var(--r-xl);background:var(--surface);
+  padding:var(--s4);box-shadow:var(--lift)}
+.panel__top{display:flex;gap:var(--s3);align-items:center;margin-block-end:var(--s4)}
+.portrait{position:relative;width:96px;aspect-ratio:1;flex:none}
+.portrait img{width:100%;height:100%;object-fit:cover;border-radius:22px;
+  filter:grayscale(1) contrast(1.04);border:1px solid var(--line-2)}
+.portrait::after{content:"";position:absolute;inset-block-end:-5px;inset-inline-end:-5px;
+  width:16px;height:16px;border-radius:50%;background:var(--accent);
+  border:3px solid var(--surface)}
+.panel__who b{display:block;font-family:var(--f-display);font-size:1.06rem;font-weight:600}
+.panel__who span{color:var(--dim);font-size:.86rem}
+.spec{margin:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden}
+.spec > div{display:flex;gap:var(--s3);align-items:baseline;padding:11px 14px;background:var(--bg-2)}
+.spec dt{font-family:var(--f-mono);font-size:.61rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);width:74px;flex:none}
+.spec dd{margin:0;font-size:.88rem;color:var(--text)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3);margin-block-start:var(--s4)}
+.stat b{display:block;font-family:var(--f-display);font-size:1.5rem;line-height:1;font-weight:600}
+.stat span{font-family:var(--f-mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);white-space:nowrap}
+html[dir="rtl"] .stat span{letter-spacing:0;font-family:'IBM Plex Sans Arabic',var(--f-body);font-size:.7rem}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:14px;
+  font-weight:600;font-size:.93rem;border:1px solid transparent;min-height:46px;
+  transition:transform .28s var(--ease),box-shadow .28s,background .25s,border-color .25s,color .25s}
+.btn .i{width:17px;height:17px;transition:transform .3s var(--ease)}
+.btn:hover .i{transform:translateX(var(--dx))}
+.btn--primary{background:var(--cta);color:var(--cta-ink);
+  box-shadow:0 14px 32px -16px var(--cta),inset 0 1px 0 rgba(255,255,255,.26)}
+.btn--primary:hover{transform:translateY(-3px);box-shadow:0 20px 42px -16px var(--cta)}
+.btn--ghost{border-color:var(--line-2);color:var(--text);background:var(--surface)}
+.btn--ghost:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent);
+  background:var(--accent-soft)}
+.btn--sm{padding:9px 14px;font-size:.83rem;min-height:38px;border-radius:11px}
+
+/* ==========================================================================
+   SUMMARY
+   ========================================================================== */
+.prose p{margin:0 0 var(--s3);color:var(--muted)}
+.prose p:last-child{margin:0}
+.prose strong{color:var(--text);font-weight:600}
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-block-start:var(--s5)}
+.pillar{border:1px solid var(--line);border-radius:var(--r);padding:16px 17px;background:var(--surface);
+  display:flex;gap:12px;align-items:flex-start;transition:border-color .3s,transform .3s var(--ease)}
+.pillar:hover{border-color:var(--accent);transform:translateY(-3px)}
+.pillar .i{color:var(--accent);margin-block-start:2px}
+.pillar b{display:block;font-family:var(--f-display);font-size:.97rem;font-weight:600;margin-block-end:2px}
+.pillar span{color:var(--muted);font-size:.87rem}
+
+/* ==========================================================================
+   SKILLS
+   ========================================================================== */
+.skills{display:grid;gap:var(--s4)}
+.skill__k{display:flex;align-items:center;gap:9px;font-family:var(--f-mono);font-size:.66rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-block-end:var(--s2)}
+.skill__k .i{width:15px;height:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.81rem;padding:6px 12px;border:1px solid var(--line);border-radius:10px;
+  color:var(--muted);background:var(--surface);
+  transition:color .22s,border-color .22s,transform .22s,background .22s}
+.chip:hover{color:var(--text);border-color:var(--accent);background:var(--accent-soft);transform:translateY(-2px)}
+
+/* ==========================================================================
+   TIMELINE
+   ========================================================================== */
+.tl{position:relative;padding-inline-start:26px}
+.tl::before{content:"";position:absolute;inset-block:12px 12px;inset-inline-start:4px;width:1px;
+  background:linear-gradient(to bottom,var(--accent),var(--line) 46%,transparent)}
+.job{position:relative;padding-block-end:var(--s6)}
+.job:last-child{padding-block-end:0}
+.job::before{content:"";position:absolute;inset-inline-start:-26px;inset-block-start:11px;
+  width:9px;height:9px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-soft)}
+.job__top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.job__co{font-family:var(--f-display);font-size:clamp(1.15rem,2.2vw,1.44rem);font-weight:600}
+.when{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-inline-start:auto}
+.job__role{font-weight:600;margin-block:var(--s1) 2px}
+.job__meta{color:var(--dim);font-size:.85rem;margin-block-end:var(--s3);display:flex;
+  align-items:center;gap:10px;flex-wrap:wrap}
+.job ul{margin:0;padding:0;list-style:none;display:grid;gap:11px}
+.job li{color:var(--muted);position:relative;padding-inline-start:17px}
+.job li::before{content:"";position:absolute;inset-inline-start:0;inset-block-start:.62em;
+  width:5px;height:5px;border-radius:50%;background:var(--line-2)}
+.job li strong{color:var(--text);font-weight:600}
+
+/* ==========================================================================
+   WORK
+   ========================================================================== */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-block-end:var(--s3)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.fchip{padding:9px 15px;border:1px solid var(--line);border-radius:11px;font-size:.84rem;
+  color:var(--muted);background:var(--surface);min-height:40px;
+  transition:background .25s,border-color .25s,color .25s}
+.fchip:hover{border-color:var(--line-2);color:var(--text)}
+.fchip.is-on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.search{margin-inline-start:auto;position:relative;display:flex;align-items:center}
+.search input{width:240px;max-width:44vw;padding:11px 14px;padding-inline-start:38px;border-radius:11px;
+  border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:.87rem;
+  min-height:42px;transition:border-color .25s,width .3s}
+.search input:focus{border-color:var(--accent);outline:none;width:270px}
+.search .i{position:absolute;inset-inline-start:12px;color:var(--dim);width:16px;height:16px;pointer-events:none}
+.count{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.12em;color:var(--dim);
+  text-transform:uppercase;margin:0 0 var(--s3)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(292px,1fr));gap:14px}
+.card{position:relative;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);
+  padding:13px;display:flex;flex-direction:column;gap:12px;text-align:start;cursor:pointer;
+  transition:transform .35s var(--ease),border-color .3s,box-shadow .35s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--lift)}
+.card__shot{position:relative;aspect-ratio:16/10;border-radius:var(--r-sm);overflow:hidden;
+  background:var(--surface-2);border:1px solid var(--line)}
+.card__shot img,.card__shot svg{width:100%;height:100%;object-fit:cover;
+  transition:transform .5s var(--ease)}
+.card:hover .card__shot img,.card:hover .card__shot svg{transform:scale(1.035)}
+.cap{position:absolute;inset-block-start:9px;inset-inline-start:9px;font-family:var(--f-mono);
+  font-size:.55rem;letter-spacing:.11em;text-transform:uppercase;padding:4px 8px;border-radius:6px;
+  background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(6px);color:var(--muted);
+  border:1px solid var(--line)}
+.cap--flag{color:var(--brass);border-color:var(--brass-soft)}
+.card__body{display:flex;flex-direction:column;gap:7px;padding-inline:3px}
+.card__head{display:flex;align-items:baseline;gap:9px}
+.card__name{font-family:var(--f-display);font-size:1.02rem;font-weight:600;line-height:1.3}
+.card__when{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.09em;color:var(--dim);
+  text-transform:uppercase;margin-inline-start:auto;white-space:nowrap;flex:none}
+.card__desc{color:var(--muted);font-size:.885rem;margin:0;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card__foot{margin-block-start:auto;display:flex;align-items:center;gap:6px;
+  padding:3px 3px 0;border-block-start:1px solid var(--line);padding-block-start:11px}
+.tag{font-family:var(--f-mono);font-size:.56rem;letter-spacing:.09em;text-transform:uppercase;
+  padding:4px 8px;border-radius:6px;background:var(--surface-2);color:var(--dim)}
+.act{display:inline-flex;align-items:center;gap:6px;font-size:.79rem;font-weight:600;color:var(--accent);
+  padding:6px 9px;border-radius:9px;transition:background .25s}
+.act:hover{background:var(--accent-soft)}
+.act .i{width:14px;height:14px}
+.card__acts{margin-inline-start:auto;display:flex;gap:2px}
+
+/* ==========================================================================
+   MODAL + GALLERY
+   ========================================================================== */
+.modal{position:fixed;inset:0;z-index:110;display:none;align-items:center;justify-content:center;padding:18px}
+.modal.is-open{display:flex}
+.modal__veil{position:absolute;inset:0;background:rgba(3,6,12,.78);backdrop-filter:blur(8px);
+  animation:fade .24s var(--ease)}
+.modal__box{position:relative;width:min(800px,100%);max-height:88vh;overflow:auto;
+  background:var(--bg-2);border:1px solid var(--line-2);border-radius:var(--r-xl);
+  padding:clamp(16px,3vw,28px);animation:pop .4s var(--ease)}
+.modal__x{position:absolute;inset-block-start:14px;inset-inline-end:14px;z-index:2}
+.gal__main{aspect-ratio:16/10;border-radius:var(--r);border:1px solid var(--line);
+  overflow:hidden;background:var(--surface-2)}
+.gal__main img,.gal__main svg{width:100%;height:100%;object-fit:cover}
+.gal__thumbs{display:flex;gap:7px;margin-block-start:7px;flex-wrap:wrap}
+.gal__t{width:70px;aspect-ratio:16/10;border-radius:8px;overflow:hidden;border:1px solid var(--line);
+  background:var(--surface-2);opacity:.55;transition:opacity .25s,border-color .25s}
+.gal__t.is-on,.gal__t:hover{opacity:1;border-color:var(--accent)}
+.gal__t img{width:100%;height:100%;object-fit:cover}
+.gal__cap{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.11em;color:var(--dim);
+  text-transform:uppercase;margin:9px 0 var(--s4)}
+.modal h3{font-family:var(--f-display);font-size:clamp(1.3rem,3vw,1.85rem);font-weight:600;
+  margin:0 40px var(--s1) 0;letter-spacing:-.02em}
+html[dir="rtl"] .modal h3{margin:0 0 var(--s1) 40px}
+.modal__when{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;color:var(--accent);
+  text-transform:uppercase;margin:0 0 var(--s3)}
+.modal__desc{color:var(--muted);margin:0 0 var(--s3)}
+.kv{border-block-start:1px solid var(--line);padding-block:var(--s3);display:grid;
+  grid-template-columns:96px 1fr;gap:14px;margin:0}
+.kv dt{font-family:var(--f-mono);font-size:.61rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.kv dd{margin:0;font-size:.88rem;color:var(--muted);word-break:break-word}
+.kv dd a{color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.kv dd a:hover{text-decoration:underline}
+.linklist{display:grid;gap:7px}
+.note{color:var(--dim);font-size:.81rem;font-style:italic;margin:var(--s2) 0 0}
+.modal__cta{display:flex;gap:9px;flex-wrap:wrap;margin-block-start:var(--s4)}
+
+/* ==========================================================================
+   EDUCATION + CONTACT
+   ========================================================================== */
+.edu{display:grid;gap:10px}
+.edu__row{border:1px solid var(--line);border-radius:var(--r);padding:17px 19px;background:var(--surface);
+  display:flex;flex-wrap:wrap;gap:5px 15px;align-items:baseline;transition:border-color .3s}
+.edu__row:hover{border-color:var(--accent)}
+.edu__row .i{color:var(--accent);align-self:center}
+.edu__row b{font-family:var(--f-display);font-size:1rem;font-weight:600}
+.edu__row span{color:var(--muted);font-size:.9rem}
+.edu__row em{font-family:var(--f-mono);font-size:.63rem;letter-spacing:.09em;color:var(--accent);
+  font-style:normal;text-transform:uppercase;margin-inline-start:auto}
+
+.contact{border:1px solid var(--line);border-radius:var(--r-xl);padding:clamp(24px,4.5vw,54px);
+  background:var(--surface);position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset-block-start:-45%;inset-inline-end:-8%;
+  width:56%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--halo),transparent 66%)}
+.contact > *{position:relative}
+.contact h2{font-family:var(--f-display);font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:700;
+  letter-spacing:-.025em;margin:0 0 var(--s3);max-width:24ch}
+.rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:10px;margin-block-start:var(--s4)}
+.row{display:flex;align-items:center;gap:12px;padding:15px 16px;background:var(--bg-2);
+  border:1px solid var(--line);border-radius:var(--r);min-height:60px;
+  transition:border-color .25s,transform .25s var(--ease)}
+.row:hover{border-color:var(--accent);transform:translateY(-2px)}
+.row .i{color:var(--accent)}
+.row__k{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);display:block;margin-block-end:2px}
+.row__v{color:var(--text);font-size:.9rem;word-break:break-word}
+.row__go{margin-inline-start:auto;color:var(--dim);flex:none}
+
+footer{border-block-start:1px solid var(--line);padding-block:var(--s5)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+footer .brand{height:40px;width:auto}
+footer .mono{color:var(--dim)}
+
+#toast{position:fixed;inset-block-end:22px;inset-inline-start:50%;transform:translate(-50%,90px);
+  background:var(--text);color:var(--bg);padding:12px 20px;border-radius:12px;font-size:.86rem;
+  font-weight:600;z-index:130;opacity:0;transition:transform .4s var(--ease),opacity .4s;pointer-events:none}
+#toast.is-up{transform:translate(-50%,0);opacity:1}
+#top{position:fixed;inset-block-end:18px;inset-inline-end:18px;z-index:70;opacity:0;
+  transform:translateY(14px);pointer-events:none;transition:opacity .3s,transform .3s}
+#top.is-up{opacity:1;transform:none;pointer-events:auto}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:none}}
+@keyframes wipe{0%{clip-path:inset(0 0 0 0)}46%{clip-path:inset(0 0 0 100%);opacity:.3}
+  54%{clip-path:inset(0 100% 0 0);opacity:.3}100%{clip-path:inset(0 0 0 0)}}
+.flipping main{animation:wipe .58s var(--ease)}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width:1080px){
+  .nav{display:none}
+  .lock__txt{display:none}
+  .top__tools{margin-inline-start:auto}
+  .sec{grid-template-columns:minmax(0,1fr);gap:var(--s4)}
+  .sec__head{position:static}
+  .hero__grid{grid-template-columns:minmax(0,1fr);gap:var(--s5)}
+  .hero{padding-block:calc(var(--head) + 34px) var(--sec)}
+}
+@media (max-width:680px){
+  body{font-size:15.5px}
+  :root{--sec:54px;--s5:36px;--s6:44px}
+  .wrap{width:min(var(--wrap),100% - 8vw)}
+  .hero h1{font-size:clamp(2.2rem,10.5vw,3rem)}
+  .hero__cta .btn{flex:1 1 46%;justify-content:center}
+  .panel{padding:var(--s3);border-radius:var(--r-lg)}
+  .panel__top{gap:var(--s2)}
+  .portrait{width:76px}
+  .spec dt{width:64px}
+  .pillars{grid-template-columns:minmax(0,1fr)}
+  .stat span{white-space:normal}
+  .filters{overflow-x:auto;flex-wrap:nowrap;margin-inline:-4vw;padding-inline:4vw;
+    scroll-snap-type:x mandatory;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .fchip{flex:none;scroll-snap-align:start}
+  .search{margin-inline-start:0;width:100%}
+  .search input,.search input:focus{width:100%;max-width:none}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .kv{grid-template-columns:1fr;gap:4px;padding-block:var(--s2)}
+  .when,.edu__row em{margin-inline-start:0;width:100%}
+  .modal{padding:0;align-items:flex-end}
+  .modal__box{width:100%;max-height:93vh;border-radius:var(--r-xl) var(--r-xl) 0 0}
+  .rows{grid-template-columns:1fr}
+  footer .wrap{flex-direction:column;align-items:flex-start;gap:var(--s3)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}.rv{opacity:1;transform:none}
+}
+@media print{
+  .top,.sheet,#top,#progress,.hero__cta,.toolbar,.card__acts,.modal{display:none}
+  body::before,body::after{display:none}
+  body{background:#fff;color:#000}
+  .sec{grid-template-columns:1fr}
+}
+
+
+/* ==========================================================================
+   ENHANCEMENTS — duotone portrait, richer contact block, layered art frames
+   ========================================================================== */
+
+/* portrait picks up the two brand hues instead of flat grey */
+.portrait{border-radius:22px;overflow:visible}
+.portrait img{width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.1) brightness(1.04)}
+.portrait__wrap{display:block;position:relative;width:100%;height:100%;border-radius:22px;
+  overflow:hidden;border:1px solid var(--line-2)}
+.portrait__wrap::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(148deg,var(--accent),var(--cta));
+  mix-blend-mode:color;opacity:.5}
+.portrait__wrap::before{content:"";position:absolute;inset:0;z-index:2;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.portrait img{border-radius:0;border:0}
+
+/* project art gets a frame, a wash and a soft glow */
+.card__shot{background:
+  radial-gradient(78% 62% at 12% 4%,var(--accent-soft),transparent 62%),
+  radial-gradient(64% 54% at 96% 96%,var(--cta-soft),transparent 60%),
+  var(--surface-2)}
+.card__shot::after{content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);border-radius:inherit}
+.gal__main{background:
+  radial-gradient(70% 60% at 10% 2%,var(--accent-soft),transparent 60%),
+  radial-gradient(60% 50% at 96% 98%,var(--cta-soft),transparent 58%),
+  var(--surface-2)}
+
+/* ---------------- project card ground: hairline weave + mark watermark ------ */
+html[data-theme="dark"]{--weave:rgba(151,171,188,.055);--wmark:rgba(103,180,227,.06)}
+html[data-theme="light"]{--weave:rgba(10,37,64,.03);--wmark:rgba(13,74,120,.05)}
+.card{background-image:
+  repeating-linear-gradient(135deg,var(--weave) 0 1px,transparent 1px 16px),
+  radial-gradient(120% 90% at 100% 0%,var(--accent-soft),transparent 46%);
+  background-repeat:no-repeat;background-size:100% 100%}
+.card::before{content:"";position:absolute;inset-block-end:-14px;inset-inline-end:-12px;
+  width:132px;height:132px;pointer-events:none;opacity:.9;
+  background:var(--wmark);
+  -webkit-mask:var(--wm) center/contain no-repeat;mask:var(--wm) center/contain no-repeat}
+.card__shot,.card__body,.card__foot{position:relative;z-index:1}
+
+/* ---------------- project card actions: real buttons ---------------- */
+.cbtn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:36px;
+  padding:0 13px;border-radius:11px;font-size:.81rem;font-weight:600;
+  border:1px solid var(--line);background:var(--surface-2);color:var(--text);
+  transition:background .25s,border-color .25s,color .25s,transform .25s var(--ease),box-shadow .25s}
+.cbtn .i{width:15px;height:15px}
+.cbtn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);
+  transform:translateY(-1px)}
+.cbtn--go{border-color:transparent;background:var(--cta-soft);color:var(--cta)}
+.card:hover .cbtn--go{background:var(--cta);color:var(--cta-ink);
+  box-shadow:0 10px 22px -12px var(--cta)}
+.cbtn--go:hover{background:var(--cta);border-color:var(--cta);color:var(--cta-ink);
+  transform:translateY(-1px)}
+.card__acts{margin-inline-start:auto;display:flex;gap:7px}
+@media (max-width:680px){
+  .card__foot{flex-wrap:wrap;gap:8px}
+  .card__acts{width:100%;margin-inline-start:0}
+  .cbtn{flex:1}
+}
+
+/* ---------------- contact ---------------- */
+.contact{padding:0;overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(150deg,var(--surface),var(--bg-2))}
+.contact::before{display:none}
+.contact__grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+.contact__say{padding:clamp(24px,4vw,48px);position:relative;
+  border-inline-end:1px solid var(--line)}
+.contact__say::before{content:"";position:absolute;inset-block-start:-30%;inset-inline-start:-20%;
+  width:70%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,var(--halo),transparent 66%);pointer-events:none}
+.contact__say > *{position:relative}
+.contact h2{margin:0 0 var(--s3);max-width:22ch}
+.avail{display:grid;gap:9px;margin-block:var(--s4) var(--s4)}
+.avchip{display:flex;align-items:center;gap:9px;font-size:.86rem;color:var(--muted)}
+.avchip i{width:7px;height:7px;border-radius:50%;flex:none;background:var(--cta);
+  box-shadow:0 0 0 4px var(--cta-soft)}
+.avchip:first-child i{background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.16)}
+.contact__cta{display:flex;gap:9px;flex-wrap:wrap}
+.rows{display:grid;gap:0;background:none;border:0;border-radius:0;margin:0;
+  grid-template-columns:minmax(0,1fr)}
+.row{border:0;border-block-end:1px solid var(--line);border-radius:0;background:none;
+  padding:16px clamp(20px,3vw,32px);gap:14px;min-height:66px}
+.row:last-child{border-block-end:0}
+.row:hover{background:var(--surface-2);transform:none}
+.row__ic{width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;
+  border:1px solid var(--line);background:var(--surface-2);color:var(--accent);
+  transition:border-color .25s,color .25s,background .25s}
+.row:hover .row__ic{border-color:var(--cta);color:var(--cta);background:var(--cta-soft)}
+.row__txt{display:flex;flex-direction:column;min-width:0}
+.row__go{color:var(--dim)}
+.row:hover .row__go{color:var(--cta)}
+
+@media (max-width:900px){
+  .contact__grid{grid-template-columns:minmax(0,1fr)}
+  .contact__say{border-inline-end:0;border-block-end:1px solid var(--line)}
+}
+
+
+/* ==========================================================================
+   AMBIENT VECTOR ART — a drawn backdrop, stronger in light mode where a flat
+   surface reads cheap, restrained in dark where the halos already carry it.
+   ========================================================================== */
+html[data-theme="dark"]{--art:.46;--art-line:rgba(151,171,188,.30);--art-grid:rgba(151,171,188,.10)}
+html[data-theme="light"]{--art:.8;--art-line:rgba(13,74,120,.14);--art-grid:rgba(10,37,64,.042)}
+.bgart{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;
+  opacity:var(--art);transition:opacity .4s}
+html[data-theme="light"] body::before{background:
+  radial-gradient(52% 40% at 88% -8%,var(--halo),transparent 64%),
+  radial-gradient(46% 34% at -4% 6%,var(--halo-2),transparent 66%),
+  linear-gradient(180deg,rgba(255,255,255,.95),transparent 30%)}
+
+/* ==========================================================================
+   SIDE MENU — a real panel: header, icon-led rows, contact actions, controls
+   ========================================================================== */
+.sheet{position:fixed;inset:0;z-index:120;display:none;padding:0}
+.sheet.is-open{display:block}
+.sheet__veil{position:absolute;inset:0;background:rgba(6,4,16,.62);
+  backdrop-filter:blur(10px);animation:fade .3s var(--ease)}
+.sheetp{position:absolute;inset-block:0;inset-inline-end:0;width:min(390px,88vw);
+  display:flex;flex-direction:column;background:var(--bg-2);
+  border-inline-start:1px solid var(--line-2);
+  box-shadow:-30px 0 70px -30px rgba(0,0,0,.6);
+  transition:transform .42s var(--ease)}
+html[dir="ltr"] .sheetp{transform:translateX(100%)}
+html[dir="rtl"] .sheetp{transform:translateX(-100%);box-shadow:30px 0 70px -30px rgba(0,0,0,.6)}
+.sheet.is-open .sheetp{transform:none}
+.sheetp__top{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:14px 18px;border-block-end:1px solid var(--line)}
+.sheetp__top img{height:34px;width:auto}
+.sheetnav{display:grid;gap:4px;padding:16px 14px;overflow:auto;flex:1;align-content:start}
+.sheetnav a{display:flex;align-items:center;gap:13px;padding:13px 12px;border-radius:14px;
+  font-family:var(--f-display);font-size:1.02rem;font-weight:600;
+  border:1px solid transparent;transition:background .25s,border-color .25s,transform .25s}
+.sheetnav a:hover,.sheetnav a[aria-current="true"]{background:var(--surface);border-color:var(--line)}
+.sheetnav a[aria-current="true"]{color:var(--accent)}
+.sheetnav .tile{width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;
+  border:1px solid var(--line);background:var(--surface-2);color:var(--accent)}
+.sheetnav a[aria-current="true"] .tile{border-color:var(--accent);background:var(--accent-soft)}
+.sheetnav .go{margin-inline-start:auto;color:var(--dim);display:flex}
+.sheetnav .go .i{width:16px;height:16px}
+.sheet.is-open .sheetnav a{animation:slidein .5s var(--ease) backwards}
+.sheetnav a:nth-child(1){animation-delay:.06s}.sheetnav a:nth-child(2){animation-delay:.1s}
+.sheetnav a:nth-child(3){animation-delay:.14s}.sheetnav a:nth-child(4){animation-delay:.18s}
+.sheetnav a:nth-child(5){animation-delay:.22s}.sheetnav a:nth-child(6){animation-delay:.26s}
+.sheetnav a:nth-child(7){animation-delay:.3s}
+@keyframes slidein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.sheetp__foot{padding:16px 18px 22px;border-block-start:1px solid var(--line);
+  display:grid;gap:14px;background:var(--surface-2)}
+.sheetp__cta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sheetp__cta .btn{justify-content:center;padding-inline:12px}
+.sheetp__row{display:flex;align-items:center;gap:8px}
+.sheetp__row .mono{margin-inline-start:auto;color:var(--dim);font-size:.55rem;
+  max-width:62%;text-align:end;line-height:1.5}
+html[dir="rtl"] .i--dir{transform:scaleX(-1)}
+html[dir="rtl"] .btn:hover .i--dir{transform:scaleX(-1) translateX(4px)}
+
+:root{--wm:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiIgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkVzbGFtIEFmaWZ5IEJhcmFrYXQiPgogIDx0aXRsZT5FQiBtb25vZ3JhbTwvdGl0bGU+CiAgPHJlY3QgeD0iMi44IiB5PSIyLjgiIHdpZHRoPSI5MC40IiBoZWlnaHQ9IjkwLjQiIHJ4PSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEQ0QTc4IiBzdHJva2Utd2lkdGg9IjMuMiIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9Ijc2IiBoZWlnaHQ9Ijc2IiByeD0iMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MxNjUyQiIgc3Ryb2tlLXdpZHRoPSIxLjciCiAgICAgICAgc3Ryb2tlLWRhc2hhcnJheT0iMC4wMSA0LjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjQ4IiB5PSI2NC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgICAgIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCdIZWx2ZXRpY2EgTmV1ZScsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC1zaXplPSI0NiIgZm9udC13ZWlnaHQ9IjgwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xLjYiPgogICAgPHRzcGFuIGZpbGw9IiMwRDRBNzgiPkU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjQzE2NTJCIj5CPC90c3Bhbj4KICA8L3RleHQ+Cjwvc3ZnPgo=")}
+</style>
+</head>
+<body>
+<svg class="bgart" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <pattern id="bp" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0v60" fill="none" stroke="var(--art-grid)" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="bfade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="bmask"><rect width="1440" height="900" fill="url(#bfade)"/></mask>
+  </defs>
+
+  <!-- blueprint field, faded out downward -->
+  <g mask="url(#bmask)"><rect width="1440" height="900" fill="url(#bp)"/></g>
+
+  <!-- the axis the whole identity mirrors across -->
+  <path d="M720 0v900" stroke="var(--art-line)" stroke-width="1" stroke-dasharray="6 10" opacity=".55"/>
+
+  <!-- concentric apertures, top right -->
+  <g fill="none" stroke="var(--art-line)" opacity=".55">
+    <circle cx="1330" cy="86" r="88"/><circle cx="1330" cy="86" r="152"/>
+    <circle cx="1330" cy="86" r="228" stroke-dasharray="3 9"/>
+  </g>
+
+  <!-- the mark, blown up and quiet, bottom left -->
+  <g stroke="var(--art-line)" stroke-width="12" stroke-linecap="round" fill="none" opacity=".26">
+    <path d="M56 640v190"/><path d="M56 640h84"/><path d="M56 735h62"/><path d="M56 830h84"/>
+  </g>
+  <g stroke="var(--art-line)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"
+     fill="none" opacity=".26">
+    <path d="M206 640v190"/>
+    <path d="M206 640h52a36 36 0 0 1 0 72h-52"/>
+    <path d="M206 712h64a44 44 0 0 1 0 118h-64"/>
+  </g>
+
+  <!-- a long horizon rule -->
+  <path d="M0 792h1440" stroke="var(--art-line)" stroke-width="1" opacity=".22"/>
+</svg>
+
+<div id="progress"></div>
+
+<header class="top">
+  <a class="lock" href="#home" aria-label="Eslam Afify Barakat — top">
+    <img class="markimg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiIgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkVzbGFtIEFmaWZ5IEJhcmFrYXQiPgogIDx0aXRsZT5FQiBtb25vZ3JhbTwvdGl0bGU+CiAgPHJlY3QgeD0iMi44IiB5PSIyLjgiIHdpZHRoPSI5MC40IiBoZWlnaHQ9IjkwLjQiIHJ4PSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMuMiIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9Ijc2IiBoZWlnaHQ9Ijc2IiByeD0iMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0VGQTQ2OSIgc3Ryb2tlLXdpZHRoPSIxLjciCiAgICAgICAgc3Ryb2tlLWRhc2hhcnJheT0iMC4wMSA0LjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjQ4IiB5PSI2NC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgICAgIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCdIZWx2ZXRpY2EgTmV1ZScsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC1zaXplPSI0NiIgZm9udC13ZWlnaHQ9IjgwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xLjYiPgogICAgPHRzcGFuIGZpbGw9IiNGRkZGRkYiPkU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjRUZBNDY5Ij5CPC90c3Bhbj4KICA8L3RleHQ+Cjwvc3ZnPgo=" alt="">
+    <span class="lock__txt">
+      <b>Eslam Afify Barakat</b>
+      <i data-t="brandSub"></i>
+    </span>
+  </a>
+  <nav class="nav" id="nav"></nav>
+  <div class="top__tools">
+    <button class="iconbtn langbtn" aria-label="Switch language">ع</button>
+    <button class="iconbtn themebtn" aria-label="Switch theme"><span class="iconStatic themeIcon" data-ic="sun"></span></button>
+    <button class="iconbtn" id="burger" aria-label="Menu" aria-expanded="false"><span class="iconStatic" data-ic="menu"></span></button>
+  </div>
+</header>
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet__veil" data-sheetclose></div>
+  <aside class="sheetp" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="sheetp__top">
+      <img class="markimg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiIgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkVzbGFtIEFmaWZ5IEJhcmFrYXQiPgogIDx0aXRsZT5FQiBtb25vZ3JhbTwvdGl0bGU+CiAgPHJlY3QgeD0iMi44IiB5PSIyLjgiIHdpZHRoPSI5MC40IiBoZWlnaHQ9IjkwLjQiIHJ4PSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMuMiIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9Ijc2IiBoZWlnaHQ9Ijc2IiByeD0iMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0VGQTQ2OSIgc3Ryb2tlLXdpZHRoPSIxLjciCiAgICAgICAgc3Ryb2tlLWRhc2hhcnJheT0iMC4wMSA0LjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjQ4IiB5PSI2NC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgICAgIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCdIZWx2ZXRpY2EgTmV1ZScsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC1zaXplPSI0NiIgZm9udC13ZWlnaHQ9IjgwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xLjYiPgogICAgPHRzcGFuIGZpbGw9IiNGRkZGRkYiPkU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjRUZBNDY5Ij5CPC90c3Bhbj4KICA8L3RleHQ+Cjwvc3ZnPgo=" alt="">
+      <button class="iconbtn" data-sheetclose aria-label="Close menu">
+        <span class="iconStatic" data-ic="close"></span></button>
+    </div>
+    <nav class="sheetnav" id="sheetNav"></nav>
+    <div class="sheetp__foot">
+      <div class="sheetp__cta">
+        <a class="btn btn--primary btn--sm" href="mailto:eslamafifybarakat@gmail.com">
+          <span class="iconStatic" data-ic="mail"></span><span data-t="ctaEmail"></span></a>
+        <a class="btn btn--ghost btn--sm" href="https://wa.me/201016221599" target="_blank" rel="noopener">
+          <span class="iconStatic" data-ic="whatsapp"></span><span data-t="ctaWa"></span></a>
+      </div>
+      <div class="sheetp__row">
+        <button class="iconbtn langbtn" aria-label="Switch language">ع</button>
+        <button class="iconbtn themebtn" aria-label="Switch theme">
+          <span class="iconStatic themeIcon" data-ic="sun"></span></button>
+        <span class="mono" data-t="slogan"></span>
+      </div>
+    </div>
+  </aside>
+</div>
+
+
+<main>
+  <section class="hero" id="home"><div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <p class="mono" style="color:var(--dim)" data-t="available"></p>
+        <h1 class="display">Eslam <span class="metal">Afify</span><br>Barakat</h1>
+        <p class="hero__role" data-t="role"></p>
+        <p class="hero__lede" data-t="heroLede"></p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" id="seeWork" href="#work">
+            <span data-t="ctaWork"></span><span class="iconStatic" data-ic="arrow"></span></a>
+          <a class="btn btn--ghost" href="Eslam_Afify_Barakat_Senior_Angular_Frontend_Developer_CV.pdf" download>
+            <span class="iconStatic" data-ic="download"></span><span data-t="ctaCv"></span></a>
+        </div>
+      </div>
+      <aside class="panel rv">
+        <div class="panel__top">
+          <div class="portrait"><span class="portrait__wrap"><img id="portrait" alt="Eslam Afify Barakat"></span></div>
+          <div class="panel__who">
+            <b>Eslam Afify Barakat</b>
+            <span class="ltr">eslamafifybarakat@gmail.com</span>
+          </div>
+        </div>
+        <dl class="spec" id="spec"></dl>
+        <div class="stats">
+          <div class="stat"><b data-count="5" data-suffix="+">0</b><span data-t="stYears"></span></div>
+          <div class="stat"><b data-count="30">0</b><span data-t="stProjects"></span></div>
+          <div class="stat"><b data-count="2">0</b><span data-t="stLangs"></span></div>
+        </div>
+      </aside>
+    </div>
+  </div></section>
+
+  <section id="about"><div class="wrap sec">
+    <div class="sec__head"><p class="eyebrow mono" data-t="ebAbout"></p>
+      <h2 class="sec-t" data-t="hAbout"></h2></div>
+    <div><div class="prose" id="aboutText"></div><div class="pillars" id="pillars"></div></div>
+  </div></section>
+
+  <section id="stack"><div class="wrap sec">
+    <div class="sec__head"><p class="eyebrow mono" data-t="ebStack"></p>
+      <h2 class="sec-t" data-t="hStack"></h2><p class="sec-lede" data-t="ldStack"></p></div>
+    <div class="skills" id="skills"></div>
+  </div></section>
+
+  <section id="path"><div class="wrap sec">
+    <div class="sec__head"><p class="eyebrow mono" data-t="ebPath"></p>
+      <h2 class="sec-t" data-t="hPath"></h2><p class="sec-lede" data-t="ldPath"></p></div>
+    <div class="tl" id="jobs"></div>
+  </div></section>
+
+  <section id="work"><div class="wrap sec">
+    <div class="sec__head"><p class="eyebrow mono" data-t="ebWork"></p>
+      <h2 class="sec-t" data-t="hWork"></h2><p class="sec-lede" data-t="ldWork"></p></div>
+    <div>
+      <div class="toolbar">
+        <div class="filters" id="filters"></div>
+        <div class="search"><span class="iconStatic" data-ic="search"></span>
+          <input id="q" type="search" autocomplete="off"></div>
+      </div>
+      <p class="count" id="count"></p>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div></section>
+
+  <section id="learning"><div class="wrap sec">
+    <div class="sec__head"><p class="eyebrow mono" data-t="ebEdu"></p>
+      <h2 class="sec-t" data-t="hEdu"></h2></div>
+    <div class="edu" id="edu"></div>
+  </div></section>
+
+  <section id="contact"><div class="wrap">
+    <div class="contact rv">
+      <div class="contact__grid">
+        <div class="contact__say">
+          <p class="eyebrow mono" data-t="ebContact"></p>
+          <h2 class="display" data-t="hContact"></h2>
+          <p class="sec-lede" style="margin-block-start:0" data-t="ldContact"></p>
+          <div class="avail" id="avail"></div>
+          <div class="contact__cta">
+            <a class="btn btn--primary" href="mailto:eslamafifybarakat@gmail.com">
+              <span class="iconStatic" data-ic="mail"></span><span data-t="ctaEmail"></span></a>
+            <a class="btn btn--ghost" href="https://wa.me/201016221599" target="_blank" rel="noopener">
+              <span class="iconStatic" data-ic="whatsapp"></span><span data-t="ctaWa"></span></a>
+          </div>
+        </div>
+        <div class="rows" id="rows"></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <img class="brand" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NzAgOTYiIHdpZHRoPSI0NzAiIGhlaWdodD0iOTYiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRXNsYW0gQWZpZnkgQmFyYWthdCDigJQgU29mdHdhcmUgRW5naW5lZXIsIFdlYiBEZXZlbG9wZXIiPgogIDx0aXRsZT5Fc2xhbSBBZmlmeSBCYXJha2F0PC90aXRsZT4KICA8cmVjdCB4PSIyLjgiIHk9IjIuOCIgd2lkdGg9IjkwLjQiIGhlaWdodD0iOTAuNCIgcng9IjI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4yIi8+CiAgPHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iNzYiIGhlaWdodD0iNzYiIHJ4PSIxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRUZBNDY5IiBzdHJva2Utd2lkdGg9IjEuNyIKICAgICAgICBzdHJva2UtZGFzaGFycmF5PSIwLjAxIDQuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHRleHQgeD0iNDgiIHk9IjY0LjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiCiAgICAgICAgZm9udC1mYW1pbHk9IkFyY2hpdm8sJ0hlbHZldGljYSBOZXVlJyxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjQ2IiBmb250LXdlaWdodD0iODAwIiBsZXR0ZXItc3BhY2luZz0iLTEuNiI+CiAgICA8dHNwYW4gZmlsbD0iI0ZGRkZGRiI+RTwvdHNwYW4+PHRzcGFuIGZpbGw9IiNFRkE0NjkiPkI8L3RzcGFuPgogIDwvdGV4dD4KCiAgPHRleHQgeD0iMTE4IiB5PSI0NSIgZm9udC1mYW1pbHk9IkFyY2hpdm8sJ0hlbHZldGljYSBOZXVlJyxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNyIKICAgICAgICBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iLS42IiBmaWxsPSIjRkZGRkZGIj5Fc2xhbSBBZmlmeSBCYXJha2F0PC90ZXh0PgogIDx0ZXh0IHg9IjExOSIgeT0iNjgiIGZvbnQtZmFtaWx5PSInSUJNIFBsZXggTW9ubycsdWktbW9ub3NwYWNlLG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMC41IgogICAgICAgIGxldHRlci1zcGFjaW5nPSIyLjQiIGZpbGw9IiNBOUJFQ0QiPlNPRlRXQVJFIEVOR0lORUVSIMK3IFdFQiBERVZFTE9QRVI8L3RleHQ+Cjwvc3ZnPgo=" alt="Eslam Afify Barakat — interfaces that work in both directions">
+  <span class="mono">© <span id="yr"></span> · <span data-t="built"></span></span>
+</div></footer>
+
+<button class="iconbtn" id="top" aria-label="Back to top"><span class="iconStatic" data-ic="up"></span></button>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal__veil" data-close></div>
+  <div class="modal__box">
+    <button class="iconbtn modal__x" data-close aria-label="Close"><span class="iconStatic" data-ic="close"></span></button>
+    <div class="gal">
+      <div class="gal__main" id="galMain"></div>
+      <div class="gal__thumbs" id="galThumbs"></div>
+    </div>
+    <h3 id="mTitle"></h3>
+    <p class="modal__when" id="mWhen"></p>
+    <p class="modal__desc" id="mDesc"></p>
+    <dl class="kv"><dt data-t="kStack"></dt><dd id="mStack"></dd></dl>
+    <dl class="kv"><dt data-t="kLinks"></dt><dd class="linklist" id="mLinks"></dd></dl>
+    <p class="note" id="mNote"></p>
+    <div class="modal__cta">
+      <a class="btn btn--primary btn--sm" id="mOpen" target="_blank" rel="noopener">
+        <span id="mOpenTxt"></span><span class="iconStatic" data-ic="arrow"></span></a>
+    </div>
+  </div>
+</div>
+
+<script>
+const LOGO_COLOR="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NzAgOTYiIHdpZHRoPSI0NzAiIGhlaWdodD0iOTYiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRXNsYW0gQWZpZnkgQmFyYWthdCDigJQgU29mdHdhcmUgRW5naW5lZXIsIFdlYiBEZXZlbG9wZXIiPgogIDx0aXRsZT5Fc2xhbSBBZmlmeSBCYXJha2F0PC90aXRsZT4KICA8cmVjdCB4PSIyLjgiIHk9IjIuOCIgd2lkdGg9IjkwLjQiIGhlaWdodD0iOTAuNCIgcng9IjI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwRDRBNzgiIHN0cm9rZS13aWR0aD0iMy4yIi8+CiAgPHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iNzYiIGhlaWdodD0iNzYiIHJ4PSIxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzE2NTJCIiBzdHJva2Utd2lkdGg9IjEuNyIKICAgICAgICBzdHJva2UtZGFzaGFycmF5PSIwLjAxIDQuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHRleHQgeD0iNDgiIHk9IjY0LjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiCiAgICAgICAgZm9udC1mYW1pbHk9IkFyY2hpdm8sJ0hlbHZldGljYSBOZXVlJyxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjQ2IiBmb250LXdlaWdodD0iODAwIiBsZXR0ZXItc3BhY2luZz0iLTEuNiI+CiAgICA8dHNwYW4gZmlsbD0iIzBENEE3OCI+RTwvdHNwYW4+PHRzcGFuIGZpbGw9IiNDMTY1MkIiPkI8L3RzcGFuPgogIDwvdGV4dD4KCiAgPHRleHQgeD0iMTE4IiB5PSI0NSIgZm9udC1mYW1pbHk9IkFyY2hpdm8sJ0hlbHZldGljYSBOZXVlJyxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNyIKICAgICAgICBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iLS42IiBmaWxsPSIjMEEyNTQwIj5Fc2xhbSBBZmlmeSBCYXJha2F0PC90ZXh0PgogIDx0ZXh0IHg9IjExOSIgeT0iNjgiIGZvbnQtZmFtaWx5PSInSUJNIFBsZXggTW9ubycsdWktbW9ub3NwYWNlLG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMC41IgogICAgICAgIGxldHRlci1zcGFjaW5nPSIyLjQiIGZpbGw9IiM1QjZCN0MiPlNPRlRXQVJFIEVOR0lORUVSIMK3IFdFQiBERVZFTE9QRVI8L3RleHQ+Cjwvc3ZnPgo=", LOGO_WHITE="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NzAgOTYiIHdpZHRoPSI0NzAiIGhlaWdodD0iOTYiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRXNsYW0gQWZpZnkgQmFyYWthdCDigJQgU29mdHdhcmUgRW5naW5lZXIsIFdlYiBEZXZlbG9wZXIiPgogIDx0aXRsZT5Fc2xhbSBBZmlmeSBCYXJha2F0PC90aXRsZT4KICA8cmVjdCB4PSIyLjgiIHk9IjIuOCIgd2lkdGg9IjkwLjQiIGhlaWdodD0iOTAuNCIgcng9IjI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4yIi8+CiAgPHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iNzYiIGhlaWdodD0iNzYiIHJ4PSIxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRUZBNDY5IiBzdHJva2Utd2lkdGg9IjEuNyIKICAgICAgICBzdHJva2UtZGFzaGFycmF5PSIwLjAxIDQuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHRleHQgeD0iNDgiIHk9IjY0LjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiCiAgICAgICAgZm9udC1mYW1pbHk9IkFyY2hpdm8sJ0hlbHZldGljYSBOZXVlJyxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjQ2IiBmb250LXdlaWdodD0iODAwIiBsZXR0ZXItc3BhY2luZz0iLTEuNiI+CiAgICA8dHNwYW4gZmlsbD0iI0ZGRkZGRiI+RTwvdHNwYW4+PHRzcGFuIGZpbGw9IiNFRkE0NjkiPkI8L3RzcGFuPgogIDwvdGV4dD4KCiAgPHRleHQgeD0iMTE4IiB5PSI0NSIgZm9udC1mYW1pbHk9IkFyY2hpdm8sJ0hlbHZldGljYSBOZXVlJyxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNyIKICAgICAgICBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iLS42IiBmaWxsPSIjRkZGRkZGIj5Fc2xhbSBBZmlmeSBCYXJha2F0PC90ZXh0PgogIDx0ZXh0IHg9IjExOSIgeT0iNjgiIGZvbnQtZmFtaWx5PSInSUJNIFBsZXggTW9ubycsdWktbW9ub3NwYWNlLG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMC41IgogICAgICAgIGxldHRlci1zcGFjaW5nPSIyLjQiIGZpbGw9IiNBOUJFQ0QiPlNPRlRXQVJFIEVOR0lORUVSIMK3IFdFQiBERVZFTE9QRVI8L3RleHQ+Cjwvc3ZnPgo=", MARK_COLOR="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiIgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkVzbGFtIEFmaWZ5IEJhcmFrYXQiPgogIDx0aXRsZT5FQiBtb25vZ3JhbTwvdGl0bGU+CiAgPHJlY3QgeD0iMi44IiB5PSIyLjgiIHdpZHRoPSI5MC40IiBoZWlnaHQ9IjkwLjQiIHJ4PSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMEQ0QTc4IiBzdHJva2Utd2lkdGg9IjMuMiIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9Ijc2IiBoZWlnaHQ9Ijc2IiByeD0iMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MxNjUyQiIgc3Ryb2tlLXdpZHRoPSIxLjciCiAgICAgICAgc3Ryb2tlLWRhc2hhcnJheT0iMC4wMSA0LjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjQ4IiB5PSI2NC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgICAgIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCdIZWx2ZXRpY2EgTmV1ZScsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC1zaXplPSI0NiIgZm9udC13ZWlnaHQ9IjgwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xLjYiPgogICAgPHRzcGFuIGZpbGw9IiMwRDRBNzgiPkU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjQzE2NTJCIj5CPC90c3Bhbj4KICA8L3RleHQ+Cjwvc3ZnPgo=", MARK_WHITE="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiA5NiIgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkVzbGFtIEFmaWZ5IEJhcmFrYXQiPgogIDx0aXRsZT5FQiBtb25vZ3JhbTwvdGl0bGU+CiAgPHJlY3QgeD0iMi44IiB5PSIyLjgiIHdpZHRoPSI5MC40IiBoZWlnaHQ9IjkwLjQiIHJ4PSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMuMiIvPgogIDxyZWN0IHg9IjEwIiB5PSIxMCIgd2lkdGg9Ijc2IiBoZWlnaHQ9Ijc2IiByeD0iMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0VGQTQ2OSIgc3Ryb2tlLXdpZHRoPSIxLjciCiAgICAgICAgc3Ryb2tlLWRhc2hhcnJheT0iMC4wMSA0LjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjQ4IiB5PSI2NC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgICAgIGZvbnQtZmFtaWx5PSJBcmNoaXZvLCdIZWx2ZXRpY2EgTmV1ZScsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC1zaXplPSI0NiIgZm9udC13ZWlnaHQ9IjgwMCIgbGV0dGVyLXNwYWNpbmc9Ii0xLjYiPgogICAgPHRzcGFuIGZpbGw9IiNGRkZGRkYiPkU8L3RzcGFuPjx0c3BhbiBmaWxsPSIjRUZBNDY5Ij5CPC90c3Bhbj4KICA8L3RleHQ+Cjwvc3ZnPgo=";
+const NAV_IC={'home': 'up', 'about': 'layers', 'stack': 'code', 'path': 'route', 'work': 'grid', 'learning': 'cap', 'contact': 'mail'};
+const PORTRAIT = "data:image/jpeg;base64,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";
+
+const T = {
+ en:{
+  dir:"ltr", other:"ع", otherLabel:"العربية",
+  available:"Cairo, Egypt · available for senior Angular roles",
+  role:"Senior Angular Frontend Developer",
+  heroLede:"I build large-scale Angular platforms that work in two directions — server-rendered, Signals-first, and architected to stay maintainable as they grow. Five years of it, mostly in healthcare and telehealth.",
+  ctaWork:"See the work", ctaCv:"Download CV",
+  stYears:"years building", stProjects:"projects shipped", stLangs:"languages · RTL+LTR",
+  ebAbout:"Summary", hAbout:"Architecture that survives the second year",
+  ebStack:"Stack", hStack:"What I work with",
+  ldStack:"Grouped the way I actually use it, not by how impressive it looks in a list.",
+  ebPath:"Timeline", hPath:"Where I've done it",
+  ldPath:"Five continuous years across three teams, all remote-first, mostly for Saudi and regional products.",
+  ebWork:"Work", hWork:"Thirty things I shipped",
+  ldWork:"Angular platforms first, then the lighter JavaScript builds. Filter or search — every entry links to something live.",
+  ebEdu:"Schooling", hEdu:"Education, certification, languages",
+  ebContact:"Contact", hContact:"Let's talk about your Angular platform",
+  ldContact:"Fastest by email. I read everything and reply the same day.",
+  kStack:"Stack", kLinks:"Links", openLive:"Open live",
+  ctaEmail:"Email me", ctaWa:"WhatsApp", slogan:"Interfaces that work in both directions",
+  brandSub:"Software Engineer · Web Developer",
+  av1:"Open to senior Angular roles", av2:"Remote-first \u00b7 Cairo, GMT+2", av3:"Replies the same day",
+  sRole:"Role", sBase:"Base", sSince:"Since", sFocus:"Focus", sLangs:"Languages",
+  vRole:"Senior Angular Frontend Developer", vBase:"Cairo, Egypt · remote", vSince:"June 2021",
+  vFocus:"Angular SSR · Signals · DDD", vLangs:"Arabic · English", built:"Angular-minded, hand-built in HTML, CSS and vanilla JS",
+  fAll:"All", fAngular:"Angular", fJs:"JavaScript", fFeat:"Flagship",
+  searchPh:"Search projects or tech…",
+  countTpl:(n,t)=>`Showing ${n} of ${t} projects`,
+  none:"Nothing matches that. Try a framework name, a client, or clear the search.",
+  more:"Details", copied:"Email copied", noteLbl:"Infrastructure note",
+  cLocation:"Location", cPhone:"Phone", cWhatsApp:"WhatsApp", cEmail:"Email", cLinkedIn:"LinkedIn", cGitHub:"GitHub",
+  cGo:"open", cCopy:"copy",
+  nav:{home:"Top",about:"Summary",stack:"Stack",path:"Timeline",work:"Work",learning:"Schooling",contact:"Contact"}
+ },
+ ar:{
+  dir:"rtl", other:"EN", otherLabel:"English",
+  available:"القاهرة، مصر · متاح لأدوار Angular العليا",
+  role:"مطوّر واجهات أمامية أول — Angular",
+  heroLede:"أبني منصّات Angular واسعة النطاق تعمل باتجاهين، معروضة من الخادم ومبنية على Signals، وبمعمارية تبقى قابلة للصيانة مع نموّها. خمس سنوات من هذا العمل، معظمها في الصحة والاستشارات النفسية عن بُعد.",
+  ctaWork:"استعرض الأعمال", ctaCv:"تنزيل السيرة الذاتية",
+  stYears:"سنوات خبرة", stProjects:"مشروعًا منجزًا", stLangs:"لغتان · RTL+LTR",
+  ebAbout:"الملخّص", hAbout:"معمارية تصمد في عامها الثاني",
+  ebStack:"التقنيات", hStack:"ما أعمل به",
+  ldStack:"مُجمّعة كما أستخدمها فعلًا، لا كما تبدو مُبهرة في قائمة.",
+  ebPath:"المسار", hPath:"أين طبّقت ذلك",
+  ldPath:"خمس سنوات متّصلة مع ثلاثة فرق، كلّها عن بُعد، ولمنتجات سعودية وإقليمية في الأساس.",
+  ebWork:"الأعمال", hWork:"ثلاثون مشروعًا أنجزتها",
+  ldWork:"منصّات Angular أولًا، ثم الأعمال الأخفّ بـ JavaScript. صنِّف أو ابحث — كل مدخل يفتح رابطًا حقيقيًا.",
+  ebEdu:"الدراسة", hEdu:"التعليم والشهادات واللغات",
+  ebContact:"للتواصل", hContact:"لنتحدّث عن منصّتك على Angular",
+  ldContact:"البريد الإلكتروني أسرع وسيلة. أقرأ كل رسالة وأرد في اليوم نفسه.",
+  kStack:"التقنيات", kLinks:"الروابط", openLive:"فتح الموقع",
+  ctaEmail:"راسلني", ctaWa:"واتساب", slogan:"واجهات تعمل في الاتجاهين",
+  brandSub:"مهندس برمجيات · مطوّر ويب",
+  av1:"متاح لأدوار Angular العليا", av2:"عن بُعد · القاهرة GMT+2", av3:"أرد في اليوم نفسه",
+  sRole:"الدور", sBase:"المقر", sSince:"منذ", sFocus:"التركيز", sLangs:"اللغات",
+  vRole:"مطوّر واجهات أمامية أول — Angular", vBase:"القاهرة، مصر · عن بُعد", vSince:"يونيو 2021",
+  vFocus:"Angular SSR · Signals · DDD", vLangs:"العربية · الإنجليزية", built:"مبني يدويًا بـ HTML و CSS و JavaScript",
+  fAll:"الكل", fAngular:"Angular", fJs:"JavaScript", fFeat:"الأبرز",
+  searchPh:"ابحث في المشاريع أو التقنيات…",
+  countTpl:(n,t)=>`يُعرض ${n} من ${t} مشروعًا`,
+  none:"لا نتائج مطابقة. جرّب اسم إطار عمل أو عميل، أو أفرِغ البحث.",
+  more:"التفاصيل", copied:"تم نسخ البريد", noteLbl:"ملاحظة عن البنية",
+  cLocation:"الموقع", cPhone:"الهاتف", cWhatsApp:"واتساب", cEmail:"البريد", cLinkedIn:"لينكدإن", cGitHub:"جيت هَب",
+  cGo:"فتح", cCopy:"نسخ",
+  nav:{home:"الأعلى",about:"الملخّص",stack:"التقنيات",path:"المسار",work:"الأعمال",learning:"الدراسة",contact:"تواصل"}
+ }
+};
+
+const ABOUT = {
+ en:[`<p><strong>Senior Angular Frontend Developer</strong> with 5+ years of professional experience since June 2021, building and maintaining large-scale production web applications. I specialise in modern Angular architecture — <strong>Standalone Components, Signals, SSR / Angular Universal, RxJS</strong> and TypeScript — applied through <strong>Domain-Driven Design</strong> with facade, repository and store layers.</p>`,
+ `<p>Most of my work is bilingual <strong>Arabic/English (RTL/LTR)</strong>: healthcare and telehealth platforms, enterprise dashboards, ERP modules and corporate sites. That includes real-time chat and notifications on Socket.io and Pusher, <strong>live voice and video sessions via the Agora RTC SDK</strong>, and frontend integration of AI chat across text and voice.</p>`,
+ `<p>I've worked with Angular from <strong>16 through 21</strong> and keep adopting the latest releases. Beyond features I care about reusable component systems, SSR-correct SEO, Core Web Vitals and WCAG accessibility — the parts that decide whether a platform still works two years later.</p>`],
+ ar:[`<p><strong>مطوّر واجهات أمامية أول — Angular</strong> بخبرة تتجاوز خمس سنوات منذ يونيو 2021 في بناء تطبيقات ويب إنتاجية واسعة النطاق وصيانتها. تخصّصي في معمارية Angular الحديثة — <strong>Standalone Components و Signals و SSR / Angular Universal و RxJS</strong> و TypeScript — مطبَّقة عبر <strong>التصميم المُوجَّه بالنطاق (DDD)</strong> بطبقات facade و repository و store.</p>`,
+ `<p>معظم عملي ثنائي اللغة <strong>عربي/إنجليزي (RTL/LTR)</strong>: منصّات صحية واستشارات نفسية عن بُعد، ولوحات تحكّم مؤسسية، ووحدات ERP، ومواقع تعريفية. يشمل ذلك المحادثات والإشعارات الفورية عبر Socket.io و Pusher، و<strong>جلسات الصوت والفيديو المباشرة عبر Agora RTC SDK</strong>، وتكامل واجهات محادثات الذكاء الاصطناعي نصًّا وصوتًا.</p>`,
+ `<p>عملت على Angular من الإصدار <strong>16 حتى 21</strong> وأواصل تبنّي الإصدارات الأحدث. وإلى جانب المزايا، يهمّني بناء مكوّنات قابلة لإعادة الاستخدام، وSEO سليم مع العرض من الخادم، ومؤشرات Core Web Vitals، وإمكانية الوصول وفق WCAG — وهي ما يحدّد إن كانت المنصّة ستبقى صالحة بعد عامين.</p>`]
+};
+
+const PILLARS = [
+ {en:["Signals-first architecture","Facade, repository and store layers that keep feature domains independently testable."],
+  ar:["معمارية تعتمد Signals أولًا","طبقات facade و repository و store تُبقي نطاقات المزايا قابلة للاختبار باستقلال."]},
+ {en:["Real-time voice and video","Agora RTC SDK sessions: device permissions, lifecycle, connection recovery, in-session UI."],
+  ar:["صوت وفيديو فوري","جلسات Agora RTC SDK: أذونات الأجهزة ودورة الحياة واستعادة الاتصال وواجهة الجلسة."]},
+ {en:["Bilingual by construction","RTL/LTR theming and i18n owned across a shared design system, not patched on at the end."],
+  ar:["ثنائي اللغة من الأساس","إدارة التنسيق ثنائي الاتجاه والتعريب داخل نظام تصميم مشترك، لا كإضافة لاحقة."]},
+ {en:["SSR that search engines read","Titles, canonicals, hreflang, Open Graph and JSON-LD rendered on the server, with sitemaps."],
+  ar:["عرض من الخادم تقرأه محرّكات البحث","العناوين والروابط المعيارية و hreflang و Open Graph و JSON-LD مُعروضة من الخادم، مع خرائط الموقع."]}
+];
+
+const SKILLS = [
+ {k:{en:"Languages & markup",ar:"اللغات والترميز"},v:"TypeScript · JavaScript (ES6+) · HTML5 · CSS3 · SCSS/SASS · jQuery (legacy)"},
+ {k:{en:"Angular ecosystem",ar:"منظومة Angular"},v:"Angular 16 / 19 / 20 / 21 · Standalone Components · Signals · RxJS · SSR / Angular Universal · typed route constants · Reactive Forms · Guards & Interceptors · Angular CDK · Angular Material · PrimeNG · ngx-translate · NgRx"},
+ {k:{en:"Architecture & patterns",ar:"المعمارية والأنماط"},v:"Domain-Driven Design · Facade · Repository · Store · reactive Signals state · feature-based modules · reusable component libraries · design systems · BEM · SOLID"},
+ {k:{en:"Real-time & integrations",ar:"الفوري والتكاملات"},v:"Agora RTC SDK · Socket.io · Pusher · Firebase / AngularFire · REST APIs · AI chat integration (text & voice) · Google Maps"},
+ {k:{en:"UI, styling & localization",ar:"الواجهة والتنسيق والتعريب"},v:"Responsive Web Design · Tailwind CSS · Bootstrap 5 · custom design systems · RTL/LTR · i18n · Arabic–English interfaces"},
+ {k:{en:"Quality & performance",ar:"الجودة والأداء"},v:"Karma & Jasmine · Core Web Vitals (LCP, CLS, INP, FCP, TTFB) · technical SEO · semantic HTML · JSON-LD · sitemaps · WCAG · Lighthouse"},
+ {k:{en:"Tooling & delivery",ar:"الأدوات والتسليم"},v:"Git · GitHub · Azure DevOps · Node.js / Express SSR · Vercel · Netlify · Agile / Scrum · code review · QA coordination"}
+];
+
+const JOBS = [
+ {co:"Talbinah — تلبينة", when:{en:"May 2025 – Present",ar:"مايو 2025 – حتى الآن"},
+  role:{en:"Angular Frontend Developer",ar:"مطوّر واجهات أمامية — Angular"},
+  meta:{en:"Remote · Saudi Arabia",ar:"عن بُعد · السعودية"}, site:"https://talbinah.net/",
+  bullets:{en:[
+   "Deliver and maintain the <strong>Angular 19 SSR</strong> frontend of a bilingual Arabic/English <strong>telehealth</strong> platform: therapist booking, live sessions, assessments, subscriptions, community features and an internal operations dashboard.",
+   "Engineered a <strong>Signals-first, Domain-Driven architecture</strong> with facade, repository and store layers, isolating UI from data access and keeping feature domains independently testable.",
+   "Integrated the <strong>Agora RTC SDK</strong> for <strong>live voice and video therapy sessions</strong> — device permissions, session lifecycle, connection-state recovery, in-session UI states.",
+   "Built the frontend for <strong>AI-assisted chat and AI companion experiences</strong> across text and voice, alongside real-time chat and notifications on <strong>Socket.io</strong> and <strong>Pusher</strong>.",
+   "Built an <strong>SSR-correct SEO layer</strong> — titles, canonicals, hreflang, Open Graph, JSON-LD — with sitemap generation, and optimised <strong>Core Web Vitals</strong> across the public platform.",
+   "Own RTL/LTR theming, i18n and <strong>WCAG accessibility</strong> across the shared design system, and coordinate QA readiness and weekly delivery reporting against <strong>Azure DevOps</strong> work items."],
+  ar:[
+   "أطوّر وأصون واجهة <strong>Angular 19 مع SSR</strong> لمنصّة <strong>صحة نفسية عن بُعد</strong> ثنائية اللغة: حجز المعالجين والجلسات المباشرة والمقاييس والاشتراكات ومزايا المجتمع ولوحة تشغيل داخلية.",
+   "هندست <strong>معمارية تعتمد Signals والتصميم المُوجَّه بالنطاق</strong> بطبقات facade و repository و store، تفصل الواجهة عن الوصول للبيانات وتُبقي النطاقات قابلة للاختبار باستقلال.",
+   "دمجت <strong>Agora RTC SDK</strong> لتوفير <strong>جلسات صوت وفيديو علاجية مباشرة</strong> — أذونات الأجهزة، ودورة حياة الجلسة، واستعادة حالة الاتصال، وحالات الواجهة داخل الجلسة.",
+   "بنيت واجهة <strong>محادثات مدعومة بالذكاء الاصطناعي ورفيق ذكي</strong> نصًّا وصوتًا، مع محادثات وإشعارات فورية عبر <strong>Socket.io</strong> و<strong>Pusher</strong>.",
+   "بنيت <strong>طبقة SEO سليمة مع العرض من الخادم</strong> — العناوين والروابط المعيارية و hreflang و Open Graph و JSON-LD — مع توليد خرائط الموقع، وحسّنت <strong>Core Web Vitals</strong>.",
+   "أتولّى التنسيق ثنائي الاتجاه والتعريب و<strong>إمكانية الوصول وفق WCAG</strong> في نظام التصميم المشترك، وأنسّق جاهزية الاختبار والتقارير الأسبوعية على <strong>Azure DevOps</strong>."]}},
+
+ {co:"AppzLabz", when:{en:"April 2023 – April 2025",ar:"أبريل 2023 – أبريل 2025"},
+  role:{en:"Angular Frontend Developer",ar:"مطوّر واجهات أمامية — Angular"},
+  meta:{en:"Remote",ar:"عن بُعد"},
+  bullets:{en:[
+   "Developed and maintained multiple <strong>Angular SSR</strong> applications, dashboards and corporate platforms for Saudi and regional clients across healthcare booking, payments, education finance, government/CMS and traditional-arts sectors.",
+   "Built <strong>reusable, themeable component libraries</strong> on PrimeNG, Angular Material and Angular CDK, cutting duplicated UI work and standardising form, table and modal patterns.",
+   "Implemented reactive data flows with <strong>RxJS</strong> and <strong>NgRx</strong> for data-heavy dashboards, including role-based access, route guards, HTTP interceptors and authentication.",
+   "Delivered SSR and technical SEO improvements for public-facing product and marketing sites, and implemented full <strong>RTL/LTR and Arabic/English localisation</strong>.",
+   "Integrated REST APIs, payment flows, Google Maps and file/media handling; wrote unit tests with <strong>Jasmine</strong> and <strong>Karma</strong> in Agile teams."],
+  ar:[
+   "طوّرت وصنت عدّة تطبيقات <strong>Angular مع SSR</strong> ولوحات تحكّم ومنصّات مؤسسية لعملاء سعوديين وإقليميين في الحجز الصحي والمدفوعات وتمويل التعليم والقطاع الحكومي وإدارة المحتوى والفنون التراثية.",
+   "بنيت <strong>مكتبات مكوّنات قابلة لإعادة الاستخدام والتنسيق</strong> على PrimeNG و Angular Material و Angular CDK، ما قلّل تكرار العمل ووحّد أنماط النماذج والجداول والنوافذ.",
+   "نفّذت تدفّقات بيانات تفاعلية بـ <strong>RxJS</strong> و<strong>NgRx</strong> للوحات كثيفة البيانات، مع صلاحيات حسب الدور وحُرّاس المسارات ومعترضات HTTP والمصادقة.",
+   "سلّمت تحسينات العرض من الخادم و SEO التقني للمواقع العامة، ونفّذت <strong>التعريب الكامل ثنائي الاتجاه</strong> عربي/إنجليزي.",
+   "دمجت واجهات REST ومسارات الدفع وخرائط Google ومعالجة الملفات والوسائط، وكتبت اختبارات وحدة بـ <strong>Jasmine</strong> و<strong>Karma</strong> داخل فرق Agile."]}},
+
+ {co:"Hashstudio Inc.", when:{en:"June 2021 – March 2023",ar:"يونيو 2021 – مارس 2023"},
+  role:{en:"Angular Frontend Developer",ar:"مطوّر واجهات أمامية — Angular"},
+  meta:{en:"Shebin El-Kom, Menoufia, Egypt",ar:"شبين الكوم، المنوفية، مصر"}, site:"https://hashstudio.dev/",
+  bullets:{en:[
+   "Built Angular applications from design handoff through production release, including <strong>ERP modules</strong> (accounting, sales, customers, employees, Zakat/Tax compliance) and a large-scale <strong>digital library platform</strong>.",
+   "Implemented complex data-entry, tabular and editor-driven interfaces using <strong>Angular Material</strong>, <strong>PrimeNG</strong>, <strong>NgRx</strong>, Froala Editor and Pusher-based updates.",
+   "Developed responsive, cross-browser interfaces with SCSS and Bootstrap 5, and contributed to corporate site delivery with Angular SSR and SEO fundamentals."],
+  ar:[
+   "بنيت تطبيقات Angular من تسليم التصميم حتى الإصدار الإنتاجي، منها <strong>وحدات ERP</strong> (الحسابات والمبيعات والعملاء والموظفون والامتثال للزكاة والضريبة) و<strong>منصّة مكتبة رقمية</strong> واسعة النطاق.",
+   "نفّذت واجهات معقّدة لإدخال البيانات والجداول والمحرّرات باستخدام <strong>Angular Material</strong> و<strong>PrimeNG</strong> و<strong>NgRx</strong> و Froala Editor وتحديثات Pusher.",
+   "طوّرت واجهات متجاوبة متوافقة مع المتصفحات بـ SCSS و Bootstrap 5، وشاركت في تسليم مواقع تعريفية بأساسيات SSR و SEO."]}}
+];
+
+/* kind: ng = Angular · js = JavaScript · feat = flagship */
+const WORK = [
+ {n:"Reference Portal — Talbinah",k:"ng",f:1,shot:"assets/shots/reference-portal.webp",shots:["assets/shots/reference-portal.webp","assets/shots/reference-portal-2.webp"],
+  w:{en:"April 2025 – Present",ar:"أبريل 2025 – حتى الآن"},
+  d:{en:"Talbinah's bilingual Arabic/English telehealth and mental-wellness platform: a redesigned patient experience with AI-assisted interaction, therapist booking, live voice and video sessions, community features, assessments, subscriptions and an internal operations dashboard. Built on an RTL/LTR-aware, Signals-first, Domain-Driven architecture focused on performance, accessibility and scalability.",
+     ar:"منصّة تلبينة ثنائية اللغة للصحة النفسية عن بُعد: تجربة مريض مُعاد تصميمها مع تفاعل مدعوم بالذكاء الاصطناعي، وحجز المعالجين، وجلسات صوت وفيديو مباشرة، ومزايا مجتمعية، ومقاييس، واشتراكات، ولوحة تشغيل داخلية. مبنية على معمارية تراعي الاتجاهين وتعتمد Signals والتصميم المُوجَّه بالنطاق، بتركيز على الأداء وإمكانية الوصول والتوسّع."},
+  s:"Angular 19 · TypeScript · Standalone Components · Signals · SSR / Angular Universal · RxJS · SCSS · Tailwind CSS · custom design system · PrimeNG · Angular CDK · ngx-translate · i18n · RTL/LTR · Firebase / AngularFire · Agora RTC SDK · Socket.io · Pusher · Express SSR · Karma/Jasmine · DDD · facade / repository / store · reactive Signals state",
+  l:["https://app.talbinah.net/"]},
+
+ {n:"AGRO TEBA",k:"ng",f:1,shot:"assets/shots/agro-teba.webp",shots:["assets/shots/agro-teba.webp","assets/shots/agro-teba-2.webp"],
+  w:{en:"10–15 June 2026 · 6 days",ar:"10–15 يونيو 2026 · 6 أيام"},
+  d:{en:"Corporate platform for a manufacturer of fertilizers and agricultural solutions, showcasing products that support healthier crops, higher yields and sustainability. Delivered on Angular 21 with a Signals-first, domain-driven structure and a custom bilingual translation layer rendered server-side.",
+     ar:"منصّة تعريفية لشركة أسمدة وحلول زراعية، تعرض منتجات تدعم صحّة المحاصيل وزيادة الإنتاج والاستدامة. مبنية على Angular 21 ببنية تعتمد Signals والتصميم المُوجَّه بالنطاق، وطبقة ترجمة ثنائية مخصّصة تُعرض من الخادم."},
+  s:"Angular 21 · TypeScript · Standalone Components · Signals · SSR / Angular Universal · RxJS · SCSS · Tailwind CSS · custom design system · reusable components · custom i18n · RTL/LTR · Express SSR · Karma/Jasmine · DDD · facade / repository / store",
+  l:["https://dev.agrotebaint.com/"]},
+
+ {n:"Talbinah Website",k:"ng",f:1,shot:"assets/shots/talbinah-website.webp",shots:["assets/shots/talbinah-website.webp","assets/shots/talbinah-website-2.webp"],
+  w:{en:"February 2023 – Present",ar:"فبراير 2023 – حتى الآن"},
+  d:{en:"Public-facing website for Saudi Arabia's Talbinah mental-health service — psychological and family consultations with certified specialists, immediate booking and full confidentiality. Angular SSR delivery with an Arabic-first RTL experience, technical SEO and continuous performance work.",
+     ar:"الموقع العام لخدمة تلبينة السعودية للصحة النفسية — استشارات نفسية وأسرية مع مختصّين معتمدين، وحجز فوري وسرّية كاملة. تسليم بـ Angular SSR مع تجربة عربية أولًا من اليمين لليسار، و SEO تقني وعمل مستمر على الأداء."},
+  s:"Angular · TypeScript · SCSS · Bootstrap 5 · RxJS · PrimeNG · SSR · SEO · RTL/LTR",
+  l:["https://talbinah.net/"]},
+
+ {n:"Procurelinker",k:"ng",f:1,shot:"assets/shots/procurelinker.webp",
+  w:{en:"November 2024 – February 2025",ar:"نوفمبر 2024 – فبراير 2025"},
+  d:{en:"Corporate platform for a software-house agency offering business identity design, web solutions, programming, hosting and server services. Angular 16 SSR application with Google Maps integration and a reusable component layer on Angular Material and PrimeNG.",
+     ar:"منصّة تعريفية لوكالة برمجيات تقدّم تصميم الهوية وحلول الويب والبرمجة والاستضافة وخدمات السيرفرات. تطبيق Angular 16 مع SSR وتكامل خرائط Google وطبقة مكوّنات قابلة لإعادة الاستخدام على Angular Material و PrimeNG."},
+  s:"Angular 16 · TypeScript · SASS · Bootstrap 5 · Angular Material · PrimeNG · RxJS · Google Maps · modular architecture",
+  l:["https://p-linker-ssr-16.vercel.app/"]},
+
+ {n:"Knowledge Bank (Tweeq)",k:"ng",f:0,shot:"assets/shots/knowledge-bank.webp",
+  w:{en:"April 2022 – April 2024",ar:"أبريل 2022 – أبريل 2024"},
+  d:{en:"Large-scale digital library for a national education development programme, providing research and knowledge resources at no cost, with role-based access and a rich content-authoring workflow.",
+     ar:"مكتبة رقمية واسعة النطاق لبرنامج وطني لتطوير التعليم، توفّر موارد بحثية ومعرفية مجانًا، بصلاحيات حسب الدور وتدفّق تحرير محتوى متكامل."},
+  s:"Angular · TypeScript · SASS · Bootstrap · Angular Material · PrimeNG · NgRx · RxJS · guards · Froala Editor · Pusher",
+  l:["https://tweeq.ikb.sa/#/"],note:{en:"Server changed.",ar:"تم تغيير السيرفر."}},
+
+ {n:"Medjol Patient (Availy)",k:"ng",f:0,
+  w:{en:"May 2023 – Present",ar:"مايو 2023 – حتى الآن"},
+  d:{en:"Patient-facing healthcare booking platform with map-driven provider discovery, appointment scheduling and service browsing.",
+     ar:"منصّة حجز صحي للمرضى، مع استكشاف مقدّمي الخدمة على الخريطة وجدولة المواعيد وتصفّح الخدمات."},
+  s:"Angular · TypeScript · SASS · Bootstrap 5 · Angular Material · PrimeNG · RxJS · Google Maps",
+  l:["https://availy.online/"],note:{en:"Server changed.",ar:"تم تغيير السيرفر."}},
+
+ {n:"Medjol Provider Dashboard",k:"ng",f:0,
+  w:{en:"May 2023 – Present",ar:"مايو 2023 – حتى الآن"},
+  d:{en:"Provider-side operations dashboard for schedule, service and booking management, built on the same shared component layer as the patient app.",
+     ar:"لوحة تشغيل لمقدّمي الخدمة لإدارة الجدول والخدمات والحجوزات، مبنية على طبقة المكوّنات المشتركة نفسها المستخدمة في تطبيق المرضى."},
+  s:"Angular · TypeScript · SASS · Bootstrap 5 · Angular Material · PrimeNG · RxJS · Google Maps",
+  l:["https://provider.availy.online/"],note:{en:"Server changed.",ar:"تم تغيير السيرفر."}},
+
+ {n:"QR Payment",k:"ng",f:0,
+  w:{en:"September 2023 – Present",ar:"سبتمبر 2023 – حتى الآن"},
+  d:{en:"Quick-reservation payment flow for the Saudi market, driven by QR-based booking links that open a pre-filled reservation and checkout journey.",
+     ar:"مسار دفع سريع للحجز في السوق السعودي، يعمل عبر روابط حجز بـ QR تفتح رحلة حجز ودفع مُهيّأة مسبقًا."},
+  s:"Angular · TypeScript · SCSS · Bootstrap 5 · PrimeNG · RxJS",
+  l:["https://availy.shop/bookings/jeU7R0N5WkekI9SZj6mhgw"],note:{en:"Server changed.",ar:"تم تغيير السيرفر."}},
+
+ {n:"Civil Services Management Dashboard",k:"ng",f:0,
+  w:{en:"January 2023 – Present",ar:"يناير 2023 – حتى الآن"},
+  d:{en:"Centralised platform to streamline and monitor civil-service operations, with data visualisation supporting management and public-service decision-making.",
+     ar:"منصّة مركزية لتنظيم عمليات الخدمة المدنية ومتابعتها، مع تمثيل بصري للبيانات يدعم الإدارة واتخاذ القرار."},
+  s:"Angular · TypeScript · SCSS · Bootstrap 5 · RxJS · PrimeNG",
+  l:["http://cms-demo.awaneg.com/"],note:{en:"Server changed.",ar:"تم تغيير السيرفر."}},
+
+ {n:"Jusur Dashboard",k:"ng",f:0,
+  w:{en:"August 2023",ar:"أغسطس 2023"},
+  d:{en:"Multi-role administrative dashboard with separate admin and client experiences over a shared component and routing layer.",
+     ar:"لوحة إدارية متعدّدة الأدوار بتجربتين منفصلتين للمشرف والعميل، على طبقة مكوّنات ومسارات مشتركة."},
+  s:"Angular · TypeScript · SCSS · Bootstrap 5 · RxJS · PrimeNG",
+  l:["https://jusur-dashboard.vercel.app/en/Auth/Login"],note:{en:"Database changed.",ar:"تم تغيير قاعدة البيانات."}},
+
+ {n:"WRTH — Royal Institute of Traditional Arts",k:"ng",f:0,shot:"assets/shots/wrth.webp",
+  w:{en:"October 2024 – Present",ar:"أكتوبر 2024 – حتى الآن"},
+  d:{en:"Cultural platform representing the artistic heritage of Saudi Arabia — its traditional artworks, the artists behind them, and programmes encouraging new practitioners.",
+     ar:"منصّة ثقافية تمثّل التراث الفني في السعودية — أعماله التقليدية، والفنّانين خلفها، والبرامج التي تشجّع الممارسين الجدد."},
+  s:"Angular · TypeScript · SCSS · Bootstrap 5 · RxJS · RTL/LTR",
+  l:["https://wrth.edu.sa/"]},
+
+ {n:"AMS Policies",k:"ng",f:0,
+  w:{en:"September 2022 – September 2023",ar:"سبتمبر 2022 – سبتمبر 2023"},
+  d:{en:"Policy reservation platform with full CRUD operations, multiple payment methods, and location, device and browser signals used as part of authentication.",
+     ar:"منصّة حجز وثائق تأمين بعمليات CRUD كاملة وطرق دفع متعدّدة، تستخدم إشارات الموقع والجهاز والمتصفّح كجزء من المصادقة."},
+  s:"Angular · TypeScript · SASS · Bootstrap 5 · Angular Material · PrimeNG · RxJS",
+  l:["https://ams-policies.vercel.app/#/home"]},
+
+ {n:"Hawdaj",k:"ng",f:0,shot:"assets/shots/hawdaj.webp",
+  w:{en:"February 2023 – Present",ar:"فبراير 2023 – حتى الآن"},
+  d:{en:"Tourism platform showcasing Saudi Arabia's natural heritage destinations, with Firebase authentication, map-based discovery and server-rendered pages for search visibility.",
+     ar:"منصّة سياحية تعرض مواقع التراث الطبيعي في السعودية، مع مصادقة Firebase واستكشاف على الخريطة وصفحات معروضة من الخادم لظهور أفضل في البحث."},
+  s:"Angular · TypeScript · SCSS · Bootstrap 5 · RxJS · PrimeNG · Google Maps · Firebase auth · SSR · SEO",
+  l:["https://hawdaj.net/"]},
+
+ {n:"Mention",k:"ng",f:0,
+  w:{en:"January 2023 – April 2024",ar:"يناير 2023 – أبريل 2024"},
+  d:{en:"Conversation and engagement platform combining an authenticated admin dashboard with a real-time conversations workspace, structured around SOLID principles.",
+     ar:"منصّة محادثات وتفاعل تجمع لوحة إدارة مُصادَقة مع مساحة عمل للمحادثات الفورية، مبنية وفق مبادئ SOLID."},
+  s:"Angular · TypeScript · SCSS · Tailwind CSS · RxJS · PrimeNG · SOLID · SSR · SEO",
+  l:["https://mention-17-ssr.vercel.app/Auth/Login","https://mention-17-ssr.vercel.app/Admin/Dashboard","https://mention-17-ssr.vercel.app/Main/Conversations"]},
+
+ {n:"Estkdam",k:"ng",f:0,
+  w:{en:"January 2024 – February 2024",ar:"يناير 2024 – فبراير 2024"},
+  d:{en:"Recruitment platform that streamlines domestic-worker hiring while safeguarding the rights of employers and workers.",
+     ar:"منصّة استقدام تُبسّط توظيف العمالة المنزلية مع حفظ حقوق أصحاب العمل والعاملين."},
+  s:"Angular · TypeScript · SCSS · Bootstrap 5 · RxJS · PrimeNG · SSR · SEO",
+  l:["https://estkdam.vercel.app/"]},
+
+ {n:"Gdawel ERP",k:"ng",f:0,
+  w:{en:"June 2022 – March 2023",ar:"يونيو 2022 – مارس 2023"},
+  d:{en:"ERP suite for small and medium businesses covering accounting, sales, customers, employees and Zakat/Tax authority compliance under a single management interface.",
+     ar:"نظام ERP للمنشآت الصغيرة والمتوسطة يغطّي الحسابات والمبيعات والعملاء والموظفين والامتثال لهيئة الزكاة والضريبة في واجهة إدارة واحدة."},
+  s:"Angular · TypeScript · SASS · Bootstrap 5 · Angular Material · PrimeNG · RxJS",
+  l:["https://gdawel.app/"]},
+
+ {n:"Seaah Stakeholders",k:"ng",f:0,
+  w:{en:"October 2023 – Present",ar:"أكتوبر 2023 – حتى الآن"},
+  d:{en:"Education-finance platform providing interest-free installment plans for school and university expenses.",
+     ar:"منصّة تمويل تعليمي توفّر خطط تقسيط بدون فوائد لمصروفات المدارس والجامعات."},
+  s:"Angular · TypeScript · SCSS · Bootstrap 5 · RxJS · PrimeNG · SSR · SEO",
+  l:["https://seaah-stackholders.vercel.app/"]},
+
+ {n:"HashStudio — Digital Destination",k:"ng",f:0,
+  w:{en:"November 2022 – December 2022",ar:"نوفمبر 2022 – ديسمبر 2022"},
+  d:{en:"Corporate website for a software company, delivered as a hash-routed Angular single-page application.",
+     ar:"موقع تعريفي لشركة برمجيات، سُلّم كتطبيق صفحة واحدة على Angular بمسارات hash."},
+  s:"Angular · TypeScript · SCSS · Bootstrap 5 · RxJS",
+  l:["https://hashstudio.dev/#/"]},
+
+ {n:"Swarm Technologies",k:"js",f:0,shot:"assets/shots/swarm.webp",
+  w:{en:"15–20 April 2025 · 6 days",ar:"15–20 أبريل 2025 · 6 أيام"},
+  d:{en:"Corporate website for a Saudi technology company specialising in artificial intelligence, advanced software, digital transformation, cybersecurity and cloud hosting, presenting its services, vision and partnerships in line with Vision 2030.",
+     ar:"موقع تعريفي لشركة تقنية سعودية متخصّصة في الذكاء الاصطناعي والبرمجيات المتقدّمة والتحوّل الرقمي والأمن السيبراني والاستضافة السحابية، يعرض خدماتها ورؤيتها وشراكاتها بما يتوافق مع رؤية 2030."},
+  s:"HTML5 · CSS3 · JavaScript · responsive · semantic HTML · SEO · accessibility · RTL/LTR · image optimisation · modular JS",
+  l:["https://swarm-technologies-delta.vercel.app/"]},
+
+ {n:"Social Studio",k:"js",f:0,shot:"assets/shots/social-studio.webp",
+  w:{en:"16–17 July 2026",ar:"16–17 يوليو 2026"},
+  d:{en:"Content-creation tool for social media teams: upload one or multiple images and videos, apply company branding, resize to custom or per-platform formats, then download or share the final assets.",
+     ar:"أداة إنشاء محتوى لفرق التواصل الاجتماعي: رفع صورة أو عدّة صور ومقاطع، وتطبيق هوية الشركة، وتغيير المقاسات حسب الطلب أو حسب كل منصّة، ثم التنزيل أو المشاركة."},
+  s:"HTML5 · CSS3 · vanilla JavaScript (ES6+) · responsive · semantic HTML · SEO · WCAG · Core Web Vitals · lazy loading · browser-native APIs · modular JS",
+  l:["https://social-studio-ivory.vercel.app/"]},
+
+ {n:"QIAS Dashboard",k:"js",f:0,
+  w:{en:"21 Feb – 1 March 2024 · 9 days",ar:"21 فبراير – 1 مارس 2024 · 9 أيام"},
+  d:{en:"Prediction-focused web application providing an interactive interface for submitting data and generating prediction results, presenting model-driven insights through a structured dashboard.",
+     ar:"تطبيق ويب موجَّه للتنبّؤ يوفّر واجهة تفاعلية لإدخال البيانات وتوليد نتائج التنبّؤ، ويعرض مخرجات النموذج عبر لوحة منظّمة."},
+  s:"Interactive dashboard UI · data visualisation · prediction interface · responsive · semantic HTML · accessibility · API integration · modular JS · Vercel",
+  l:["https://qias-dasnboard.vercel.app/"]},
+
+ {n:"Eid Adha Card",k:"js",f:0,shot:"assets/shots/eid-card.webp",
+  w:{en:"5 June 2026 · 1 day",ar:"5 يونيو 2026 · يوم واحد"},
+  d:{en:"Lightweight interactive tool for creating personalised Eid al-Adha greeting cards, offering simulated AI suggestions for greeting messages and card content, with fast customisation and sharing.",
+     ar:"أداة تفاعلية خفيفة لإنشاء بطاقات معايدة مخصّصة لعيد الأضحى، تقدّم اقتراحات ذكاء اصطناعي محاكاة لنصوص المعايدة ومحتوى البطاقة، مع تخصيص ومشاركة سريعين."},
+  s:"HTML5 · CSS3 · vanilla JavaScript · responsive · semantic HTML · SEO · WCAG · Core Web Vitals · browser-native APIs · simulated AI suggestions",
+  l:["https://eid-adh-card.vercel.app/","https://general-eid-maker.vercel.app/","https://talbinah-eid-al-fitr-greetings.vercel.app/"]},
+
+ {n:"Wakeb Tech Site",k:"js",f:0,
+  w:{en:"January 2023 – Present",ar:"يناير 2023 – حتى الآن"},
+  d:{en:"Product website presenting computer-vision data capture and visualisation technologies.",
+     ar:"موقع منتج يعرض تقنيات التقاط البيانات وتمثيلها البصري في مجال الرؤية الحاسوبية."},
+  s:"HTML5 · CSS3 · JavaScript · responsive · semantic HTML · SEO · performance",
+  l:["https://wakeb-tech-site.vercel.app/"]},
+
+ {n:"Wakeb AI Chat",k:"js",f:0,
+  w:{en:"February 2024",ar:"فبراير 2024"},
+  d:{en:"Conversational AI chat interface covering chat UI, message states and response presentation.",
+     ar:"واجهة محادثة بالذكاء الاصطناعي تغطّي واجهة الدردشة وحالات الرسائل وعرض الردود."},
+  s:"HTML5 · CSS3 · JavaScript · responsive · custom UI components · client-side interactions",
+  l:["https://wakeb-ai.vercel.app/"]},
+
+ {n:"Nile Ortho",k:"js",f:0,
+  w:{en:"April 2023 – Present",ar:"أبريل 2023 – حتى الآن"},
+  d:{en:"Medical practice website with responsive layouts and semantic markup.",
+     ar:"موقع لعيادة طبية بتوزيع متجاوب وترميز دلالي."},
+  s:"HTML5 · CSS3 · JavaScript · responsive · semantic HTML · SEO",
+  l:["https://www.nileortho.com/"]},
+
+ {n:"NEN Site",k:"js",f:0,
+  w:{en:"April 2024 – Present",ar:"أبريل 2024 – حتى الآن"},
+  d:{en:"Corporate identity and content website with multilingual routing.",
+     ar:"موقع هوية ومحتوى مؤسسي بمسارات متعدّدة اللغات."},
+  s:"HTML5 · CSS3 · JavaScript · responsive · semantic HTML · multilingual routing",
+  l:["https://dev.nendemo2024.xyz/en/about/identity"]},
+
+ {n:"Sarie Site",k:"js",f:0,
+  w:{en:"March 2024",ar:"مارس 2024"},
+  d:{en:"Marketing website focused on fast delivery and a clean responsive layout.",
+     ar:"موقع تسويقي بتركيز على سرعة التسليم وتوزيع متجاوب نظيف."},
+  s:"HTML5 · CSS3 · JavaScript · responsive · custom UI components",
+  l:["https://sarie-site.vercel.app/"]},
+
+ {n:"Qaraah Site",k:"js",f:0,
+  w:{en:"May 2024",ar:"مايو 2024"},
+  d:{en:"Content-oriented website with an accessible reading experience.",
+     ar:"موقع موجَّه للمحتوى بتجربة قراءة يسهل الوصول إليها."},
+  s:"HTML5 · CSS3 · JavaScript · responsive · semantic HTML · accessibility",
+  l:["https://qaraah-site.vercel.app/"]},
+
+ {n:"Taba Educational Program",k:"js",f:0,
+  w:{en:"March 2022 – June 2022",ar:"مارس 2022 – يونيو 2022"},
+  d:{en:"Educational programme website presenting programme structure and enrolment information.",
+     ar:"موقع لبرنامج تعليمي يعرض هيكل البرنامج ومعلومات التسجيل."},
+  s:"HTML5 · CSS3 · JavaScript · responsive · semantic HTML",
+  l:["https://taba-educational-program.vercel.app/"]},
+
+ {n:"Download Images",k:"js",f:0,
+  w:{en:"August 2024",ar:"أغسطس 2024"},
+  d:{en:"Utility web tool for batch image retrieval and download, built with browser-native APIs.",
+     ar:"أداة ويب لاسترجاع الصور وتنزيلها على دفعات، مبنية بواجهات المتصفّح الأصلية."},
+  s:"HTML5 · CSS3 · JavaScript · browser-native APIs · responsive",
+  l:["https://download-images-woad.vercel.app/"]}
+];
+
+const EDU = [
+ {t:{en:"B.Sc. in Computer Science",ar:"بكالوريوس علوم الحاسب"},
+  p:{en:"Faculty of Computers & Information, Menoufia University",ar:"كلية الحاسبات والمعلومات، جامعة المنوفية"},
+  w:{en:"August 2015 – July 2019",ar:"أغسطس 2015 – يوليو 2019"}},
+ {t:{en:"Professional Diploma — MEARN Stack Web Development",ar:"دبلوم مهني — تطوير الويب MEARN"},
+  p:{en:"Information Technology Institute (ITI), MCIT",ar:"معهد تكنولوجيا المعلومات (ITI)، وزارة الاتصالات"},
+  w:{en:"April – July 2021 · 3 months",ar:"أبريل – يوليو 2021 · 3 أشهر"}},
+ {t:{en:"Arabic — native / bilingual",ar:"العربية — لغة أم"},
+  p:{en:"English — professional working proficiency",ar:"الإنجليزية — إتقان مهني للعمل"},
+  w:{en:"Languages",ar:"اللغات"}}
+];
+
+const CONTACT = [
+ {k:"cLocation", v:"Cairo, Egypt", href:"https://www.google.com/maps/place/Cairo,+Egypt", i:"pin"},
+ {k:"cPhone",    v:"+20 101 622 1599", href:"tel:+201016221599", i:"phone", ltr:1},
+ {k:"cWhatsApp", v:"+20 101 622 1599", href:"https://wa.me/201016221599", i:"whatsapp", ltr:1},
+ {k:"cEmail",    v:"eslamafifybarakat@gmail.com", href:"mailto:eslamafifybarakat@gmail.com", i:"mail", copy:1, ltr:1},
+ {k:"cLinkedIn", v:"linkedin.com/in/eslam-afify-barakat-3a1396142", href:"https://www.linkedin.com/in/eslam-afify-barakat-3a1396142", i:"linkedin", ltr:1},
+ {k:"cGitHub",   v:"github.com/eslamafifybarakat", href:"https://github.com/eslamafifybarakat", i:"github", ltr:1}
+];
+
+
+
+
+/* ==========================================================================
+   ICONS — one set, one stroke weight, drawn for this site
+   ========================================================================== */
+const ICON = {
+ pin:'<path d="M12 21.4c4.3-4.5 6.4-7.8 6.4-10.7A6.4 6.4 0 0 0 5.6 10.7c0 2.9 2.1 6.2 6.4 10.7Z"/><circle cx="12" cy="10.6" r="2.5"/>',
+ phone:'<rect x="6.4" y="2.2" width="11.2" height="19.6" rx="3"/><path d="M10.4 5h3.2"/><circle cx="12" cy="18.4" r="1.1" fill="currentColor" stroke="none"/>',
+ whatsapp:'<path d="M3.8 20.2l1.1-3.4A8.3 8.3 0 1 1 8.3 19.9l-4.5.3Z"/><path d="M9.2 8.6c-.9.5-1.2 1.7-.7 2.9a8.4 8.4 0 0 0 4 4c1.2.5 2.4.2 2.9-.7l-1.9-1.1-1.2 1.1-2.1-2.1 1.1-1.2-.8-1.9Z"/>',
+ mail:'<rect x="2.6" y="4.8" width="18.8" height="14.4" rx="2.6"/><path d="M3.4 6.6 12 13l8.6-6.4"/>',
+ linkedin:'<rect x="3" y="3" width="18" height="18" rx="4.4"/><path d="M7.6 10.6v6.2"/><circle cx="7.6" cy="7.6" r="1.05" fill="currentColor" stroke="none"/><path d="M11.6 16.8v-6.2M11.6 13.2c0-1.5 1.1-2.6 2.6-2.6s2.6 1.1 2.6 2.6v3.6"/>',
+ github:'<rect x="3" y="3" width="18" height="18" rx="4.4"/><path d="M10.1 9.4 7.7 12l2.4 2.6M13.9 9.4 16.3 12l-2.4 2.6"/>',
+ download:'<path d="M12 3.2v11.6m0 0-4-4M12 14.8l4-4"/><path d="M4.4 17v1.8a2.2 2.2 0 0 0 2.2 2.2h10.8a2.2 2.2 0 0 0 2.2-2.2V17"/>',
+ grid:'<rect x="3.2" y="3.2" width="7.2" height="7.2" rx="2.2"/><rect x="13.6" y="3.2" width="7.2" height="7.2" rx="2.2"/><rect x="3.2" y="13.6" width="7.2" height="7.2" rx="2.2"/><rect x="13.6" y="13.6" width="7.2" height="7.2" rx="2.2"/>',
+ search:'<circle cx="10.6" cy="10.6" r="6.6"/><path d="M15.4 15.4 20.4 20.4"/>',
+ close:'<path d="M6.4 6.4 17.6 17.6M17.6 6.4 6.4 17.6"/>',
+ sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.6 1.6M16.9 16.9l1.6 1.6M18.5 5.5l-1.6 1.6M7.1 16.9l-1.6 1.6"/>',
+ moon:'<path d="M20.6 15A8.8 8.8 0 0 1 9 3.4a8.8 8.8 0 1 0 11.6 11.6Z"/>',
+ up:'<path d="M12 20.2V4.4m0 0-5.4 5.4M12 4.4l5.4 5.4"/>',
+ menu:'<path d="M3.6 7h16.8M3.6 12h16.8M3.6 17h11.4"/>',
+ external:'<path d="M14 4h6v6"/><path d="M20 4 11.4 12.6"/><path d="M18.4 14v3.8a2.6 2.6 0 0 1-2.6 2.6H6.2a2.6 2.6 0 0 1-2.6-2.6V8.2a2.6 2.6 0 0 1 2.6-2.6H10"/>',
+ arrow:'<path d="M4.2 12h15.6m0 0-5.8-5.8M19.8 12l-5.8 5.8"/>',
+ code:'<path d="M8.8 7.2 4.2 12l4.6 4.8M15.2 7.2 19.8 12l-4.6 4.8M13.6 4.8l-3.2 14.4"/>',
+ layers:'<path d="M12 2.8 3 7.4l9 4.6 9-4.6Z"/><path d="M3 12.4 12 17l9-4.6M3 16.8 12 21.4l9-4.6"/>',
+ route:'<circle cx="6.2" cy="6.2" r="2.9"/><circle cx="17.8" cy="17.8" r="2.9"/><path d="M6.2 9.4v3.9a4.4 4.4 0 0 0 4.4 4.4h4.4"/>',
+ wave:'<path d="M2.6 12h3.2l2.2-5.6 3.2 11.2 2.6-7.4 2 3.6h5.6"/>',
+ mirror:'<path d="M12 3v18"/><path d="M8.6 7.4 4.8 12l3.8 4.6M15.4 7.4 19.2 12l-3.8 4.6"/>',
+ gauge:'<path d="M3.8 17.4a8.8 8.8 0 1 1 16.4 0"/><path d="M12 12.8 16 8.8"/><circle cx="12" cy="17.4" r="1.5" fill="currentColor" stroke="none"/>',
+ shield:'<path d="M12 3 5.2 5.8v5.4c0 4.2 2.8 7.6 6.8 9.2 4-1.6 6.8-5 6.8-9.2V5.8Z"/><path d="M9.3 12.1l1.9 1.9 3.5-3.9"/>',
+ seo:'<circle cx="10.8" cy="10.8" r="6.6"/><path d="M15.6 15.6 20.4 20.4M8.4 10.8h4.8M10.8 8.4v4.8"/>',
+ cap:'<path d="M3 8.6 12 4.4l9 4.2-9 4.2Z"/><path d="M6.6 10.7v4.6c0 1.7 2.4 3 5.4 3s5.4-1.3 5.4-3v-4.6M20.4 9.6v4.8"/>',
+ doc:'<path d="M13.8 3.2H7.4a2.6 2.6 0 0 0-2.6 2.6v12.4a2.6 2.6 0 0 0 2.6 2.6h9.2a2.6 2.6 0 0 0 2.6-2.6V8.6Z"/><path d="M13.6 3.4v5.4h5.4M8.4 13.2h7.2M8.4 16.6h4.8"/>',
+ globe:'<circle cx="12" cy="12" r="8.8"/><path d="M3.4 12h17.2"/><path d="M12 3.2c2.4 2.4 3.6 5.4 3.6 8.8S14.4 18.4 12 20.8C9.6 18.4 8.4 15.4 8.4 12S9.6 5.6 12 3.2Z"/>',
+ copy:'<rect x="8.4" y="8.4" width="12.2" height="12.2" rx="2.8"/><path d="M15.6 5.6A2.8 2.8 0 0 0 12.8 2.8H6.2a2.8 2.8 0 0 0-2.8 2.8v6.6a2.8 2.8 0 0 0 2.8 2.8"/>'
+};
+const ic = (n,cls="i") => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]||""}</svg>`;
+
+/* ==========================================================================
+   POSTERS — a drawn vector for every project, so no card is ever empty and
+   no card needs a screenshot to look finished. Assigned by what the thing is.
+   ========================================================================== */
+const SCENE = {
+ health:`<g><rect x="120" y="52" width="200" height="120" rx="14" class="pn"/><path d="M150 112h22l12-26 16 52 14-34 10 18h26" class="pl"/><circle cx="290" cy="86" r="13" class="pa"/><rect x="150" y="140" width="70" height="9" rx="4.5" class="pd"/><rect x="150" y="156" width="112" height="9" rx="4.5" class="pd"/></g>`,
+ agri:`<g><path d="M120 176h200" class="pl"/><g class="pl"><path d="M170 176c0-30 8-52 26-64M196 112c-22 4-30 22-26 64M196 112c20 6 26 26 22 64"/><path d="M256 176c0-24 6-42 20-52M276 124c-18 3-24 18-20 52M276 124c16 5 21 21 18 52"/></g><circle cx="310" cy="66" r="18" class="pa"/><g class="pd"><path d="M310 40v-12M310 104v12M336 66h12M272 66h-12"/></g></g>`,
+ dashboard:`<g><rect x="104" y="48" width="232" height="128" rx="14" class="pn"/><rect x="104" y="48" width="232" height="24" rx="14" class="pd"/><rect x="122" y="120" width="26" height="40" rx="5" class="pa"/><rect x="158" y="100" width="26" height="60" rx="5" class="pl2"/><rect x="194" y="132" width="26" height="28" rx="5" class="pl2"/><rect x="230" y="88" width="26" height="72" rx="5" class="pa"/><path d="M122 92h96M122 104h58" class="pd"/><circle cx="300" cy="122" r="26" class="pl"/></g>`,
+ erp:`<g><rect x="112" y="52" width="216" height="120" rx="12" class="pn"/><path d="M112 82h216M112 112h216M112 142h216M184 82v90M256 82v90" class="pd"/><rect x="112" y="52" width="216" height="30" rx="12" class="pa" opacity=".18"/><circle cx="300" cy="40" r="16" class="pa"/><path d="M295 40h10M300 34v12" class="pn2"/></g>`,
+ payment:`<g><rect x="118" y="46" width="98" height="98" rx="10" class="pn"/><g class="pa"><rect x="132" y="60" width="22" height="22" rx="3"/><rect x="180" y="60" width="22" height="22" rx="3"/><rect x="132" y="108" width="22" height="22" rx="3"/></g><g class="pd"><rect x="164" y="92" width="10" height="10"/><rect x="186" y="104" width="10" height="10"/><rect x="196" y="122" width="10" height="10"/><rect x="166" y="122" width="10" height="10"/></g><rect x="234" y="88" width="106" height="66" rx="10" class="pl"/><path d="M234 110h106" class="pl"/><rect x="248" y="128" width="30" height="8" rx="4" class="pd"/></g>`,
+ library:`<g><rect x="112" y="64" width="60" height="112" rx="8" class="pn"/><rect x="180" y="88" width="60" height="88" rx="8" class="pl2"/><rect x="248" y="48" width="60" height="128" rx="8" class="pn"/><path d="M124 88h36M124 104h24M192 112h36M260 72h36M260 88h24" class="pd"/><circle cx="316" cy="150" r="20" class="pa"/></g>`,
+ travel:`<g><path d="M96 172h248" class="pl"/><path d="M124 172 186 92l40 52 22-26 52 54Z" class="pl2"/><circle cx="300" cy="62" r="16" class="pa"/><path d="M186 92 226 144" class="pd"/><path d="M266 138c0-12 8-20 18-20s18 8 18 20c0 12-18 30-18 30s-18-18-18-30Z" class="pn2"/><circle cx="284" cy="138" r="5" class="pa"/></g>`,
+ culture:`<g><path d="M148 176V96a52 52 0 0 1 104 0v80" class="pn"/><path d="M176 176v-58a24 24 0 0 1 48 0v58" class="pl2"/><path d="M124 176h152" class="pl"/><g class="pd"><path d="M200 60v-16M170 70l-10-12M230 70l10-12"/></g><circle cx="300" cy="120" r="22" class="pa"/><path d="M300 106v28M286 120h28" class="pn2"/></g>`,
+ ai:`<g><rect x="108" y="52" width="140" height="70" rx="16" class="pn"/><path d="M132 78h84M132 96h52" class="pd"/><rect x="190" y="106" width="142" height="70" rx="16" class="pl2"/><path d="M212 132h96M212 150h58" class="pd"/><g class="pa"><path d="M300 46l6 14 14 6-14 6-6 14-6-14-14-6 14-6Z"/></g></g>`,
+ site:`<g><rect x="100" y="44" width="240" height="136" rx="14" class="pn"/><path d="M100 72h240" class="pd"/><g class="pd"><circle cx="118" cy="58" r="4"/><circle cx="132" cy="58" r="4"/><circle cx="146" cy="58" r="4"/></g><rect x="118" y="90" width="96" height="72" rx="8" class="pa" opacity=".22"/><path d="M232 96h90M232 114h90M232 132h62M232 150h74" class="pl"/></g>`,
+ tool:`<g><rect x="108" y="52" width="106" height="80" rx="10" class="pn"/><rect x="128" y="72" width="66" height="40" rx="6" class="pa" opacity=".24"/><rect x="230" y="52" width="106" height="80" rx="10" class="pl2"/><path d="M108 156h228" class="pl"/><g class="pd"><circle cx="160" cy="156" r="9"/><circle cx="252" cy="156" r="9"/></g><path d="M284 84l-18 18M266 84l18 18" class="pn2"/></g>`
+};
+const POSTER_OF = {
+ "Reference Portal — Talbinah":"health","AGRO TEBA":"agri","Talbinah Website":"health",
+ "Procurelinker":"site","Knowledge Bank (Tweeq)":"library","Medjol Patient (Availy)":"health",
+ "Medjol Provider Dashboard":"dashboard","QR Payment":"payment",
+ "Civil Services Management Dashboard":"dashboard","Jusur Dashboard":"dashboard",
+ "WRTH — Royal Institute of Traditional Arts":"culture","AMS Policies":"payment","Hawdaj":"travel",
+ "Mention":"ai","Estkdam":"site","Gdawel ERP":"erp","Seaah Stakeholders":"erp",
+ "HashStudio — Digital Destination":"site","Swarm Technologies":"site","Social Studio":"tool",
+ "QIAS Dashboard":"dashboard","Eid Adha Card":"tool","Wakeb Tech Site":"site","Wakeb AI Chat":"ai",
+ "Nile Ortho":"health","NEN Site":"site","Sarie Site":"site","Qaraah Site":"library",
+ "Taba Educational Program":"library","Download Images":"tool"
+};
+function poster(p){
+  const scene = SCENE[POSTER_OF[p.n] || "site"];
+  return `<svg viewBox="0 0 440 275" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${esc(p.n)}">
+    <defs>
+      <pattern id="pg" width="22" height="22" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r="1" fill="var(--dot)"/></pattern>
+      <radialGradient id="w1" cx=".14" cy=".04" r=".72">
+        <stop offset="0" stop-color="var(--accent)" stop-opacity=".17"/>
+        <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></radialGradient>
+      <radialGradient id="w2" cx=".94" cy=".96" r=".62">
+        <stop offset="0" stop-color="var(--cta)" stop-opacity=".15"/>
+        <stop offset="1" stop-color="var(--cta)" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="440" height="275" fill="var(--surface-2)"/>
+    <rect width="440" height="275" fill="url(#pg)"/>
+    <rect width="440" height="275" fill="url(#w1)"/>
+    <rect width="440" height="275" fill="url(#w2)"/>
+    <rect x="14" y="14" width="412" height="247" rx="16" fill="none"
+          stroke="var(--line)" stroke-width="1"/>
+    <style>
+      .pn{fill:none;stroke:var(--line-2);stroke-width:2}
+      .pn2{fill:none;stroke:var(--cta);stroke-width:2;stroke-linecap:round}
+      .pl{fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .pl2{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+      .pa{fill:var(--cta);opacity:.92}
+      .pd{fill:none;stroke:var(--line-2);stroke-width:2;stroke-linecap:round}
+    </style>
+    <g transform="translate(0,30)">${scene}</g>
+    <text x="26" y="254" direction="ltr" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="11"
+      letter-spacing="1.6" fill="var(--dim)">${esc(host(p.l[0]).toUpperCase())}</text>
+  </svg>`;
+}
+
+
+
+/* ==========================================================================
+   STATE
+   ========================================================================== */
+let LANG="en", FILTER="all", QUERY="", GAL=0, GALITEMS=[];
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const t=()=>T[LANG];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const host=u=>{try{return new URL(u).host.replace(/^www\./,"")}catch{return u}};
+
+function renderChrome(){
+  const L=t();
+  const html=document.documentElement;
+  html.lang=LANG; html.dir=L.dir;
+  html.style.setProperty("--flow", L.dir==="rtl"?"left":"right");
+  html.style.setProperty("--flowo", L.dir==="rtl"?"right":"left");
+  $$("[data-t]").forEach(el=>{const v=L[el.dataset.t]; if(typeof v==="string") el.textContent=v;});
+  $$(".langbtn").forEach(b=>{b.textContent=L.other; b.setAttribute("aria-label","Switch to "+L.otherLabel);});
+  $("#q").placeholder=L.searchPh;
+  const items=Object.entries(L.nav);
+  $("#nav").innerHTML=items.map(([id,label])=>
+    `<a class="navlink" href="#${id}" data-spy="${id}">${esc(label)}</a>`).join("");
+  $("#sheetNav").innerHTML=items.map(([id,label])=>
+    `<a href="#${id}" data-spy="${id}"><span class="tile">${ic(NAV_IC[id]||"arrow")}</span>
+       ${esc(label)}<span class="go">${ic("arrow","i i--dir")}</span></a>`).join("");
+  $$("#sheetNav a").forEach(a=>a.addEventListener("click",e=>{
+    e.preventDefault();
+    const el=document.querySelector(a.getAttribute("href"));
+    sheet(false);                       // restore scrolling first
+    if(el) setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),60);
+  }));
+  $("#spec").innerHTML=[["sRole","vRole"],["sBase","vBase"],["sSince","vSince"],
+    ["sFocus","vFocus"],["sLangs","vLangs"]].map(([k,v])=>
+    `<div><dt>${esc(L[k])}</dt><dd>${esc(L[v])}</dd></div>`).join("");
+}
+
+function renderBody(){
+  const L=t();
+  $("#aboutText").innerHTML=ABOUT[LANG].join("");
+  const PICONS=["layers","wave","mirror","seo"];
+  $("#pillars").innerHTML=PILLARS.map((p,i)=>{
+    const [ttl,sub]=p[LANG];
+    return `<div class="pillar rv">${ic(PICONS[i]||"layers")}<div><b>${esc(ttl)}</b><span>${esc(sub)}</span></div></div>`;
+  }).join("");
+
+  const SICONS=["code","layers","route","wave","mirror","gauge","shield"];
+  $("#skills").innerHTML=SKILLS.map((s,i)=>
+    `<div class="skill rv"><div class="skill__k">${ic(SICONS[i]||"code")}${esc(s.k[LANG])}</div>
+     <div class="chips">${s.v.split(" · ").map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div></div>`).join("");
+
+  $("#jobs").innerHTML=JOBS.map(j=>`
+    <article class="job rv">
+      <div class="job__top"><span class="job__co">${esc(j.co)}</span>
+        <span class="job__when">${esc(j.when[LANG])}</span></div>
+      <p class="job__role">${esc(j.role[LANG])}</p>
+      <p class="job__meta"><span>${esc(j.meta[LANG])}</span>${j.site?
+        `<a class="act" href="${j.site}" target="_blank" rel="noopener">${ic("external")}<span class="ltr">${esc(host(j.site))}</span></a>`:""}</p>
+      <ul>${j.bullets[LANG].map(b=>`<li>${b}</li>`).join("")}</ul>
+    </article>`).join("");
+
+  $("#filters").innerHTML=[["all","fAll"],["ng","fAngular"],["js","fJs"],["feat","fFeat"]]
+    .map(([k,key])=>`<button class="fchip${FILTER===k?" is-on":""}" data-f="${k}">${esc(L[key])}</button>`).join("");
+
+  const EICONS=["cap","doc","globe"];
+  $("#edu").innerHTML=EDU.map((e,i)=>
+    `<div class="edu__row rv">${ic(EICONS[i]||"cap")}<b>${esc(e.t[LANG])}</b>
+     <span>${esc(e.p[LANG])}</span><em>${esc(e.w[LANG])}</em></div>`).join("");
+
+  $("#avail").innerHTML=["av1","av2","av3"].map(k=>
+    `<span class="avchip"><i></i>${esc(L[k])}</span>`).join("");
+  $("#rows").innerHTML=CONTACT.map(c=>
+    `<a class="row" href="${c.href}"${c.href.startsWith("http")?' target="_blank" rel="noopener"':""}${c.copy?` data-copy="${c.v}"`:""}>
+       <span class="row__ic">${ic(c.i)}</span>
+       <span class="row__txt"><span class="row__k">${esc(L[c.k])}</span>
+         <span class="row__v${c.ltr?" row__v--ltr":""}">${esc(c.v)}</span></span>
+       <span class="row__go">${ic(c.copy?"copy":"arrow")}</span></a>`).join("");
+
+  renderGrid(); observe();
+}
+
+function visible(){
+  const q=QUERY.trim().toLowerCase();
+  return WORK.filter(p=>{
+    if(FILTER==="feat" && !p.f) return false;
+    if((FILTER==="ng"||FILTER==="js") && p.k!==FILTER) return false;
+    if(!q) return true;
+    return (p.n+" "+p.s+" "+p.d[LANG]+" "+p.l.join(" ")).toLowerCase().includes(q);
+  });
+}
+
+function renderGrid(){
+  const L=t(), list=visible();
+  $("#count").textContent=L.countTpl(list.length, WORK.length);
+  if(!list.length){ $("#grid").innerHTML=`<p style="color:var(--muted)">${esc(L.none)}</p>`; return; }
+  $("#grid").innerHTML=list.map(p=>{
+    const i=WORK.indexOf(p);
+    const art=p.shot
+      ? `<img src="${p.shot}" alt="${esc(p.n)}" loading="lazy" onerror="swapPoster(this,${i})">`
+      : poster(p);
+    return `<article class="card rv" data-open="${i}" tabindex="0" role="button"
+              aria-label="${esc(p.n)} — ${esc(L.more)}">
+      <span class="card__shot">${art}
+        <span class="cap${p.f?" cap--flag":""}">${p.f?esc(L.fFeat):(p.k==="ng"?"Angular":"JavaScript")}</span>
+      </span>
+      <span class="card__body">
+        <span class="card__head"><span class="card__name">${esc(p.n)}</span>
+          <span class="card__when">${esc(p.w[LANG])}</span></span>
+        <p class="card__desc">${esc(p.d[LANG])}</p>
+      </span>
+      <span class="card__foot">
+        <span class="tag">${p.k==="ng"?"Angular":"JavaScript"}</span>
+        <span class="card__acts">
+          <button class="cbtn" data-open="${i}">${ic("grid")}${esc(L.more)}</button>
+          <a class="cbtn cbtn--go" href="${p.l[0]}" target="_blank" rel="noopener"
+             aria-label="${esc(L.openLive)} — ${esc(p.n)}">${ic("external")}${esc(L.openLive)}</a>
+        </span></span>
+    </article>`;
+  }).join("");
+  observe();
+}
+function swapPoster(img,i){
+  const s=document.createElement("span");
+  s.innerHTML=poster(WORK[i]);
+  img.replaceWith(s.firstElementChild);
+}
+
+/* ---------- modal + gallery ---------- */
+/* Only show a screenshot slot once the file actually loads, so a missing
+   asset never leaves an empty thumbnail or a mislabelled caption. */
+function probe(list, done){
+  const ok=[]; let left=list.length;
+  if(!left) return done(ok);
+  list.forEach((src,n)=>{
+    const im=new Image();
+    im.onload =()=>{ ok[n]=src; if(--left===0) done(ok.filter(Boolean)); };
+    im.onerror=()=>{ if(--left===0) done(ok.filter(Boolean)); };
+    im.src=src;
+  });
+}
+let lastFocus=null;
+function openModal(i){
+  const p=WORK[i], L=t();
+  lastFocus=document.activeElement;
+  GALITEMS=[]; GAL=0;   // start from the vector, add screenshots only once they load
+  $("#mTitle").textContent=p.n;
+  $("#mWhen").textContent=p.w[LANG];
+  $("#mDesc").textContent=p.d[LANG];
+  $("#mStack").textContent=p.s.replace(/ · /g,", ");
+  $("#mLinks").innerHTML=p.l.map(u=>
+    `<a href="${u}" target="_blank" rel="noopener">${ic("external")}<span class="ltr">${esc(u)}</span></a>`).join("");
+  $("#mNote").textContent=p.note ? L.noteLbl+": "+p.note[LANG] : "";
+  $("#mOpen").href=p.l[0];
+  $("#mOpenTxt").textContent=L.openLive;
+  drawGallery(i);
+  probe(p.shots && p.shots.length ? p.shots : (p.shot ? [p.shot] : []), ok=>{
+    if(!ok.length) return;
+    GALITEMS=ok; GAL=0; drawGallery(i);
+  });
+  $("#modal").classList.add("is-open");
+  document.body.style.overflow="hidden";
+  $("#modal .modal__x").focus();
+}
+function drawGallery(i){
+  const p=WORK[i], L=t();
+  const main=$("#galMain"), thumbs=$("#galThumbs");
+  if(!GALITEMS.length){
+    main.innerHTML=poster(p);
+    thumbs.innerHTML="";
+    return;
+  }
+  main.innerHTML=`<img src="${GALITEMS[GAL]}" alt="${esc(p.n)}" onerror="swapPoster(this,${i})">`;
+  thumbs.innerHTML=GALITEMS.length>1 ? GALITEMS.map((s,n)=>
+    `<button class="gal__t${n===GAL?" is-on":""}" data-gal="${n}" data-i="${i}">
+       <img src="${s}" alt="" onerror="this.remove()"></button>`).join("") : "";
+}
+function closeModal(){
+  $("#modal").classList.remove("is-open");
+  document.body.style.overflow="";
+  if(lastFocus) lastFocus.focus();
+}
+
+/* ---------- reveal / counters / scroll ---------- */
+let io;
+function observe(){
+  if(!("IntersectionObserver" in window)){ $$(".rv").forEach(e=>e.classList.add("in")); return; }
+  io = io || new IntersectionObserver(es=>es.forEach((e,n)=>{
+    if(e.isIntersecting){ setTimeout(()=>e.target.classList.add("in"), Math.min(n,6)*50); io.unobserve(e.target); }
+  }),{rootMargin:"0px 0px -8% 0px"});
+  $$(".rv:not(.in)").forEach(e=>io.observe(e));
+}
+function counters(){
+  $$("[data-count]").forEach(el=>{
+    const to=+el.dataset.count, sfx=el.dataset.suffix||""; let n=0;
+    (function step(){ n+=Math.max(1,Math.round(to/26));
+      if(n>=to){ el.textContent=to+sfx; return; }
+      el.textContent=n; requestAnimationFrame(step); })();
+  });
+}
+const SECTIONS=["home","about","stack","path","work","learning","contact"];
+function onScroll(){
+  const h=document.documentElement;
+  $("#progress").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%";
+  $("#top").classList.toggle("is-up",h.scrollTop>600);
+  let cur=SECTIONS[0];
+  for(const id of SECTIONS){
+    const el=document.getElementById(id);
+    if(el && el.getBoundingClientRect().top<=window.innerHeight*0.35) cur=id;
+  }
+  $$(".navlink,.sheetnav a").forEach(a=>a.setAttribute("aria-current",String(a.dataset.spy===cur)));
+}
+let toastTimer;
+function toast(m){
+  const el=$("#toast"); el.textContent=m; el.classList.add("is-up");
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove("is-up"),2200);
+}
+function setLang(next){
+  LANG=next;
+  document.body.classList.add("flipping");
+  setTimeout(()=>document.body.classList.remove("flipping"),620);
+  renderChrome(); renderBody(); onScroll();
+}
+function setTheme(next){
+  document.documentElement.dataset.theme=next;
+  $$(".themeIcon").forEach(s=>s.outerHTML=ic(next==="dark"?"sun":"moon","i themeIcon"));
+  $$(".brand").forEach(img=>img.src = next==="dark" ? LOGO_WHITE : LOGO_COLOR);
+  $$(".markimg").forEach(img=>img.src = next==="dark" ? MARK_WHITE : MARK_COLOR);
+}
+function sheet(open){
+  const s=$("#sheet");
+  s.classList.toggle("is-open",open);
+  s.setAttribute("aria-hidden",String(!open));
+  $("#burger").setAttribute("aria-expanded",String(open));
+  document.body.style.overflow=open?"hidden":"";
+  if(open) s.querySelector("[data-sheetclose]").focus();
+}
+/* "See the work" — jump to the section, land on the grid, and make the
+   keyboard focus land there too rather than staying in the hero. */
+function goWork(e){
+  e.preventDefault();
+  document.getElementById("work").scrollIntoView({behavior:"smooth",block:"start"});
+  setTimeout(()=>{ const f=$(".fchip"); if(f) f.focus({preventScroll:true}); },700);
+}
+
+/* ---------- boot ---------- */
+$("#portrait").src=PORTRAIT;
+$("#yr").textContent=new Date().getFullYear();
+$$(".iconStatic").forEach(el=>{ el.outerHTML=ic(el.dataset.ic, el.dataset.ic==="arrow"?"i i--dir":"i"); });
+setTheme("dark");
+renderChrome(); renderBody(); counters(); onScroll();
+
+document.addEventListener("click",e=>{
+  if(e.target.closest('a[target="_blank"]')) return;   // real links always win
+  const open=e.target.closest("[data-open]");        if(open) return openModal(+open.dataset.open);
+  const g=e.target.closest("[data-gal]");            if(g){ GAL=+g.dataset.gal; drawGallery(+g.dataset.i); return; }
+  const f=e.target.closest("[data-f]");              if(f){ FILTER=f.dataset.f; renderChrome(); renderBody(); return; }
+  if(e.target.closest("[data-close]"))               return closeModal();
+  const cp=e.target.closest("[data-copy]");
+  if(cp&&navigator.clipboard){ e.preventDefault();
+    navigator.clipboard.writeText(cp.dataset.copy).then(()=>toast(t().copied)); return; }
+  if(e.target.closest(".langbtn")) return setLang(LANG==="en"?"ar":"en");
+  if(e.target.closest(".themebtn"))
+    return setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark");
+  if(e.target.closest("[data-sheetclose]")) return sheet(false);
+  if(e.target.closest("#burger")) return sheet(!$("#sheet").classList.contains("is-open"));
+  if(e.target.closest("#top")) window.scrollTo({top:0,behavior:"smooth"});
+  if(e.target.closest("#seeWork")) return goWork(e);
+});
+$("#q").addEventListener("input",e=>{ QUERY=e.target.value; renderGrid(); });
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){ closeModal(); sheet(false); }
+  if(e.key==="/"&&document.activeElement!==$("#q")){ e.preventDefault(); $("#q").focus(); }
+  if((e.key==="Enter"||e.key===" ")&&document.activeElement?.classList.contains("card")){
+    e.preventDefault(); openModal(+document.activeElement.dataset.open); }
+  if($("#modal").classList.contains("is-open")&&GALITEMS.length>1){
+    if(e.key==="ArrowRight"||e.key==="ArrowLeft"){
+      const d=(e.key==="ArrowRight")===(t().dir==="ltr")?1:-1;
+      GAL=(GAL+d+GALITEMS.length)%GALITEMS.length;
+      drawGallery(WORK.findIndex(p=>p.n===$("#mTitle").textContent));
+    }
+  }
+});
+window.addEventListener("scroll",onScroll,{passive:true});
+window.addEventListener("resize",onScroll);
+
+
+
+</script>
+</body>
+</html>
