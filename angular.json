@@ -81,7 +81,29 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "staging": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                }
+              ],
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
             },
             "development": {
               "optimization": false,
@@ -96,6 +118,9 @@
           "configurations": {
             "production": {
               "buildTarget": "eslam-barakat-portfolio:build:production"
+            },
+            "staging": {
+              "buildTarget": "eslam-barakat-portfolio:build:staging"
             },
             "development": {
               "buildTarget": "eslam-barakat-portfolio:build:development"
