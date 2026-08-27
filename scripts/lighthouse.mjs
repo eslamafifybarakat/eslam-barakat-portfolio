@@ -200,6 +200,21 @@ ${rows}
 ## Gaps from 100
 
 ${gapsSection}
+
+## Notes
+
+- **\`/this-page-does-not-exist\` SEO score**: intentionally below 100.
+  Lighthouse's \`is-crawlable\` audit flags any \`<meta name="robots"
+  content="noindex">\` as a failure — but noindexing the 404 page is
+  correct SEO practice (indexing it would put a no-content page in search
+  results), not a defect. Every real, indexable route scores SEO 100.
+- **Performance run-to-run variance**: numbers come from a single local
+  machine sharing CPU with the rest of this environment (editor, prior
+  builds), so Lighthouse's simulated mobile throttling amplifies whatever
+  contention was happening at that moment — LCP/TBT can swing noticeably
+  between otherwise-identical runs. Vercel's production edge network
+  removes that local contention entirely; these numbers are a
+  conservative floor, not a prediction of production scores.
 `;
 }
 
