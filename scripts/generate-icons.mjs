@@ -10,6 +10,7 @@ import sharp from 'sharp';
 const root = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(root, '..', 'public');
 const markSvg = readFileSync(path.join(publicDir, 'mark-color.svg'));
+const markWhiteSvg = readFileSync(path.join(publicDir, 'mark-white.svg'));
 
 async function renderPng(size, background = { r: 0, g: 0, b: 0, alpha: 0 }) {
   return sharp(markSvg, { density: 384 })
@@ -22,9 +23,11 @@ async function renderMaskable(size) {
   // Maskable icons need real content confined to the ~80% "safe zone" —
   // draw the mark at 65% scale, centered, over a solid navy field so the
   // OS can crop to any shape without clipping the mark or exposing
-  // transparency.
+  // transparency. Use the white-on-dark mark variant here, not the
+  // color one — mark-color's navy border/glyph would vanish against
+  // the navy field below.
   const inner = Math.round(size * 0.65);
-  const markPng = await sharp(markSvg, { density: 384 })
+  const markPng = await sharp(markWhiteSvg, { density: 384 })
     .resize(inner, inner, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
     .png()
     .toBuffer();

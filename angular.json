@@ -111,10 +111,37 @@
                 }
               ]
             },
+            "uat": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                }
+              ],
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.uat.ts"
+                }
+              ]
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "dev": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -128,8 +155,14 @@
             "staging": {
               "buildTarget": "eslam-barakat-portfolio:build:staging"
             },
+            "uat": {
+              "buildTarget": "eslam-barakat-portfolio:build:uat"
+            },
             "development": {
               "buildTarget": "eslam-barakat-portfolio:build:development"
+            },
+            "dev": {
+              "buildTarget": "eslam-barakat-portfolio:build:dev"
             }
           },
           "defaultConfiguration": "development"

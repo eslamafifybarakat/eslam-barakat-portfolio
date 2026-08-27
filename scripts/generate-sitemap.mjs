@@ -1,7 +1,8 @@
 // Generates sitemap.xml + robots.txt from the ACTUAL prerendered build
 // output (dist/.../browser/**/index.html), not a separately-maintained
 // route list — so the sitemap can never drift from what was really built.
-// Runs automatically after `ng build` (see package.json "postbuild").
+// Runs automatically after `ng build` as the last step of every "build:*"
+// script (see package.json / scripts/with-build-lock.mjs).
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { readdirSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';

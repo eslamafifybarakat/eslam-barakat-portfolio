@@ -6,6 +6,10 @@
       // No-flash theme resolution — runs before any stylesheet loads.
       // Angular's ThemeService reads this same resolved value back on
       // boot rather than re-deciding, so there is exactly one write.
+      // CSP note: vercel.json's script-src allows this exact script by
+      // SHA-256 hash (no 'unsafe-inline'). Editing so much as a character
+      // here requires recomputing that hash, or the browser silently
+      // refuses to run it and dark/light resolves one paint late.
       (function () {
         try {
           var cookie = document.cookie.match(/(?:^|; )eb_theme=([^;]*)/);
