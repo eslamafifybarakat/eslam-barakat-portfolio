@@ -163,6 +163,15 @@ theme-conditional TypeScript.
   read from the built HTML's `<title>` so the image text always matches
   what's actually live.
 - The 404 page is intentionally `noindex, nofollow` (`not-found.component.ts`).
+  On Vercel, an unmatched path serves that page with an HTTP 200, not a
+  404 status — the same "soft 404" behavior every static/prerendered
+  deploy target (Vercel, Netlify, Firebase Hosting, GitHub Pages) has for
+  a catch-all SPA route, since the response is a real static file, not a
+  server-generated error. `noindex, nofollow` is the mechanism search
+  engines actually rely on to exclude a page like this; a true 404 status
+  would need a hand-written Vercel routing override, which risks breaking
+  the Angular framework preset's own prerendered-route handling for
+  marginal benefit — not attempted here.
 
 ## Performance & Lighthouse
 
