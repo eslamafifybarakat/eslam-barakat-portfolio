@@ -25,7 +25,7 @@ export class ThemeService {
   constructor() {
     effect(() => {
       const theme = this._theme();
-      this.document.documentElement.dataset['theme'] = theme;
+      this.document.documentElement.setAttribute('data-theme', theme);
       this.setMetaThemeColor(THEME_COLOR[theme]);
     });
   }
@@ -55,7 +55,7 @@ export class ThemeService {
 
   private resolveInitialTheme(): Theme {
     if (isPlatformBrowser(this.platformId)) {
-      const fromDom = this.document.documentElement.dataset['theme'];
+      const fromDom = this.document.documentElement.getAttribute('data-theme');
       if (isTheme(fromDom)) return fromDom;
     }
 

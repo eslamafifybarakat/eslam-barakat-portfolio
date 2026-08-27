@@ -1,33 +1,24 @@
 /** The 11 drawn vector scenes a project poster can render — assigned by
- * what the project actually is, not decoration. Ported verbatim from the
- * reference's `SCENE` map. Each is a self-contained `<g>` fragment using the
- * `.pn`/`.pn2`/`.pl`/`.pl2`/`.pa`/`.pd` classes styled in the component. */
-export const POSTER_SCENES = {
-  health:
-    '<g><rect x="120" y="52" width="200" height="120" rx="14" class="pn"/><path d="M150 112h22l12-26 16 52 14-34 10 18h26" class="pl"/><circle cx="290" cy="86" r="13" class="pa"/><rect x="150" y="140" width="70" height="9" rx="4.5" class="pd"/><rect x="150" y="156" width="112" height="9" rx="4.5" class="pd"/></g>',
-  agri: '<g><path d="M120 176h200" class="pl"/><g class="pl"><path d="M170 176c0-30 8-52 26-64M196 112c-22 4-30 22-26 64M196 112c20 6 26 26 22 64"/><path d="M256 176c0-24 6-42 20-52M276 124c-18 3-24 18-20 52M276 124c16 5 21 21 18 52"/></g><circle cx="310" cy="66" r="18" class="pa"/><g class="pd"><path d="M310 40v-12M310 104v12M336 66h12M272 66h-12"/></g></g>',
-  dashboard:
-    '<g><rect x="104" y="48" width="232" height="128" rx="14" class="pn"/><rect x="104" y="48" width="232" height="24" rx="14" class="pd"/><rect x="122" y="120" width="26" height="40" rx="5" class="pa"/><rect x="158" y="100" width="26" height="60" rx="5" class="pl2"/><rect x="194" y="132" width="26" height="28" rx="5" class="pl2"/><rect x="230" y="88" width="26" height="72" rx="5" class="pa"/><path d="M122 92h96M122 104h58" class="pd"/><circle cx="300" cy="122" r="26" class="pl"/></g>',
-  erp: '<g><rect x="112" y="52" width="216" height="120" rx="12" class="pn"/><path d="M112 82h216M112 112h216M112 142h216M184 82v90M256 82v90" class="pd"/><rect x="112" y="52" width="216" height="30" rx="12" class="pa" opacity=".18"/><circle cx="300" cy="40" r="16" class="pa"/><path d="M295 40h10M300 34v12" class="pn2"/></g>',
-  payment:
-    '<g><rect x="118" y="46" width="98" height="98" rx="10" class="pn"/><g class="pa"><rect x="132" y="60" width="22" height="22" rx="3"/><rect x="180" y="60" width="22" height="22" rx="3"/><rect x="132" y="108" width="22" height="22" rx="3"/></g><g class="pd"><rect x="164" y="92" width="10" height="10"/><rect x="186" y="104" width="10" height="10"/><rect x="196" y="122" width="10" height="10"/><rect x="166" y="122" width="10" height="10"/></g><rect x="234" y="88" width="106" height="66" rx="10" class="pl"/><path d="M234 110h106" class="pl"/><rect x="248" y="128" width="30" height="8" rx="4" class="pd"/></g>',
-  library:
-    '<g><rect x="112" y="64" width="60" height="112" rx="8" class="pn"/><rect x="180" y="88" width="60" height="88" rx="8" class="pl2"/><rect x="248" y="48" width="60" height="128" rx="8" class="pn"/><path d="M124 88h36M124 104h24M192 112h36M260 72h36M260 88h24" class="pd"/><circle cx="316" cy="150" r="20" class="pa"/></g>',
-  travel:
-    '<g><path d="M96 172h248" class="pl"/><path d="M124 172 186 92l40 52 22-26 52 54Z" class="pl2"/><circle cx="300" cy="62" r="16" class="pa"/><path d="M186 92 226 144" class="pd"/><path d="M266 138c0-12 8-20 18-20s18 8 18 20c0 12-18 30-18 30s-18-18-18-30Z" class="pn2"/><circle cx="284" cy="138" r="5" class="pa"/></g>',
-  culture:
-    '<g><path d="M148 176V96a52 52 0 0 1 104 0v80" class="pn"/><path d="M176 176v-58a24 24 0 0 1 48 0v58" class="pl2"/><path d="M124 176h152" class="pl"/><g class="pd"><path d="M200 60v-16M170 70l-10-12M230 70l10-12"/></g><circle cx="300" cy="120" r="22" class="pa"/><path d="M300 106v28M286 120h28" class="pn2"/></g>',
-  ai: '<g><rect x="108" y="52" width="140" height="70" rx="16" class="pn"/><path d="M132 78h84M132 96h52" class="pd"/><rect x="190" y="106" width="142" height="70" rx="16" class="pl2"/><path d="M212 132h96M212 150h58" class="pd"/><g class="pa"><path d="M300 46l6 14 14 6-14 6-6 14-6-14-14-6 14-6Z"/></g></g>',
-  site: '<g><rect x="100" y="44" width="240" height="136" rx="14" class="pn"/><path d="M100 72h240" class="pd"/><g class="pd"><circle cx="118" cy="58" r="4"/><circle cx="132" cy="58" r="4"/><circle cx="146" cy="58" r="4"/></g><rect x="118" y="90" width="96" height="72" rx="8" class="pa" opacity=".22"/><path d="M232 96h90M232 114h90M232 132h62M232 150h74" class="pl"/></g>',
-  tool: '<g><rect x="108" y="52" width="106" height="80" rx="10" class="pn"/><rect x="128" y="72" width="66" height="40" rx="6" class="pa" opacity=".24"/><rect x="230" y="52" width="106" height="80" rx="10" class="pl2"/><path d="M108 156h228" class="pl"/><g class="pd"><circle cx="160" cy="156" r="9"/><circle cx="252" cy="156" r="9"/></g><path d="M284 84l-18 18M266 84l18 18" class="pn2"/></g>',
-} as const;
-
-export type PosterScene = keyof typeof POSTER_SCENES;
+ * what the project actually is, not decoration. Each is defined once as an
+ * SVG `<symbol id="scene-{name}">` in `PosterSpriteComponent` and
+ * referenced here via `<use>`. */
+export type PosterScene =
+  | 'health'
+  | 'agri'
+  | 'dashboard'
+  | 'erp'
+  | 'payment'
+  | 'library'
+  | 'travel'
+  | 'culture'
+  | 'ai'
+  | 'site'
+  | 'tool';
 
 /** project name → poster scene, ported verbatim from the reference's
- * `POSTER_OF` map. The work domain's data file re-derives this per project
- * via its `posterScene` field rather than a name lookup — kept here too so
- * the mapping choice stays auditable against the reference in one place. */
+ * `POSTER_OF` map — kept here so the mapping choice stays auditable against
+ * the reference in one place; the work domain's data file re-derives it per
+ * project via each project's own `posterScene` field. */
 export const POSTER_OF: Record<string, PosterScene> = {
   'Reference Portal — Talbinah': 'health',
   'AGRO TEBA': 'agri',

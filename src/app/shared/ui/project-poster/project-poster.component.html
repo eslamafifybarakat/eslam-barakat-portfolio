@@ -17,7 +17,7 @@
   <rect width="440" height="275" [attr.fill]="'url(#' + ids.washA + ')'" />
   <rect width="440" height="275" [attr.fill]="'url(#' + ids.washB + ')'" />
   <rect x="14" y="14" width="412" height="247" rx="16" fill="none" stroke="var(--line)" stroke-width="1" />
-  <g transform="translate(0,30)" [innerHTML]="markup() | safeHtml"></g>
+  <use [attr.href]="sceneHref()" />
   <text
     x="26"
     y="254"

@@ -1,0 +1,43 @@
+<header class="top">
+  <a class="lock" [routerLink]="homePath()" fragment="home" aria-label="Eslam Afify Barakat — top">
+    <app-brand-lockup variant="mark" class="lock__mark" />
+    <span class="lock__txt">
+      <b>Eslam Afify Barakat</b>
+      <i>{{ brandSubtitle() }}</i>
+    </span>
+  </a>
+
+  <nav class="nav">
+    @for (item of navItems(); track item.id) {
+      <a
+        class="navlink"
+        [routerLink]="homePath()"
+        [fragment]="item.id"
+        [attr.aria-current]="item.id === activeSection() ? 'true' : null"
+      >
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+
+  <div class="top__tools">
+    <app-language-toggle />
+    <app-theme-toggle />
+    <app-icon-button icon="menu" [ariaLabel]="menuLabel()" [expanded]="sheetOpen()" (click)="sheetOpen.set(true)" />
+  </div>
+</header>
+
+<app-mobile-sheet
+  [open]="sheetOpen()"
+  (openChange)="sheetOpen.set($event)"
+  [navItems]="navItems()"
+  [activeSection]="activeSection()"
+  [homePath]="homePath()"
+  [slogan]="slogan()"
+  [emailHref]="'mailto:' + contact().email"
+  [whatsappHref]="contact().whatsapp"
+  [emailLabel]="emailLabel()"
+  [whatsappLabel]="whatsappLabel()"
+  [closeLabel]="closeLabel()"
+  [menuLabel]="menuLabel()"
+/>

@@ -1,40 +1,31 @@
-/** The one 24×24, single-stroke-weight icon set the whole site draws from —
- * ported verbatim from the reference's inline `ICON` map. */
-export const ICON_PATHS = {
-  pin: '<path d="M12 21.4c4.3-4.5 6.4-7.8 6.4-10.7A6.4 6.4 0 0 0 5.6 10.7c0 2.9 2.1 6.2 6.4 10.7Z"/><circle cx="12" cy="10.6" r="2.5"/>',
-  phone:
-    '<rect x="6.4" y="2.2" width="11.2" height="19.6" rx="3"/><path d="M10.4 5h3.2"/><circle cx="12" cy="18.4" r="1.1" fill="currentColor" stroke="none"/>',
-  whatsapp:
-    '<path d="M3.8 20.2l1.1-3.4A8.3 8.3 0 1 1 8.3 19.9l-4.5.3Z"/><path d="M9.2 8.6c-.9.5-1.2 1.7-.7 2.9a8.4 8.4 0 0 0 4 4c1.2.5 2.4.2 2.9-.7l-1.9-1.1-1.2 1.1-2.1-2.1 1.1-1.2-.8-1.9Z"/>',
-  mail: '<rect x="2.6" y="4.8" width="18.8" height="14.4" rx="2.6"/><path d="M3.4 6.6 12 13l8.6-6.4"/>',
-  linkedin:
-    '<rect x="3" y="3" width="18" height="18" rx="4.4"/><path d="M7.6 10.6v6.2"/><circle cx="7.6" cy="7.6" r="1.05" fill="currentColor" stroke="none"/><path d="M11.6 16.8v-6.2M11.6 13.2c0-1.5 1.1-2.6 2.6-2.6s2.6 1.1 2.6 2.6v3.6"/>',
-  github:
-    '<rect x="3" y="3" width="18" height="18" rx="4.4"/><path d="M10.1 9.4 7.7 12l2.4 2.6M13.9 9.4 16.3 12l-2.4 2.6"/>',
-  download: '<path d="M12 3.2v11.6m0 0-4-4M12 14.8l4-4"/><path d="M4.4 17v1.8a2.2 2.2 0 0 0 2.2 2.2h10.8a2.2 2.2 0 0 0 2.2-2.2V17"/>',
-  grid: '<rect x="3.2" y="3.2" width="7.2" height="7.2" rx="2.2"/><rect x="13.6" y="3.2" width="7.2" height="7.2" rx="2.2"/><rect x="3.2" y="13.6" width="7.2" height="7.2" rx="2.2"/><rect x="13.6" y="13.6" width="7.2" height="7.2" rx="2.2"/>',
-  search: '<circle cx="10.6" cy="10.6" r="6.6"/><path d="M15.4 15.4 20.4 20.4"/>',
-  close: '<path d="M6.4 6.4 17.6 17.6M17.6 6.4 6.4 17.6"/>',
-  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.6 1.6M16.9 16.9l1.6 1.6M18.5 5.5l-1.6 1.6M7.1 16.9l-1.6 1.6"/>',
-  moon: '<path d="M20.6 15A8.8 8.8 0 0 1 9 3.4a8.8 8.8 0 1 0 11.6 11.6Z"/>',
-  up: '<path d="M12 20.2V4.4m0 0-5.4 5.4M12 4.4l5.4 5.4"/>',
-  menu: '<path d="M3.6 7h16.8M3.6 12h16.8M3.6 17h11.4"/>',
-  external:
-    '<path d="M14 4h6v6"/><path d="M20 4 11.4 12.6"/><path d="M18.4 14v3.8a2.6 2.6 0 0 1-2.6 2.6H6.2a2.6 2.6 0 0 1-2.6-2.6V8.2a2.6 2.6 0 0 1 2.6-2.6H10"/>',
-  arrow: '<path d="M4.2 12h15.6m0 0-5.8-5.8M19.8 12l-5.8 5.8"/>',
-  code: '<path d="M8.8 7.2 4.2 12l4.6 4.8M15.2 7.2 19.8 12l-4.6 4.8M13.6 4.8l-3.2 14.4"/>',
-  layers: '<path d="M12 2.8 3 7.4l9 4.6 9-4.6Z"/><path d="M3 12.4 12 17l9-4.6M3 16.8 12 21.4l9-4.6"/>',
-  route: '<circle cx="6.2" cy="6.2" r="2.9"/><circle cx="17.8" cy="17.8" r="2.9"/><path d="M6.2 9.4v3.9a4.4 4.4 0 0 0 4.4 4.4h4.4"/>',
-  wave: '<path d="M2.6 12h3.2l2.2-5.6 3.2 11.2 2.6-7.4 2 3.6h5.6"/>',
-  mirror: '<path d="M12 3v18"/><path d="M8.6 7.4 4.8 12l3.8 4.6M15.4 7.4 19.2 12l-3.8 4.6"/>',
-  gauge:
-    '<path d="M3.8 17.4a8.8 8.8 0 1 1 16.4 0"/><path d="M12 12.8 16 8.8"/><circle cx="12" cy="17.4" r="1.5" fill="currentColor" stroke="none"/>',
-  shield: '<path d="M12 3 5.2 5.8v5.4c0 4.2 2.8 7.6 6.8 9.2 4-1.6 6.8-5 6.8-9.2V5.8Z"/><path d="M9.3 12.1l1.9 1.9 3.5-3.9"/>',
-  seo: '<circle cx="10.8" cy="10.8" r="6.6"/><path d="M15.6 15.6 20.4 20.4M8.4 10.8h4.8M10.8 8.4v4.8"/>',
-  cap: '<path d="M3 8.6 12 4.4l9 4.2-9 4.2Z"/><path d="M6.6 10.7v4.6c0 1.7 2.4 3 5.4 3s5.4-1.3 5.4-3v-4.6M20.4 9.6v4.8"/>',
-  doc: '<path d="M13.8 3.2H7.4a2.6 2.6 0 0 0-2.6 2.6v12.4a2.6 2.6 0 0 0 2.6 2.6h9.2a2.6 2.6 0 0 0 2.6-2.6V8.6Z"/><path d="M13.6 3.4v5.4h5.4M8.4 13.2h7.2M8.4 16.6h4.8"/>',
-  globe: '<circle cx="12" cy="12" r="8.8"/><path d="M3.4 12h17.2"/><path d="M12 3.2c2.4 2.4 3.6 5.4 3.6 8.8S14.4 18.4 12 20.8C9.6 18.4 8.4 15.4 8.4 12S9.6 5.6 12 3.2Z"/>',
-  copy: '<rect x="8.4" y="8.4" width="12.2" height="12.2" rx="2.8"/><path d="M15.6 5.6A2.8 2.8 0 0 0 12.8 2.8H6.2a2.8 2.8 0 0 0-2.8 2.8v6.6a2.8 2.8 0 0 0 2.8 2.8"/>',
-} as const;
-
-export type IconName = keyof typeof ICON_PATHS;
+/** Every icon symbol id defined once in `icon-sprite.component.html` (as
+ * `#icon-{name}`) and referenced from `IconComponent` via `<use>`. */
+export type IconName =
+  | 'pin'
+  | 'phone'
+  | 'whatsapp'
+  | 'mail'
+  | 'linkedin'
+  | 'github'
+  | 'download'
+  | 'grid'
+  | 'search'
+  | 'close'
+  | 'sun'
+  | 'moon'
+  | 'up'
+  | 'menu'
+  | 'external'
+  | 'arrow'
+  | 'code'
+  | 'layers'
+  | 'route'
+  | 'wave'
+  | 'mirror'
+  | 'gauge'
+  | 'shield'
+  | 'seo'
+  | 'cap'
+  | 'doc'
+  | 'globe'
+  | 'copy';

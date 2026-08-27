@@ -1,0 +1,29 @@
+@use 'mixins' as m;
+
+:host {
+  display: block;
+}
+
+footer {
+  border-block-start: 1px solid var(--line);
+  padding-block: var(--s5);
+  position: relative;
+  z-index: 1;
+}
+
+.wrap {
+  @include m.wrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  height: 40px;
+}
+
+footer .mono {
+  color: var(--dim);
+}

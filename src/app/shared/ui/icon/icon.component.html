@@ -1,7 +1,3 @@
-<svg
-  class="i"
-  [class.i--dir]="directional"
-  viewBox="0 0 24 24"
-  aria-hidden="true"
-  [innerHTML]="markup() | safeHtml"
-></svg>
+<svg class="i" [class.i--dir]="directional" viewBox="0 0 24 24" aria-hidden="true">
+  <use [attr.href]="'#icon-' + name" />
+</svg>

@@ -132,6 +132,51 @@ body::after {
   }
 }
 
+// project-poster scene-shape classes — global because a <use> reference to
+// a <symbol> defined once in PosterSpriteComponent carries these classes
+// into wherever it's instantiated, across every project card on the page.
+.pn {
+  fill: none;
+  stroke: var(--line-2);
+  stroke-width: 2;
+}
+
+.pn2 {
+  fill: none;
+  stroke: var(--cta);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.pl {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pl2 {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+}
+
+.pa {
+  fill: var(--cta);
+  opacity: 0.92;
+}
+
+.pd {
+  fill: none;
+  stroke: var(--line-2);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
 @media print {
   body::before,
   body::after {

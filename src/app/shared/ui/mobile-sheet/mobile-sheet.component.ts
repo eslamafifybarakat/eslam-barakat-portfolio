@@ -47,6 +47,10 @@ export class MobileSheetComponent {
 
   @Input({ required: true }) navItems!: readonly SheetNavItem[];
   @Input() activeSection = '';
+  /** Prefixed home path for the current language (`/` or `/ar`) — used to
+   * navigate there first when a nav item's target section isn't on the
+   * current page (e.g. opening the sheet from a project detail route). */
+  @Input() homePath = '/';
   @Input({ required: true }) slogan!: string;
   @Input({ required: true }) emailHref!: string;
   @Input({ required: true }) whatsappHref!: string;
@@ -73,8 +77,11 @@ export class MobileSheetComponent {
   navigate(href: string): void {
     this.close();
     const id = href.replace('#', '');
-    setTimeout(() => {
-      this.document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 60);
+    const target = this.document.getElementById(id);
+    if (target) {
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+    } else {
+      this.document.defaultView?.location.assign(`${this.homePath}${href}`);
+    }
   }
 }
