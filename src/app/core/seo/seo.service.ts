@@ -29,7 +29,7 @@ export class SeoService {
     const siteUrl = this.config.config().siteUrl;
     const canonicalPath = input.path;
     const canonicalUrl = `${siteUrl}${canonicalPath}`;
-    const image = input.image ?? `${siteUrl}/og${canonicalPath === '/' ? '/home' : canonicalPath}.png`;
+    const image = input.image ?? `${siteUrl}/og/${ogImageSlug(canonicalPath)}.png`;
     const ogType = input.type ?? 'website';
     const locale = lang === 'ar' ? 'ar_EG' : 'en_US';
 
@@ -84,4 +84,14 @@ export class SeoService {
   private clearDynamicLinks(): void {
     this.document.head.querySelectorAll(`link[${DYNAMIC_LINK_MARKER}]`).forEach((el) => el.remove());
   }
+}
+
+/** `/` → `home`, `/work` → `work`, `/work/agro-teba` → `work-agro-teba`,
+ * `/ar/work/agro-teba` → `work-agro-teba` (OG cards aren't per-language) —
+ * matches the flat filenames `scripts/generate-og-images.mjs` writes into
+ * `public/og/`. */
+function ogImageSlug(path: string): string {
+  const withoutLangPrefix = path === '/ar' ? '/' : path.startsWith('/ar/') ? path.slice(3) : path;
+  const trimmed = withoutLangPrefix.replace(/^\/|\/$/g, '');
+  return trimmed === '' ? 'home' : trimmed.replace(/\//g, '-');
 }
