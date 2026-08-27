@@ -1,0 +1,58 @@
+@if (project(); as p) {
+  <app-modal [open]="true" [closeLabel]="'portfolio_modal_close' | translate" (openChange)="close()">
+    <div modal-gallery>
+      <app-gallery
+        [images]="galleryImages()"
+        [alt]="p.name"
+        [index]="galleryIndex()"
+        (indexChange)="galleryIndex.set($event)"
+        [captionScreenshot]="'portfolio_gallery_caption_screenshot' | translate"
+        [captionPoster]="'portfolio_gallery_caption_poster' | translate"
+      >
+        <app-project-poster gallery-poster [scene]="p.posterScene" [projectName]="p.name" [hostLabel]="hostLabel()" />
+      </app-gallery>
+    </div>
+
+    <span modal-title>{{ p.name }}</span>
+
+    <p class="modal__when">{{ p.period | localizedText }}</p>
+    <p class="modal__desc">{{ p.description | localizedText }}</p>
+
+    <dl class="kv">
+      <dt>{{ 'portfolio_work_detail_stack_label' | translate }}</dt>
+      <dd>{{ p.stack.join(', ') }}</dd>
+    </dl>
+    <dl class="kv">
+      <dt>{{ 'portfolio_work_detail_links_label' | translate }}</dt>
+      <dd class="linklist">
+        @for (link of p.links; track link) {
+          <a [href]="link" target="_blank" rel="noopener">
+            <app-icon name="external" />
+            <span class="ltr">{{ link }}</span>
+          </a>
+        }
+      </dd>
+    </dl>
+
+    @if (p.note) {
+      <p class="note">{{ 'portfolio_work_infrastructure_note_label' | translate }}: {{ p.note | localizedText }}</p>
+    }
+
+    <div class="modal__cta">
+      <app-button variant="primary" size="sm" icon="arrow" [href]="p.links[0]" [external]="true">
+        {{ 'portfolio_work_open_live' | translate }}
+      </app-button>
+    </div>
+
+    @if (related().length) {
+      <div class="related">
+        <p class="related__title mono">{{ 'portfolio_work_related_title' | translate }}</p>
+        <div class="related__grid">
+          @for (r of related(); track r.slug) {
+            <app-project-card [project]="r" (openDetails)="openRelated(r.slug)" />
+          }
+        </div>
+      </div>
+    }
+  </app-modal>
+}

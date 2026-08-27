@@ -1,0 +1,31 @@
+<section id="work">
+  <div class="wrap sec">
+    <app-section-head
+      [eyebrow]="'portfolio_work_eyebrow' | translate"
+      [heading]="'portfolio_work_title' | translate"
+      [lede]="'portfolio_work_lede' | translate"
+    />
+    <div>
+      <div class="toolbar">
+        <app-filter-chips
+          [options]="filterOptions()"
+          [active]="workService.filter()"
+          (activeChange)="workService.setFilter($any($event))"
+        />
+        <app-search-input
+          [value]="workService.query()"
+          [placeholder]="'portfolio_work_search_placeholder' | translate"
+          (valueChange)="workService.setQuery($event)"
+        />
+      </div>
+      <p class="count">{{ countText() }}</p>
+      <div class="grid">
+        @for (project of visible(); track project.slug) {
+          <app-project-card [project]="project" (openDetails)="openProject(project.slug)" />
+        } @empty {
+          <p class="empty">{{ 'portfolio_work_empty' | translate }}</p>
+        }
+      </div>
+    </div>
+  </div>
+</section>

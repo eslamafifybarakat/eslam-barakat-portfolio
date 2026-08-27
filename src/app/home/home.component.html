@@ -1,0 +1,32 @@
+<app-hero />
+<app-about />
+
+@defer (hydrate on viewport) {
+  <app-skills-section />
+} @placeholder {
+  <div class="section-placeholder"><app-skeleton variant="list" [lines]="7" /></div>
+}
+
+@defer (hydrate on viewport) {
+  <app-experience-section />
+} @placeholder {
+  <div class="section-placeholder"><app-skeleton variant="list" [lines]="3" /></div>
+}
+
+@defer (hydrate on viewport) {
+  <app-work-section />
+} @placeholder {
+  <div class="section-placeholder"><app-skeleton variant="card" /></div>
+}
+
+@defer (hydrate on viewport) {
+  <app-education-section />
+} @placeholder {
+  <div class="section-placeholder"><app-skeleton variant="list" [lines]="3" /></div>
+}
+
+@defer (hydrate on viewport) {
+  <app-contact-section />
+} @placeholder {
+  <div class="section-placeholder"><app-skeleton variant="card" /></div>
+}

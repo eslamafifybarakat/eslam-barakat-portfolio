@@ -1,0 +1,15 @@
+<section class="not-found">
+  <div class="wrap">
+    <p class="mono not-found__code">404</p>
+    <h1 class="display">{{ 'portfolio_404_title' | translate }}</h1>
+    <p class="not-found__message">{{ 'portfolio_404_message' | translate }}</p>
+    <div class="not-found__cta">
+      <app-button variant="primary" icon="arrow" [href]="homePath()">
+        {{ 'portfolio_404_cta_home' | translate }}
+      </app-button>
+      <app-button variant="ghost" icon="grid" iconPosition="start" [href]="workPath()">
+        {{ 'portfolio_404_cta_work' | translate }}
+      </app-button>
+    </div>
+  </div>
+</section>

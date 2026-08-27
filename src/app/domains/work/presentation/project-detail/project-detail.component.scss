@@ -1,0 +1,101 @@
+:host {
+  display: contents;
+}
+
+::ng-deep .modal__box .modal__when {
+  font-family: var(--f-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin: 0 0 var(--s3);
+}
+
+::ng-deep .modal__box .modal__desc {
+  color: var(--muted);
+  margin: 0 0 var(--s3);
+}
+
+::ng-deep .modal__box .kv {
+  border-block-start: 1px solid var(--line);
+  padding-block: var(--s3);
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 14px;
+  margin: 0;
+}
+
+::ng-deep .modal__box .kv dt {
+  font-family: var(--f-mono);
+  font-size: 0.61rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+::ng-deep .modal__box .kv dd {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  word-break: break-word;
+}
+
+::ng-deep .modal__box .kv dd a {
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+::ng-deep .modal__box .kv dd a:hover {
+  text-decoration: underline;
+}
+
+::ng-deep .modal__box .kv .i {
+  width: 14px;
+  height: 14px;
+}
+
+::ng-deep .modal__box .linklist {
+  display: grid;
+  gap: 7px;
+}
+
+::ng-deep .modal__box .note {
+  color: var(--dim);
+  font-size: 0.81rem;
+  font-style: italic;
+  margin: var(--s2) 0 0;
+}
+
+::ng-deep .modal__box .modal__cta {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-block-start: var(--s4);
+}
+
+::ng-deep .modal__box .related {
+  margin-block-start: var(--s5);
+  padding-block-start: var(--s4);
+  border-block-start: 1px solid var(--line);
+}
+
+::ng-deep .modal__box .related__title {
+  color: var(--accent);
+  margin: 0 0 var(--s3);
+}
+
+::ng-deep .modal__box .related__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 680px) {
+  ::ng-deep .modal__box .kv {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding-block: var(--s2);
+  }
+}

@@ -1,0 +1,93 @@
+:host {
+  display: contents;
+}
+
+[card-media] {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+[card-media] app-project-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+[card-media] img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__acts {
+  margin-inline-start: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.cbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 13px;
+  border-radius: 11px;
+  font-size: 0.81rem;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--text);
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    color 0.25s,
+    transform 0.25s var(--ease),
+    box-shadow 0.25s;
+}
+
+.cbtn ::ng-deep .i {
+  width: 15px;
+  height: 15px;
+}
+
+.cbtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.cbtn--go {
+  border-color: transparent;
+  background: var(--cta-soft);
+  color: var(--cta);
+}
+
+::ng-deep .card:hover .cbtn--go {
+  background: var(--cta);
+  color: var(--cta-ink);
+  box-shadow: 0 10px 22px -12px var(--cta);
+}
+
+.cbtn--go:hover {
+  background: var(--cta);
+  border-color: var(--cta);
+  color: var(--cta-ink);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 680px) {
+  .card__acts {
+    width: 100%;
+    margin-inline-start: 0;
+  }
+
+  .cbtn {
+    flex: 1;
+  }
+}

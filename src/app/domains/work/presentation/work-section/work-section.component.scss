@@ -1,0 +1,54 @@
+@use 'mixins' as m;
+
+:host {
+  display: block;
+}
+
+section {
+  @include m.section-spacing;
+
+  &::before {
+    @include m.section-divider;
+  }
+}
+
+.wrap {
+  @include m.wrap;
+}
+
+.sec {
+  @include m.section-grid;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-block-end: var(--s3);
+}
+
+.count {
+  font-family: var(--f-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin: 0 0 var(--s3);
+}
+
+html[dir='rtl'] .count {
+  letter-spacing: 0;
+  font-family: 'IBM Plex Sans Arabic', var(--f-body);
+  text-transform: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(292px, 1fr));
+  gap: 14px;
+}
+
+.empty {
+  color: var(--muted);
+}

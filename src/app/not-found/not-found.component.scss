@@ -1,0 +1,40 @@
+@use 'mixins' as m;
+
+:host {
+  display: block;
+}
+
+.not-found {
+  padding-block: calc(var(--head) + var(--s6)) var(--sec);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.wrap {
+  @include m.wrap;
+  text-align: center;
+  max-width: 60ch;
+}
+
+.not-found__code {
+  color: var(--accent);
+  margin-block-end: var(--s2);
+}
+
+.not-found h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 var(--s3);
+}
+
+.not-found__message {
+  color: var(--muted);
+  margin: 0 0 var(--s4);
+}
+
+.not-found__cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}

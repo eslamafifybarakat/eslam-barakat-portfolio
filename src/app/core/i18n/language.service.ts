@@ -114,16 +114,31 @@ export class LanguageService {
     return path === '/ar' || path.startsWith('/ar/') ? 'ar' : DEFAULT_LANG;
   }
 
+  /**
+   * The `REQUEST` token is only populated for a live SSR request
+   * (`RenderMode.Server`) — never during prerendering, which is what every
+   * route here actually uses, so it's useless as the primary source here.
+   * `DOCUMENT.location` is reliable in all three cases: the real browser
+   * URL in the browser, and — because `@angular/platform-server` seeds the
+   * document's location from the render URL as part of platform setup,
+   * before any component (including this singleton) is constructed —
+   * also correct during both prerendering and a live SSR request.
+   */
   private currentPath(): string {
-    if (isPlatformBrowser(this.platformId)) {
-      return this.document.location.pathname;
-    }
-    if (!this.request) return '/';
     try {
-      return new URL(this.request.url).pathname;
+      const pathname = this.document.location?.pathname;
+      if (pathname) return pathname;
     } catch {
-      return '/';
+      // fall through
     }
+    if (this.request) {
+      try {
+        return new URL(this.request.url).pathname;
+      } catch {
+        // fall through
+      }
+    }
+    return '/';
   }
 
   private reconcileStoredPreference(): void {
