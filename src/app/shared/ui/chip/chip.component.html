@@ -1,5 +1,7 @@
-@if (variant === 'tag') {
-  <span class="tag"><ng-content /></span>
-} @else {
-  <span class="chip"><ng-content /></span>
-}
+<!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
+<span class="tag" *ngIf="variant === 'tag'; else chipTpl"><ng-container *ngTemplateOutlet="inner" /></span>
+<ng-template #chipTpl>
+  <span class="chip"><ng-container *ngTemplateOutlet="inner" /></span>
+</ng-template>
+<!-- Single shared ng-content, see button.component.ts for why. -->
+<ng-template #inner><ng-content /></ng-template>

@@ -1,24 +1,20 @@
-@if (href) {
-  <a
-    class="btn"
-    [class.btn--primary]="variant === 'primary'"
-    [class.btn--ghost]="variant === 'ghost'"
-    [class.btn--sm]="size === 'sm'"
-    [href]="href"
-    [attr.target]="external ? '_blank' : null"
-    [attr.rel]="external ? 'noopener' : null"
-    [attr.download]="download === true ? '' : download || null"
-    [attr.aria-label]="ariaLabel || null"
-  >
-    @if (icon && iconPosition === 'start') {
-      <app-icon [name]="icon" [directional]="icon === 'arrow'" />
-    }
-    <ng-content />
-    @if (icon && iconPosition === 'end') {
-      <app-icon [name]="icon" [directional]="icon === 'arrow'" />
-    }
-  </a>
-} @else {
+<!-- eslint-disable @angular-eslint/template/prefer-control-flow -->
+<a
+  *ngIf="href; else buttonTpl"
+  class="btn"
+  [class.btn--primary]="variant === 'primary'"
+  [class.btn--ghost]="variant === 'ghost'"
+  [class.btn--sm]="size === 'sm'"
+  [href]="href"
+  [attr.target]="external ? '_blank' : null"
+  [attr.rel]="external ? 'noopener' : null"
+  [attr.download]="download === true ? '' : download || null"
+  [attr.aria-label]="ariaLabel || null"
+>
+  <ng-container *ngTemplateOutlet="inner" />
+</a>
+
+<ng-template #buttonTpl>
   <button
     class="btn"
     [class.btn--primary]="variant === 'primary'"
@@ -28,12 +24,21 @@
     [disabled]="disabled"
     [attr.aria-label]="ariaLabel || null"
   >
-    @if (icon && iconPosition === 'start') {
-      <app-icon [name]="icon" [directional]="icon === 'arrow'" />
-    }
-    <ng-content />
-    @if (icon && iconPosition === 'end') {
-      <app-icon [name]="icon" [directional]="icon === 'arrow'" />
-    }
+    <ng-container *ngTemplateOutlet="inner" />
   </button>
-}
+</ng-template>
+
+<!--
+  Exactly one <ng-content> declaration for the whole component, reused via
+  ngTemplateOutlet from both the <a> and <button> branches above — this
+  project's Angular version silently drops projected content when the same
+  default-slot <ng-content> appears more than once across a component's
+  template (verified against the SSR output: the label text vanished
+  entirely, a serious a11y bug for an icon+label button). See README
+  "Decisions".
+-->
+<ng-template #inner>
+  <app-icon *ngIf="icon && iconPosition === 'start'" [name]="icon!" [directional]="icon === 'arrow'" />
+  <ng-content />
+  <app-icon *ngIf="icon && iconPosition === 'end'" [name]="icon!" [directional]="icon === 'arrow'" />
+</ng-template>
