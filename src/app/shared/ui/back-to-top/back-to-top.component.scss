@@ -4,11 +4,11 @@
 // rendered subtree via :host, so it can't leak to icon-buttons elsewhere.
 :host ::ng-deep app-icon-button.top-btn .iconbtn {
   position: fixed;
-  inset-block-end: 18px;
-  inset-inline-end: 18px;
+  inset-block-end: 1.125rem;
+  inset-inline-end: 1.125rem;
   z-index: 70;
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(0.875rem);
   pointer-events: none;
   transition:
     opacity 0.3s,

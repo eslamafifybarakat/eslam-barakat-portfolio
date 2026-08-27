@@ -4,9 +4,9 @@
 
 .chip {
   font-size: 0.81rem;
-  padding: 6px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  padding: 0.375rem 0.75rem;
+  border: 0.0625rem solid var(--line);
+  border-radius: 0.625rem;
   color: var(--muted);
   background: var(--surface);
   display: inline-block;
@@ -21,7 +21,7 @@
   color: var(--text);
   border-color: var(--accent);
   background: var(--accent-soft);
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
 }
 
 .tag {
@@ -29,8 +29,8 @@
   font-size: 0.56rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  padding: 4px 8px;
-  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
   background: var(--surface-2);
   color: var(--dim);
   display: inline-block;

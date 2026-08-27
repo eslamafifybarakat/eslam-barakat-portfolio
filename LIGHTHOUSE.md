@@ -1,6 +1,6 @@
 # Lighthouse report
 
-Generated 2026-08-27T11:28:38.345Z against a local static server over the
+Generated 2026-08-27T11:48:06.301Z against a local static server over the
 production build (`npm run build` output, served exactly as Vercel serves
 it — every route below is a prerendered static file, not a live SSR
 render). Both languages are separate URLs (`/` vs `/ar`), so they're
@@ -14,10 +14,10 @@ the site actually resolves theme with no stored preference.
 
 | Route | Theme | Performance | Accessibility | Best Practices | SEO | LCP | CLS | TBT |
 |---|---|---|---|---|---|---|---|---|
-| / | dark | 62 | 93 | 100 | 100 | 5807ms | 0.000 | 192ms |
-| / | light | 72 | 93 | 100 | 100 | 4550ms | 0.000 | 116ms |
+| / | dark | 79 | 100 | 100 | 100 | 3732ms | 0.001 | 248ms |
+| / | light | 87 | 100 | 100 | 100 | 3143ms | 0.001 | 208ms |
 
 ## Gaps from 100
 
-- **/** (dark): Performance 62, Accessibility 93
-- **/** (light): Performance 72, Accessibility 93
+- **/** (dark): Performance 79
+- **/** (light): Performance 87

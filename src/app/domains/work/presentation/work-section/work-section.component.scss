@@ -23,7 +23,7 @@ section {
 .toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
   margin-block-end: var(--s3);
 }
@@ -45,8 +45,8 @@ html[dir='rtl'] .count {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(292px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(18.25rem, 1fr));
+  gap: 0.875rem;
 }
 
 .empty {

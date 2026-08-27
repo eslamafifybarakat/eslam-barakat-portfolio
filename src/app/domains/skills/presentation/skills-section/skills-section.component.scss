@@ -28,7 +28,7 @@ section {
 .skill__k {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 0.5625rem;
   font-family: var(--f-mono);
   font-size: 0.66rem;
   letter-spacing: 0.14em;
@@ -38,14 +38,14 @@ section {
 }
 
 .skill__k ::ng-deep .i {
-  width: 15px;
-  height: 15px;
+  width: 0.9375rem;
+  height: 0.9375rem;
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 0.375rem;
 }
 
 html[dir='rtl'] .skill__k {

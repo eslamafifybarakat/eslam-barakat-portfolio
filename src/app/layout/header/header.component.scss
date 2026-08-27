@@ -11,20 +11,20 @@
   display: flex;
   align-items: center;
   gap: var(--s3);
-  padding-inline: clamp(16px, 4vw, 40px);
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
   background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(18px) saturate(1.4);
-  border-block-end: 1px solid var(--line);
+  backdrop-filter: blur(1.125rem) saturate(1.4);
+  border-block-end: 0.0625rem solid var(--line);
 }
 
 .lock {
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 0.6875rem;
 }
 
 .lock__mark {
-  height: 34px;
+  height: 2.125rem;
   width: auto;
 }
 
@@ -66,8 +66,8 @@ html[dir='rtl'] .lock__txt i {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--dim);
-  padding: 9px 12px;
-  border-radius: 9px;
+  padding: 0.5625rem 0.75rem;
+  border-radius: 0.5625rem;
   transition:
     color 0.25s,
     background 0.25s;
@@ -85,11 +85,11 @@ html[dir='rtl'] .lock__txt i {
 
 .top__tools {
   display: flex;
-  gap: 7px;
+  gap: 0.4375rem;
   margin-inline-start: var(--s3);
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 67.5rem) {
   .nav {
     display: none;
   }

@@ -23,7 +23,7 @@
   position: absolute;
   inset-block-start: 0;
   inset-inline: 0;
-  height: 1px;
+  height: 0.0625rem;
   background: linear-gradient(
     to var(--flow, right),
     transparent,
@@ -36,8 +36,8 @@
 // the editorial two-column section grid: sticky eyebrow/heading rail + body
 @mixin section-grid {
   display: grid;
-  grid-template-columns: minmax(230px, 285px) minmax(0, 1fr);
-  gap: clamp(26px, 4.5vw, 70px);
+  grid-template-columns: minmax(14.375rem, 17.8125rem) minmax(0, 1fr);
+  gap: clamp(1.625rem, 4.5vw, 4.375rem);
   align-items: start;
 
   @media (max-width: #{t.$breakpoint-tablet}) {
@@ -48,7 +48,7 @@
 
 @mixin sticky-section-head {
   position: sticky;
-  inset-block-start: calc(var(--head) + 26px);
+  inset-block-start: calc(var(--head) + 1.625rem);
 
   @media (max-width: #{t.$breakpoint-tablet}) {
     position: static;
@@ -57,10 +57,10 @@
 
 @mixin visually-hidden {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem;
+  height: 0.0625rem;
   padding: 0;
-  margin: -1px;
+  margin: -0.0625rem;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -90,8 +90,8 @@
 
 @mixin focus-ring {
   &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 6px;
+    outline: 0.125rem solid var(--accent);
+    outline-offset: 0.1875rem;
+    border-radius: 0.375rem;
   }
 }

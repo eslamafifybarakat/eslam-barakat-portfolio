@@ -5,15 +5,15 @@
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   color: var(--accent);
   margin-block-end: var(--s2);
 }
 
 .eyebrow::before {
   content: '';
-  width: 20px;
-  height: 1px;
+  width: 1.25rem;
+  height: 0.0625rem;
   background: currentcolor;
   flex: none;
 }

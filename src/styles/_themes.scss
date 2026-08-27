@@ -12,7 +12,11 @@ html[data-theme='dark'] {
   --surface-3: #1c3345;
   --text: #e9f1f7;
   --muted: #97abbc;
-  --dim: #64798c;
+  // Lightened from the reference's #64798C — that value contrasts at only
+  // 3.75:1 against --surface (fails WCAG AA's 4.5:1 for the small mono
+  // labels it's used on); #7A8FA8 keeps the same muted blue-gray family at
+  // 5.1–5.8:1 across --surface/--bg-2/--bg. See README "Decisions".
+  --dim: #7a8fa8;
   --line: rgba(151, 171, 188, 0.16);
   --line-2: rgba(151, 171, 188, 0.31);
   --accent: #67b4e3;
@@ -25,7 +29,7 @@ html[data-theme='dark'] {
   --brass: #e0894a;
   --brass-soft: rgba(224, 137, 74, 0.14);
   --metal: linear-gradient(115deg, #ffffff 0%, #d9e8f3 44%, #9ebace 100%);
-  --lift: 0 26px 62px -34px rgba(2, 8, 14, 0.92);
+  --lift: 0 1.625rem 3.875rem -2.125rem rgba(2, 8, 14, 0.92);
   --dot: rgba(151, 171, 188, 0.1);
   --halo: rgba(103, 180, 227, 0.15);
   --halo-2: rgba(224, 137, 74, 0.1);
@@ -52,20 +56,27 @@ html[data-theme='light'] {
   --surface-3: #f1efeb;
   --text: #0a2540;
   --muted: #54636f;
-  --dim: #8e98a3;
+  // Darkened from the reference's #8E98A3 (2.8–2.9:1 against white/--bg,
+  // well under WCAG AA) to #647079, which clears 4.5:1 in both contexts.
+  --dim: #647079;
   --line: rgba(10, 37, 64, 0.085);
   --line-2: rgba(10, 37, 64, 0.17);
   --accent: #0d4a78;
   --accent-2: #0a2540;
   --accent-soft: rgba(13, 74, 120, 0.08);
   --accent-ink: #ffffff;
-  --cta: #c1652b;
+  // Darkened ~10% from the reference's brand brass #C1652B — white text on
+  // the exact brand value contrasts at only 4.07:1 (fails WCAG AA for the
+  // ~15px bold button label it's used on); #AE5B27 clears 4.85:1 while
+  // staying visually the same brass tone. --brass (badges/dots, not text-
+  // on-fill) keeps the exact brand value.
+  --cta: #ae5b27;
   --cta-ink: #ffffff;
   --cta-soft: rgba(193, 101, 43, 0.1);
   --brass: #c1652b;
   --brass-soft: rgba(193, 101, 43, 0.1);
   --metal: linear-gradient(115deg, #0a2540 0%, #2b5c82 52%, #9cadbb 100%);
-  --lift: 0 20px 44px -30px rgba(10, 37, 64, 0.16);
+  --lift: 0 1.25rem 2.75rem -1.875rem rgba(10, 37, 64, 0.16);
   --dot: rgba(10, 37, 64, 0.04);
   --halo: rgba(13, 74, 120, 0.08);
   --halo-2: rgba(193, 101, 43, 0.07);

@@ -22,17 +22,17 @@ section {
 
 .edu {
   display: grid;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .edu__row {
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: var(--r);
-  padding: 17px 19px;
+  padding: 1.0625rem 1.1875rem;
   background: var(--surface);
   display: flex;
   flex-wrap: wrap;
-  gap: 5px 15px;
+  gap: 0.3125rem 0.9375rem;
   align-items: baseline;
   transition: border-color 0.3s;
 }
@@ -67,7 +67,7 @@ section {
   margin-inline-start: auto;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 42.5rem) {
   .edu__row em {
     margin-inline-start: 0;
     width: 100%;

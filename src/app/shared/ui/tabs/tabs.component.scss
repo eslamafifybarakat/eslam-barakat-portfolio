@@ -5,11 +5,11 @@
 .tabs {
   display: flex;
   gap: var(--s2);
-  border-block-end: 1px solid var(--line);
+  border-block-end: 0.0625rem solid var(--line);
 }
 
 .tabs__btn {
-  padding: 10px 4px;
+  padding: 0.625rem 0.25rem;
   font-size: 0.87rem;
   font-weight: 600;
   color: var(--muted);
@@ -29,8 +29,8 @@
   content: '';
   position: absolute;
   inset-inline: 0;
-  inset-block-end: -1px;
-  height: 2px;
+  inset-block-end: -0.0625rem;
+  height: 0.125rem;
   background: var(--accent);
-  border-radius: 2px;
+  border-radius: 0.125rem;
 }

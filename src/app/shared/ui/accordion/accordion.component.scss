@@ -1,6 +1,6 @@
 :host {
   display: block;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: var(--r);
   background: var(--surface);
   overflow: hidden;
@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--s2);
-  padding: 16px 18px;
+  padding: 1rem 1.125rem;
   font-family: var(--f-display);
   font-weight: 600;
   font-size: 0.97rem;
@@ -44,7 +44,7 @@
 }
 
 .accordion__body {
-  padding: 0 18px 18px;
+  padding: 0 1.125rem 1.125rem;
   color: var(--muted);
   font-size: 0.9rem;
 }

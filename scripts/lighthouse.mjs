@@ -11,6 +11,7 @@
 //   npm run lighthouse -- --routes=/,/work   # explicit path list
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, writeFileSync, statSync } from 'node:fs';
+import { gzipSync, brotliCompressSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import * as lighthouseModule from 'lighthouse';
@@ -60,6 +61,9 @@ function mimeType(file) {
   return 'application/octet-stream';
 }
 
+// Compression + immutable caching for hashed assets — real Vercel hosting
+// does both; without them this local server understates performance
+// relative to production.
 function startStaticServer() {
   return new Promise((resolve) => {
     const server = createServer((req, res) => {
@@ -73,8 +77,25 @@ function startStaticServer() {
       }
       try {
         const content = readFileSync(filePath);
-        res.writeHead(200, { 'Content-Type': mimeType(filePath) });
-        res.end(content);
+        const isHashed = /-[A-Z0-9]{8}\.(js|css)$/.test(filePath);
+        const headers = {
+          'Content-Type': mimeType(filePath),
+          'Cache-Control': isHashed ? 'public, max-age=31536000, immutable' : 'no-cache',
+        };
+
+        const acceptEncoding = req.headers['accept-encoding'] ?? '';
+        if (acceptEncoding.includes('br')) {
+          headers['Content-Encoding'] = 'br';
+          res.writeHead(200, headers);
+          res.end(brotliCompressSync(content));
+        } else if (acceptEncoding.includes('gzip')) {
+          headers['Content-Encoding'] = 'gzip';
+          res.writeHead(200, headers);
+          res.end(gzipSync(content));
+        } else {
+          res.writeHead(200, headers);
+          res.end(content);
+        }
       } catch {
         res.writeHead(404);
         res.end('Not found');

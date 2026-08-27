@@ -5,7 +5,7 @@
 }
 
 footer {
-  border-block-start: 1px solid var(--line);
+  border-block-start: 0.0625rem solid var(--line);
   padding-block: var(--s5);
   position: relative;
   z-index: 1;
@@ -15,13 +15,13 @@ footer {
   @include m.wrap;
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 1.125rem;
   align-items: center;
   justify-content: space-between;
 }
 
 .brand {
-  height: 40px;
+  height: 2.5rem;
 }
 
 footer .mono {

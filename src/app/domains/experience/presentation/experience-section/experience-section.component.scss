@@ -22,14 +22,14 @@ section {
 
 .tl {
   position: relative;
-  padding-inline-start: 26px;
+  padding-inline-start: 1.625rem;
 }
 
 .tl::before {
   content: '';
   position: absolute;
-  inset-block: 12px 12px;
-  inset-inline-start: 4px;
-  width: 1px;
+  inset-block: 0.75rem 0.75rem;
+  inset-inline-start: 0.25rem;
+  width: 0.0625rem;
   background: linear-gradient(to bottom, var(--accent), var(--line) 46%, transparent);
 }

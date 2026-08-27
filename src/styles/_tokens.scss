@@ -7,25 +7,25 @@
 
 // ---- SCSS-side maps (used by mixins/functions, not emitted directly) ----
 $radii: (
-  xs: 8px,
-  sm: 12px,
-  base: 16px,
-  lg: 20px,
-  xl: 28px,
+  xs: 0.5rem,
+  sm: 0.75rem,
+  base: 1rem,
+  lg: 1.25rem,
+  xl: 1.75rem,
 );
 
 $space: (
-  1: 6px,
-  2: 12px,
-  3: 20px,
-  4: 32px,
-  5: 48px,
-  6: 72px,
+  1: 0.375rem,
+  2: 0.75rem,
+  3: 1.25rem,
+  4: 2rem,
+  5: 3rem,
+  6: 4.5rem,
 );
 
-$breakpoint-tablet: 1080px;
-$breakpoint-mobile: 680px;
-$breakpoint-contact: 900px;
+$breakpoint-tablet: 67.5rem;
+$breakpoint-mobile: 42.5rem;
+$breakpoint-contact: 56.25rem;
 
 $font-display: 'Archivo', 'IBM Plex Sans Arabic', system-ui, sans-serif;
 $font-body: 'IBM Plex Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
@@ -39,11 +39,11 @@ $font-display-arabic: 'IBM Plex Sans Arabic', #{$font-display};
   --navy: #1f3864;
 
   // radii
-  --r-xs: 8px;
-  --r-sm: 12px;
-  --r: 16px;
-  --r-lg: 20px;
-  --r-xl: 28px;
+  --r-xs: 0.5rem;
+  --r-sm: 0.75rem;
+  --r: 1rem;
+  --r-lg: 1.25rem;
+  --r-xl: 1.75rem;
 
   // type stacks
   --f-display: #{$font-display};
@@ -51,21 +51,21 @@ $font-display-arabic: 'IBM Plex Sans Arabic', #{$font-display};
   --f-mono: #{$font-mono};
 
   // layout
-  --wrap: 1240px;
-  --head: 66px;
+  --wrap: 77.5rem;
+  --head: 4.125rem;
   --ease: cubic-bezier(0.2, 0.8, 0.24, 1);
 
   // spacing scale
-  --s1: 6px;
-  --s2: 12px;
-  --s3: 20px;
-  --s4: 32px;
-  --s5: 48px;
-  --s6: 72px;
-  --sec: clamp(80px, 8.5vw, 122px);
+  --s1: 0.375rem;
+  --s2: 0.75rem;
+  --s3: 1.25rem;
+  --s4: 2rem;
+  --s5: 3rem;
+  --s6: 4.5rem;
+  --sec: clamp(5rem, 8.5vw, 7.625rem);
 
   // directional hover nudge — flips sign under [dir="rtl"], see _mixins.scss
-  --dx: 4px;
+  --dx: 0.25rem;
   // gradient/scroll-progress flow direction — flips under [dir="rtl"]
   --flow: right;
   // EB monogram, used as a mask source for the project card's corner
@@ -74,6 +74,6 @@ $font-display-arabic: 'IBM Plex Sans Arabic', #{$font-display};
 }
 
 html[dir='rtl'] {
-  --dx: -4px;
+  --dx: -0.25rem;
   --flow: left;
 }

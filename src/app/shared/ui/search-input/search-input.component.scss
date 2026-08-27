@@ -1,5 +1,5 @@
 :host {
-  --icon-size: 16px;
+  --icon-size: 1rem;
   display: contents;
 }
 
@@ -11,16 +11,16 @@
 }
 
 .search input {
-  width: 240px;
+  width: 15rem;
   max-width: 44vw;
-  padding: 11px 14px;
-  padding-inline-start: 38px;
-  border-radius: 11px;
-  border: 1px solid var(--line);
+  padding: 0.6875rem 0.875rem;
+  padding-inline-start: 2.375rem;
+  border-radius: 0.6875rem;
+  border: 0.0625rem solid var(--line);
   background: var(--surface);
   color: var(--text);
   font-size: 0.87rem;
-  min-height: 42px;
+  min-height: 2.625rem;
   transition:
     border-color 0.25s,
     width 0.3s;
@@ -29,17 +29,17 @@
 .search input:focus {
   border-color: var(--accent);
   outline: none;
-  width: 270px;
+  width: 16.875rem;
 }
 
 .search ::ng-deep .i {
   position: absolute;
-  inset-inline-start: 12px;
+  inset-inline-start: 0.75rem;
   color: var(--dim);
   pointer-events: none;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 42.5rem) {
   .search {
     margin-inline-start: 0;
     width: 100%;

@@ -5,9 +5,9 @@
 .spec {
   margin: 0;
   display: grid;
-  gap: 1px;
+  gap: 0.0625rem;
   background: var(--line);
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   border-radius: var(--r);
   overflow: hidden;
 }
@@ -16,7 +16,7 @@
   display: flex;
   gap: var(--s3);
   align-items: baseline;
-  padding: 11px 14px;
+  padding: 0.6875rem 0.875rem;
   background: var(--bg-2);
 }
 
@@ -26,7 +26,7 @@
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--dim);
-  width: 74px;
+  width: 4.625rem;
   flex: none;
 }
 

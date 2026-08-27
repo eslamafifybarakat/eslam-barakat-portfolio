@@ -1,18 +1,18 @@
 :host {
-  --icon-size: 17px;
+  --icon-size: 1.0625rem;
   display: contents;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 13px 20px;
-  border-radius: 14px;
+  gap: 0.5625rem;
+  padding: 0.8125rem 1.25rem;
+  border-radius: 0.875rem;
   font-weight: 600;
   font-size: 0.93rem;
-  border: 1px solid transparent;
-  min-height: 46px;
+  border: 0.0625rem solid transparent;
+  min-height: 2.875rem;
   transition:
     transform 0.28s var(--ease),
     box-shadow 0.28s,
@@ -33,13 +33,13 @@
   background: var(--cta);
   color: var(--cta-ink);
   box-shadow:
-    0 14px 32px -16px var(--cta),
-    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+    0 0.875rem 2rem -1rem var(--cta),
+    inset 0 0.0625rem 0 rgba(255, 255, 255, 0.26);
 }
 
 .btn--primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 42px -16px var(--cta);
+  transform: translateY(-0.1875rem);
+  box-shadow: 0 1.25rem 2.625rem -1rem var(--cta);
 }
 
 .btn--ghost {
@@ -49,17 +49,17 @@
 }
 
 .btn--ghost:hover {
-  transform: translateY(-3px);
+  transform: translateY(-0.1875rem);
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-soft);
 }
 
 .btn--sm {
-  padding: 9px 14px;
+  padding: 0.5625rem 0.875rem;
   font-size: 0.83rem;
-  min-height: 38px;
-  border-radius: 11px;
+  min-height: 2.375rem;
+  border-radius: 0.6875rem;
 }
 
 .btn[disabled] {

@@ -6,7 +6,7 @@
   position: relative;
   aspect-ratio: 16 / 10;
   border-radius: var(--r);
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   overflow: hidden;
   background: var(--surface-2);
 }
@@ -26,17 +26,17 @@
 
 .gal__thumbs {
   display: flex;
-  gap: 7px;
-  margin-block-start: 7px;
+  gap: 0.4375rem;
+  margin-block-start: 0.4375rem;
   flex-wrap: wrap;
 }
 
 .gal__t {
-  width: 70px;
+  width: 4.375rem;
   aspect-ratio: 16 / 10;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 0.0625rem solid var(--line);
   background: var(--surface-2);
   opacity: 0.55;
   transition:
@@ -62,7 +62,7 @@
   letter-spacing: 0.11em;
   color: var(--dim);
   text-transform: uppercase;
-  margin: 9px 0 var(--s4);
+  margin: 0.5625rem 0 var(--s4);
 }
 
 html[dir='rtl'] .gal__cap {
