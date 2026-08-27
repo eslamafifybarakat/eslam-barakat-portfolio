@@ -1,6 +1,6 @@
 # Lighthouse report
 
-Generated 2026-08-27T11:56:41.751Z against a local static server over the
+Generated 2026-08-27T12:58:44.117Z against a local static server over the
 production build (`npm run build` output, served exactly as Vercel serves
 it — every route below is a prerendered static file, not a live SSR
 render). Both languages are separate URLs (`/` vs `/ar`), so they're
@@ -14,22 +14,22 @@ the site actually resolves theme with no stored preference.
 
 | Route | Theme | Performance | Accessibility | Best Practices | SEO | LCP | CLS | TBT |
 |---|---|---|---|---|---|---|---|---|
-| / | dark | 80 | 100 | 100 | 100 | 3487ms | 0.001 | 285ms |
-| / | light | 77 | 100 | 100 | 100 | 1163ms | 0.001 | 1092ms |
-| /ar | dark | 78 | 100 | 100 | 100 | 1595ms | 0.004 | 854ms |
-| /work | dark | 85 | 100 | 100 | 100 | 2708ms | 0.005 | 345ms |
-| /work/agro-teba | dark | 86 | 100 | 100 | 100 | 2607ms | 0.005 | 293ms |
-| /ar/work/agro-teba | dark | 86 | 100 | 100 | 100 | 1349ms | 0.011 | 482ms |
-| /this-page-does-not-exist | dark | 91 | 100 | 100 | 66 | 3160ms | 0.000 | 104ms |
+| / | dark | 79 | 100 | 100 | 100 | 1442ms | 0.001 | 773ms |
+| / | light | 88 | 100 | 100 | 100 | 3372ms | 0.000 | 69ms |
+| /ar | dark | 68 | 100 | 100 | 100 | 4421ms | 0.121 | 184ms |
+| /work | dark | 94 | 100 | 100 | 100 | 1082ms | 0.004 | 276ms |
+| /work/agro-teba | dark | 81 | 100 | 100 | 100 | 3553ms | 0.007 | 183ms |
+| /ar/work/agro-teba | dark | 94 | 100 | 100 | 100 | 1219ms | 0.010 | 266ms |
+| /this-page-does-not-exist | dark | 91 | 100 | 100 | 66 | 3134ms | 0.000 | 64ms |
 
 ## Gaps from 100
 
-- **/** (dark): Performance 80
-- **/** (light): Performance 77
-- **/ar** (dark): Performance 78
-- **/work** (dark): Performance 85
-- **/work/agro-teba** (dark): Performance 86
-- **/ar/work/agro-teba** (dark): Performance 86
+- **/** (dark): Performance 79
+- **/** (light): Performance 88
+- **/ar** (dark): Performance 68
+- **/work** (dark): Performance 94
+- **/work/agro-teba** (dark): Performance 81
+- **/ar/work/agro-teba** (dark): Performance 94
 - **/this-page-does-not-exist** (dark): Performance 91, SEO 66
 
 ## Notes
