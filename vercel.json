@@ -3,6 +3,7 @@
   "framework": "angular",
   "installCommand": "npm ci",
   "buildCommand": "npm run vercel-build",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.csr.html" }],
   "headers": [
     {
       "source": "/(.*)",
