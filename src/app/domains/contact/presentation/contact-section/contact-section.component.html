@@ -1,0 +1,46 @@
+<section id="contact">
+  <div class="wrap">
+    <div class="contact" appRevealOnScroll>
+      <div class="contact__grid">
+        <div class="contact__say">
+          <app-eyebrow>{{ 'portfolio_contact_eyebrow' | translate }}</app-eyebrow>
+          <h2 class="display">{{ 'portfolio_contact_title' | translate }}</h2>
+          <p class="sec-lede">{{ 'portfolio_contact_lede' | translate }}</p>
+          <div class="avail">
+            @for (line of availability(); track $index) {
+              <span class="avchip"><i></i>{{ line }}</span>
+            }
+          </div>
+          <div class="contact__cta">
+            <app-button variant="primary" icon="mail" iconPosition="start" [href]="emailHref()">
+              {{ 'portfolio_contact_cta_email' | translate }}
+            </app-button>
+            <app-button variant="ghost" icon="whatsapp" iconPosition="start" [href]="whatsappHref()" [external]="true">
+              {{ 'portfolio_contact_cta_whatsapp' | translate }}
+            </app-button>
+          </div>
+        </div>
+
+        <div class="rows">
+          @for (row of contactService.rows(); track row.labelKey) {
+            <a
+              class="row"
+              [href]="row.href"
+              [attr.target]="isExternal(row.href) ? '_blank' : null"
+              [attr.rel]="isExternal(row.href) ? 'noopener' : null"
+              [appCopyToClipboard]="row.copy ? row.value : ''"
+              (copied)="onCopied()"
+            >
+              <span class="row__ic"><app-icon [name]="row.icon" /></span>
+              <span class="row__txt">
+                <span class="row__k">{{ row.labelKey | translate }}</span>
+                <span class="row__v" [class.row__v--ltr]="row.ltr">{{ row.value }}</span>
+              </span>
+              <span class="row__go"><app-icon [name]="row.copy ? 'copy' : 'arrow'" /></span>
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

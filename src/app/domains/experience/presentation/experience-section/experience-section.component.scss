@@ -1,0 +1,35 @@
+@use 'mixins' as m;
+
+:host {
+  display: block;
+}
+
+section {
+  @include m.section-spacing;
+
+  &::before {
+    @include m.section-divider;
+  }
+}
+
+.wrap {
+  @include m.wrap;
+}
+
+.sec {
+  @include m.section-grid;
+}
+
+.tl {
+  position: relative;
+  padding-inline-start: 26px;
+}
+
+.tl::before {
+  content: '';
+  position: absolute;
+  inset-block: 12px 12px;
+  inset-inline-start: 4px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), var(--line) 46%, transparent);
+}

@@ -1,0 +1,14 @@
+<section id="path">
+  <div class="wrap sec">
+    <app-section-head
+      [eyebrow]="'portfolio_timeline_eyebrow' | translate"
+      [heading]="'portfolio_timeline_title' | translate"
+      [lede]="'portfolio_timeline_lede' | translate"
+    />
+    <div class="tl">
+      @for (item of items(); track item.company; let last = $last) {
+        <app-timeline-item [item]="item" [last]="last" />
+      }
+    </div>
+  </div>
+</section>

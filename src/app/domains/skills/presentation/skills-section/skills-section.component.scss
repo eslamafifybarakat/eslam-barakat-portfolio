@@ -1,0 +1,56 @@
+@use 'mixins' as m;
+
+:host {
+  display: block;
+}
+
+section {
+  @include m.section-spacing;
+
+  &::before {
+    @include m.section-divider;
+  }
+}
+
+.wrap {
+  @include m.wrap;
+}
+
+.sec {
+  @include m.section-grid;
+}
+
+.skills {
+  display: grid;
+  gap: var(--s4);
+}
+
+.skill__k {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--f-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-block-end: var(--s2);
+}
+
+.skill__k ::ng-deep .i {
+  width: 15px;
+  height: 15px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+html[dir='rtl'] .skill__k {
+  letter-spacing: 0;
+  font-family: 'IBM Plex Sans Arabic', var(--f-body);
+  text-transform: none;
+  font-size: 0.78rem;
+}

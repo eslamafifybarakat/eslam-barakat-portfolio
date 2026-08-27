@@ -4,9 +4,12 @@ import { isPlatformBrowser } from '@angular/common';
 /**
  * `<a [appCopyToClipboard]="email" (copied)="toast()" href="mailto:...">` —
  * copies `text` to the clipboard on click and emits `copied`. Only
- * intercepts the click (via `preventDefault`) when the Clipboard API is
- * actually available; otherwise the host's default action (e.g. the
- * `mailto:` navigation) proceeds untouched.
+ * intercepts the click (via `preventDefault`) when `text` is non-empty and
+ * the Clipboard API is actually available; otherwise the host's default
+ * action (e.g. the `mailto:` navigation) proceeds untouched — this also
+ * makes the directive a safe no-op when applied unconditionally across a
+ * list where only some rows should copy (an empty binding just falls
+ * through to normal navigation).
  */
 @Directive({ selector: '[appCopyToClipboard]' })
 export class CopyToClipboardDirective {
@@ -17,7 +20,7 @@ export class CopyToClipboardDirective {
 
   @HostListener('click', ['$event'])
   async onClick(event: Event): Promise<void> {
-    if (!isPlatformBrowser(this.platformId) || !navigator.clipboard) return;
+    if (!this.text || !isPlatformBrowser(this.platformId) || !navigator.clipboard) return;
 
     event.preventDefault();
     try {

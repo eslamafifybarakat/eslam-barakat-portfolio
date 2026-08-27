@@ -1,0 +1,47 @@
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <p class="mono hero__available">{{ 'portfolio_hero_available' | translate }}</p>
+        <h1 class="display">Eslam <span class="metal">Afify</span><br />Barakat</h1>
+        <p class="hero__role">{{ 'portfolio_hero_role' | translate }}</p>
+        <p class="hero__lede">{{ 'portfolio_hero_lede' | translate }}</p>
+        <div class="hero__cta">
+          <app-button variant="primary" icon="arrow" href="#work" (click)="goToWork($event)">
+            {{ 'portfolio_hero_cta_work' | translate }}
+          </app-button>
+          <app-button variant="ghost" icon="download" iconPosition="start" [href]="cvHref()" [download]="true">
+            {{ 'portfolio_hero_cta_cv' | translate }}
+          </app-button>
+        </div>
+      </div>
+
+      <aside class="panel" appRevealOnScroll>
+        <div class="panel__top">
+          <div class="portrait">
+            <span class="portrait__wrap">
+              <img
+                ngSrc="/img/portrait.jpg"
+                width="360"
+                height="360"
+                priority
+                fetchpriority="high"
+                alt="Eslam Afify Barakat"
+              />
+            </span>
+          </div>
+          <div class="panel__who">
+            <b>Eslam Afify Barakat</b>
+            <span class="ltr">{{ email() }}</span>
+          </div>
+        </div>
+        <app-spec-list [items]="specItems()" />
+        <div class="stats">
+          <app-stat-counter [to]="stats().years" [suffix]="stats().yearsSuffix" [label]="'portfolio_hero_stat_years' | translate" />
+          <app-stat-counter [to]="stats().projects" [label]="'portfolio_hero_stat_projects' | translate" />
+          <app-stat-counter [to]="stats().languages" [label]="'portfolio_hero_stat_langs' | translate" />
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+@use 'mixins' as m;
+
+:host {
+  display: block;
+}
+
+section {
+  @include m.section-spacing;
+
+  &::before {
+    @include m.section-divider;
+  }
+}
+
+.wrap {
+  @include m.wrap;
+}
+
+.sec {
+  @include m.section-grid;
+}
+
+.edu {
+  display: grid;
+  gap: 10px;
+}
+
+.edu__row {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 17px 19px;
+  background: var(--surface);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 15px;
+  align-items: baseline;
+  transition: border-color 0.3s;
+}
+
+.edu__row:hover {
+  border-color: var(--accent);
+}
+
+.edu__row ::ng-deep .i {
+  color: var(--accent);
+  align-self: center;
+}
+
+.edu__row b {
+  font-family: var(--f-display);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.edu__row span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.edu__row em {
+  font-family: var(--f-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.09em;
+  color: var(--accent);
+  font-style: normal;
+  text-transform: uppercase;
+  margin-inline-start: auto;
+}
+
+@media (max-width: 680px) {
+  .edu__row em {
+    margin-inline-start: 0;
+    width: 100%;
+  }
+}
+
+html[dir='rtl'] .edu__row em {
+  letter-spacing: 0;
+  font-family: 'IBM Plex Sans Arabic', var(--f-body);
+  text-transform: none;
+}

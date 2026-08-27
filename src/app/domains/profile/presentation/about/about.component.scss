@@ -1,0 +1,84 @@
+@use 'mixins' as m;
+
+:host {
+  display: block;
+}
+
+section {
+  @include m.section-spacing;
+
+  &::before {
+    @include m.section-divider;
+  }
+}
+
+.wrap {
+  @include m.wrap;
+}
+
+.sec {
+  @include m.section-grid;
+}
+
+.prose ::ng-deep p {
+  margin: 0 0 var(--s3);
+  color: var(--muted);
+}
+
+.prose ::ng-deep p:last-child {
+  margin: 0;
+}
+
+.prose ::ng-deep strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-block-start: var(--s5);
+}
+
+.pillar {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 16px 17px;
+  background: var(--surface);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  transition:
+    border-color 0.3s,
+    transform 0.3s var(--ease);
+}
+
+.pillar:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.pillar ::ng-deep .i {
+  color: var(--accent);
+  margin-block-start: 2px;
+}
+
+.pillar b {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 0.97rem;
+  font-weight: 600;
+  margin-block-end: 2px;
+}
+
+.pillar span {
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+
+@media (max-width: 680px) {
+  .pillars {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
