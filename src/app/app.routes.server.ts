@@ -16,5 +16,14 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'ar', renderMode: RenderMode.Prerender },
   { path: 'ar/work', renderMode: RenderMode.Prerender },
   { path: 'ar/work/:slug', renderMode: RenderMode.Prerender, getPrerenderParams },
-  { path: '**', renderMode: RenderMode.Prerender },
+  // `**` can't be prerendered to one static file — it matches infinite
+  // unknown paths, not a fixed set like the routes above. Angular's build
+  // silently drops a Prerender wildcard route with no getPrerenderParams
+  // (it produces no output file and isn't in prerendered-routes.json),
+  // which left Vercel falling back to serving the *home* page's index.html
+  // for any unmatched URL — wrong content, wrong <title>, wrong canonical.
+  // RenderMode.Client makes this a proper CSR fallback: the browser loads
+  // index.csr.html, Angular's router matches `**` client-side, and
+  // NotFoundComponent (with its own noindexed SeoService call) renders.
+  { path: '**', renderMode: RenderMode.Client },
 ];
