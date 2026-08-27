@@ -1,4 +1,7 @@
 <div class="sheet" [class.is-open]="open" [attr.aria-hidden]="!open">
+  <!-- Mouse-only backdrop dismiss; keyboard users close via Escape,
+       handled by this component's own (document:keydown.escape) listener. -->
+  <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
   <div class="sheet__veil" (click)="close()"></div>
   <aside class="sheetp" role="dialog" aria-modal="true" [attr.aria-label]="menuLabel" [appFocusTrap]="open">
     <div class="sheetp__top">

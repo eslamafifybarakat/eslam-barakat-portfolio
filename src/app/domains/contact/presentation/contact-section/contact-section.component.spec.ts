@@ -10,7 +10,7 @@ describe('ContactSectionComponent', () => {
     const rows = fixture.nativeElement.querySelectorAll('a.row');
     expect(rows.length).toBe(6);
 
-    const emailRow = Array.from(rows).find((r: any) => r.getAttribute('href')?.startsWith('mailto:')) as HTMLElement;
+    const emailRow = Array.from(rows).find((r) => (r as HTMLElement).getAttribute('href')?.startsWith('mailto:')) as HTMLElement;
     expect(emailRow.querySelector('.row__v--ltr')).toBeTruthy();
   });
 

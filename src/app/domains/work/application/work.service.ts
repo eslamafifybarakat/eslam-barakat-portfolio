@@ -1,4 +1,4 @@
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { WorkRepository } from '../infrastructure/work.repository';
 import type { Project } from '../domain/project.model';
 import type { WorkFilterKey } from '../domain/work-filter.model';

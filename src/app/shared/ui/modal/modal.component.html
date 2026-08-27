@@ -1,5 +1,8 @@
 @if (open) {
   <div class="modal is-open">
+    <!-- Mouse-only backdrop dismiss; keyboard users close via Escape,
+         handled by this component's own (document:keydown.escape) listener. -->
+    <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
     <div class="modal__veil" (click)="close()"></div>
     <div class="modal__box" role="dialog" aria-modal="true" [attr.aria-labelledby]="titleId" [appFocusTrap]="open">
       <app-icon-button class="modal__x" icon="close" [ariaLabel]="closeLabel" (click)="close()" />
