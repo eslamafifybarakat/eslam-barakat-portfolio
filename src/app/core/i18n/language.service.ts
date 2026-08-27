@@ -50,10 +50,35 @@ export class LanguageService {
       const dir = dirFor(lang);
       this.document.documentElement.lang = lang;
       this.document.documentElement.dir = dir;
+      this.preloadFontsFor(lang);
     });
 
     if (isPlatformBrowser(this.platformId)) {
       afterNextRender(() => this.reconcileStoredPreference());
+    }
+  }
+
+  /** Preloads only the font files the CURRENT language's page actually
+   * needs — Archivo 600 + IBM Plex Sans 400 for English, IBM Plex Sans
+   * Arabic 400/600 for Arabic — rather than every self-hosted weight. */
+  private preloadFontsFor(lang: Lang): void {
+    const marker = 'data-font-preload';
+    this.document.head.querySelectorAll(`link[${marker}]`).forEach((el) => el.remove());
+
+    const hrefs =
+      lang === 'ar'
+        ? ['/fonts/ibm-plex-sans-arabic-400-arabic.woff2', '/fonts/ibm-plex-sans-arabic-600-arabic.woff2']
+        : ['/fonts/archivo-var-latin.woff2', '/fonts/ibm-plex-sans-var-latin.woff2'];
+
+    for (const href of hrefs) {
+      const link = this.document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'font';
+      link.type = 'font/woff2';
+      link.href = href;
+      link.crossOrigin = 'anonymous';
+      link.setAttribute(marker, '');
+      this.document.head.appendChild(link);
     }
   }
 

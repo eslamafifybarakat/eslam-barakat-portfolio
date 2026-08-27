@@ -1,11 +1,54 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <title>EslamBarakatPortfolio</title>
-    <base href="/" />
+    <script>
+      // No-flash theme resolution — runs before any stylesheet loads.
+      // Angular's ThemeService reads this same resolved value back on
+      // boot rather than re-deciding, so there is exactly one write.
+      (function () {
+        try {
+          var cookie = document.cookie.match(/(?:^|; )eb_theme=([^;]*)/);
+          var stored = cookie ? decodeURIComponent(cookie[1]) : localStorage.getItem('eb-portfolio-theme');
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+          document.documentElement.dataset.theme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.content = theme === 'dark' ? '#071018' : '#FCFBF9';
+        } catch (e) {
+          /* localStorage/matchMedia unavailable — the dark default already set on <html> stands */
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta name="theme-color" content="#071018" />
+    <title>Eslam Afify Barakat — Senior Angular Frontend Developer</title>
+    <meta
+      name="description"
+      content="Senior Angular Frontend Developer. Interfaces that work in both directions — bilingual Arabic/English SSR platforms built with Angular, Signals and Domain-Driven architecture."
+    />
+    <base href="/" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/mask-icon.svg" color="#0D4A78" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta name="apple-mobile-web-app-title" content="Eslam Barakat" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#071018" />
+    <meta name="msapplication-TileImage" content="/icon-192.png" />
+    <meta name="msapplication-config" content="none" />
+
+    <meta name="author" content="Eslam Afify Barakat" />
+    <meta name="color-scheme" content="dark light" />
   </head>
   <body>
     <app-root></app-root>
