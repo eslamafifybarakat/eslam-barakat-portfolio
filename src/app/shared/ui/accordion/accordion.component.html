@@ -1,0 +1,20 @@
+<div class="accordion">
+  <h3 class="accordion__heading">
+    <button
+      type="button"
+      class="accordion__trigger"
+      [id]="headerId"
+      [attr.aria-expanded]="open()"
+      [attr.aria-controls]="panelId"
+      (click)="toggle()"
+    >
+      <span>{{ title }}</span>
+      <app-icon name="arrow" class="accordion__chevron" [class.is-open]="open()" />
+    </button>
+  </h3>
+  <div class="accordion__panel" [id]="panelId" [attr.aria-labelledby]="headerId" [hidden]="!open()" role="region">
+    <div class="accordion__body">
+      <ng-content />
+    </div>
+  </div>
+</div>

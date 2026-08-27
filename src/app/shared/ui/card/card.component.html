@@ -1,0 +1,19 @@
+<article
+  class="card"
+  appRevealOnScroll
+  [attr.tabindex]="interactive ? 0 : null"
+  [attr.role]="interactive ? 'button' : null"
+  [attr.aria-label]="ariaLabel || null"
+  (click)="interactive && activate.emit()"
+  (keydown)="onKeydown($event)"
+>
+  <span class="card__shot"><ng-content select="[card-media]" /></span>
+  <span class="card__body">
+    <span class="card__head">
+      <span class="card__name"><ng-content select="[card-name]" /></span>
+      <span class="card__when"><ng-content select="[card-when]" /></span>
+    </span>
+    <p class="card__desc"><ng-content select="[card-desc]" /></p>
+  </span>
+  <span class="card__foot"><ng-content select="[card-foot]" /></span>
+</article>

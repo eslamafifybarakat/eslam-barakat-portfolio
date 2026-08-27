@@ -1,0 +1,35 @@
+<div class="sheet" [class.is-open]="open" [attr.aria-hidden]="!open">
+  <div class="sheet__veil" (click)="close()"></div>
+  <aside class="sheetp" role="dialog" aria-modal="true" [attr.aria-label]="menuLabel" [appFocusTrap]="open">
+    <div class="sheetp__top">
+      <app-brand-lockup variant="mark" />
+      <app-icon-button icon="close" [ariaLabel]="closeLabel" (click)="close()" />
+    </div>
+
+    <nav class="sheetnav">
+      @for (item of navItems; track item.id) {
+        <a [href]="item.href" [attr.aria-current]="item.id === activeSection ? 'true' : null" (click)="$event.preventDefault(); navigate(item.href)">
+          <span class="tile"><app-icon [name]="item.icon" /></span>
+          {{ item.label }}
+          <span class="go"><app-icon name="arrow" [directional]="true" /></span>
+        </a>
+      }
+    </nav>
+
+    <div class="sheetp__foot">
+      <div class="sheetp__cta">
+        <app-button variant="primary" size="sm" icon="mail" iconPosition="start" [href]="emailHref">{{
+          emailLabel
+        }}</app-button>
+        <app-button variant="ghost" size="sm" icon="whatsapp" iconPosition="start" [href]="whatsappHref" [external]="true">{{
+          whatsappLabel
+        }}</app-button>
+      </div>
+      <div class="sheetp__row">
+        <app-language-toggle />
+        <app-theme-toggle />
+        <span class="mono slogan">{{ slogan }}</span>
+      </div>
+    </div>
+  </aside>
+</div>

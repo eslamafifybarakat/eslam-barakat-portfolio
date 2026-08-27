@@ -1,0 +1,142 @@
+@use 'mixins' as m;
+
+:host {
+  display: contents;
+}
+
+.card {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  padding: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: start;
+  cursor: pointer;
+  transition:
+    transform 0.35s var(--ease),
+    border-color 0.3s,
+    box-shadow 0.35s;
+  background-image:
+    repeating-linear-gradient(135deg, var(--weave) 0 1px, transparent 1px 16px),
+    radial-gradient(120% 90% at 100% 0%, var(--accent-soft), transparent 46%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--lift);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset-block-end: -14px;
+  inset-inline-end: -12px;
+  width: 132px;
+  height: 132px;
+  pointer-events: none;
+  opacity: 0.9;
+  background: var(--wmark);
+  -webkit-mask: var(--wm) center / contain no-repeat;
+  mask: var(--wm) center / contain no-repeat;
+}
+
+.card__shot {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background:
+    radial-gradient(78% 62% at 12% 4%, var(--accent-soft), transparent 62%),
+    radial-gradient(64% 54% at 96% 96%, var(--cta-soft), transparent 60%),
+    var(--surface-2);
+  border: 1px solid var(--line);
+  display: block;
+}
+
+.card__shot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border-radius: inherit;
+}
+
+.card__shot ::ng-deep img,
+.card__shot ::ng-deep svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.card:hover .card__shot ::ng-deep img,
+.card:hover .card__shot ::ng-deep svg {
+  transform: scale(1.035);
+}
+
+.card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-inline: 3px;
+}
+
+.card__head {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.card__name {
+  font-family: var(--f-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.card__when {
+  font-family: var(--f-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.09em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-inline-start: auto;
+  white-space: nowrap;
+  flex: none;
+}
+
+.card__desc {
+  color: var(--muted);
+  font-size: 0.885rem;
+  margin: 0;
+  @include m.line-clamp(2);
+}
+
+.card__foot {
+  position: relative;
+  z-index: 1;
+  margin-block-start: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 3px 0;
+  border-block-start: 1px solid var(--line);
+  padding-block-start: 11px;
+}
+
+html[dir='rtl'] .card__when {
+  letter-spacing: 0;
+  font-family: 'IBM Plex Sans Arabic', var(--f-body);
+  text-transform: none;
+}

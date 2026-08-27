@@ -68,6 +68,9 @@ $font-display-arabic: 'IBM Plex Sans Arabic', #{$font-display};
   --dx: 4px;
   // gradient/scroll-progress flow direction — flips under [dir="rtl"]
   --flow: right;
+  // EB monogram, used as a mask source for the project card's corner
+  // watermark — references the real static asset, not an inlined data URI
+  --wm: url('/mark-color.svg');
 }
 
 html[dir='rtl'] {

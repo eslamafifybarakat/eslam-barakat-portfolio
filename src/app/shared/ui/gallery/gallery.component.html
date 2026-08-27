@@ -1,0 +1,27 @@
+<div class="gal">
+  <div class="gal__main">
+    <ng-content select="[gallery-poster]" />
+    @if (images.length) {
+      <img appImgFallback [src]="images[index]" [alt]="alt" />
+    }
+  </div>
+
+  @if (images.length > 1) {
+    <div class="gal__thumbs">
+      @for (img of images; track img; let i = $index) {
+        <button
+          type="button"
+          class="gal__t"
+          [class.is-on]="i === index"
+          [attr.aria-current]="i === index"
+          [attr.aria-label]="alt + ' ' + (i + 1)"
+          (click)="select(i)"
+        >
+          <img [src]="img" alt="" appImgFallback />
+        </button>
+      }
+    </div>
+  }
+
+  <p class="gal__cap">{{ images.length ? captionScreenshot : captionPoster }}</p>
+</div>

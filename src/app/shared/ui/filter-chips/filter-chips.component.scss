@@ -1,0 +1,52 @@
+@use 'mixins' as m;
+
+:host {
+  display: contents;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.fchip {
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  font-size: 0.84rem;
+  color: var(--muted);
+  background: var(--surface);
+  min-height: 40px;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    color 0.25s;
+}
+
+.fchip:hover {
+  border-color: var(--line-2);
+  color: var(--text);
+}
+
+.fchip.is-on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+@media (max-width: 680px) {
+  .filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    margin-inline: -4vw;
+    padding-inline: 4vw;
+    scroll-snap-type: x mandatory;
+    @include m.scrollbar-hide;
+  }
+
+  .fchip {
+    flex: none;
+    scroll-snap-align: start;
+  }
+}

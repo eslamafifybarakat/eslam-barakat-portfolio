@@ -1,0 +1,11 @@
+<div class="search">
+  <app-icon name="search" />
+  <input
+    #inputEl
+    type="search"
+    autocomplete="off"
+    [placeholder]="placeholder"
+    [value]="value"
+    (input)="onInput($event)"
+  />
+</div>

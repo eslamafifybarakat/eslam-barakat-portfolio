@@ -1,0 +1,53 @@
+:host {
+  --icon-size: 16px;
+  display: contents;
+}
+
+.search {
+  margin-inline-start: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search input {
+  width: 240px;
+  max-width: 44vw;
+  padding: 11px 14px;
+  padding-inline-start: 38px;
+  border-radius: 11px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.87rem;
+  min-height: 42px;
+  transition:
+    border-color 0.25s,
+    width 0.3s;
+}
+
+.search input:focus {
+  border-color: var(--accent);
+  outline: none;
+  width: 270px;
+}
+
+.search ::ng-deep .i {
+  position: absolute;
+  inset-inline-start: 12px;
+  color: var(--dim);
+  pointer-events: none;
+}
+
+@media (max-width: 680px) {
+  .search {
+    margin-inline-start: 0;
+    width: 100%;
+  }
+
+  .search input,
+  .search input:focus {
+    width: 100%;
+    max-width: none;
+  }
+}

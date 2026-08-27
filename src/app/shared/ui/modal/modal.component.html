@@ -1,0 +1,11 @@
+@if (open) {
+  <div class="modal is-open">
+    <div class="modal__veil" (click)="close()"></div>
+    <div class="modal__box" role="dialog" aria-modal="true" [attr.aria-labelledby]="titleId" [appFocusTrap]="open">
+      <app-icon-button class="modal__x" icon="close" [ariaLabel]="closeLabel" (click)="close()" />
+      <ng-content select="[modal-gallery]" />
+      <h3 [id]="titleId"><ng-content select="[modal-title]" /></h3>
+      <ng-content />
+    </div>
+  </div>
+}

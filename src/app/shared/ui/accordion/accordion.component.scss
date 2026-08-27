@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.accordion__heading {
+  margin: 0;
+}
+
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  padding: 16px 18px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 0.97rem;
+  text-align: start;
+  transition: background 0.25s;
+}
+
+.accordion__trigger:hover {
+  background: var(--surface-2);
+}
+
+.accordion__chevron {
+  color: var(--accent);
+  transform: rotate(90deg);
+  transition: transform 0.3s var(--ease);
+  flex: none;
+}
+
+.accordion__chevron.is-open {
+  transform: rotate(-90deg);
+}
+
+.accordion__panel[hidden] {
+  display: none;
+}
+
+.accordion__body {
+  padding: 0 18px 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
