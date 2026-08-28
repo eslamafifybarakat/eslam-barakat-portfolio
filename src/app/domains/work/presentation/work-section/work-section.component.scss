@@ -20,12 +20,17 @@ section {
   @include m.section-grid;
 }
 
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
 .toolbar {
   display: flex;
   flex-wrap: wrap;
   gap: 0.625rem;
   align-items: center;
-  margin-block-end: var(--s3);
 }
 
 .count {
@@ -34,7 +39,6 @@ section {
   letter-spacing: 0.12em;
   color: var(--dim);
   text-transform: uppercase;
-  margin: 0 0 var(--s3);
 }
 
 html[dir='rtl'] .count {

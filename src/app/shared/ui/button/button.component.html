@@ -7,7 +7,7 @@
   [class.btn--sm]="size === 'sm'"
   [href]="href"
   [attr.target]="external ? '_blank' : null"
-  [attr.rel]="external ? 'noopener' : null"
+  [attr.rel]="external ? 'noopener noreferrer' : null"
   [attr.download]="download === true ? '' : download || null"
   [attr.aria-label]="ariaLabel || null"
 >

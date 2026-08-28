@@ -2,7 +2,8 @@ import { Injectable, inject, signal } from '@angular/core';
 import { WorkRepository } from '../infrastructure/work.repository';
 import type { Project } from '../domain/project.model';
 import type { WorkFilterKey } from '../domain/work-filter.model';
-import type { Lang } from '../../../core/i18n/i18n.model';
+import type { Lang } from '@core/i18n/i18n.model';
+import { TranslationService } from '@core/i18n/translation.service';
 
 const RELATED_LIMIT = 3;
 
@@ -13,6 +14,7 @@ const RELATED_LIMIT = 3;
 @Injectable({ providedIn: 'root' })
 export class WorkService {
   private readonly repository = inject(WorkRepository);
+  private readonly translation = inject(TranslationService);
 
   private readonly _all = signal(this.repository.getAll());
   readonly all = this._all.asReadonly();
@@ -32,7 +34,11 @@ export class WorkService {
 
   /** Matches the reference's `visible()` predicate exactly: filter first,
    * then a case-insensitive substring match over name + stack + the
-   * CURRENT language's description + links. */
+   * CURRENT language's description + links. `lang` is always the caller's
+   * current active language (see `work-section.component.ts`), so
+   * resolving `descriptionKey` against it explicitly — rather than the
+   * reactive `translate()` default — keeps this method pure and testable
+   * with any `lang` regardless of what's currently active. */
   visibleFor(lang: Lang): Project[] {
     const filter = this._filter();
     const q = this._query().trim().toLowerCase();
@@ -41,7 +47,8 @@ export class WorkService {
       if (filter === 'feat' && !project.flagship) return false;
       if ((filter === 'ng' || filter === 'js') && project.kind !== filter) return false;
       if (!q) return true;
-      const haystack = `${project.name} ${project.stack.join(' ')} ${project.description[lang]} ${project.links.join(' ')}`;
+      const description = this.translation.translate(project.descriptionKey, undefined, lang);
+      const haystack = `${project.name} ${project.stack.join(' ')} ${description} ${project.links.join(' ')}`;
       return haystack.toLowerCase().includes(q);
     });
   }

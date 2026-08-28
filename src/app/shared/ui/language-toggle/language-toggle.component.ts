@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
-import { LanguageService } from '../../../core/i18n/language.service';
-import { TranslationService } from '../../../core/i18n/translation.service';
-import type { Lang } from '../../../core/i18n/i18n.model';
+import { LanguageService } from '@core/i18n/language.service';
+import { TranslationService } from '@core/i18n/translation.service';
+import type { Lang } from '@core/i18n/i18n.model';
 
 /** Language toggle — shows the code of the OTHER language ("ع" / "EN") and
  * switches to its mirrored URL, preserving query/fragment, on click. */
@@ -25,8 +25,19 @@ export class LanguageToggleComponent {
       lang: this.translation.translate('portfolio_lang_switch_native_label'),
     }),
   );
+  /** A real, crawlable href to the mirrored URL — clicking still goes
+   * through `switch()` for an in-app SPA navigation (see `onActivate`); the
+   * href itself is what makes this a genuine link rather than a JS-only
+   * control (openable in a new tab, works with JS disabled, correct
+   * `hreflang`). */
+  protected readonly href = computed(() => this.languageService.mirroredHref(this.otherLang()));
 
-  switch(): void {
+  onActivate(event: Event): void {
+    event.preventDefault();
+    this.switch();
+  }
+
+  private switch(): void {
     this.languageService.switchTo(this.otherLang());
   }
 }

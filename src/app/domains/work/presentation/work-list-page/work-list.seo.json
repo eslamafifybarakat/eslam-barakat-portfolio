@@ -1,0 +1,19 @@
+{
+  "status": true,
+  "message": null,
+  "data": {
+    "seo": {
+      "meta_title": "portfolio_seo_work_title",
+      "meta_description": "portfolio_seo_work_description",
+      "meta_keywords": null,
+      "source": null,
+      "img": null,
+      "img_alt": null,
+      "img_title": null,
+      "img_description": null,
+      "img_width": null,
+      "img_height": null,
+      "canonical": null
+    }
+  }
+}

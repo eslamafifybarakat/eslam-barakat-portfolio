@@ -1,19 +1,22 @@
 <section id="about">
   <div class="wrap sec">
-    <app-section-head [eyebrow]="'portfolio_about_eyebrow' | translate" [heading]="'portfolio_about_title' | translate" />
-    <div>
+    <app-section-head
+      [eyebrow]="'portfolio_about_eyebrow' | translate"
+      [heading]="'portfolio_about_title' | translate"
+    />
+    <div class="about__body">
       <div class="prose">
-        @for (p of aboutParagraphs(); track $index) {
-          <div [innerHTML]="(p | localizedText) | safeHtml"></div>
+        @for (key of aboutParagraphKeys(); track key) {
+          <div [innerHTML]="key | translate | safeHtml"></div>
         }
       </div>
       <div class="pillars">
         @for (pillar of pillars(); track pillar.icon) {
           <div class="pillar" appRevealOnScroll>
             <app-icon [name]="pillar.icon" />
-            <div>
-              <b>{{ pillar.title | localizedText }}</b>
-              <span>{{ pillar.description | localizedText }}</span>
+            <div class="pillar__text">
+              <b>{{ pillar.titleKey | translate }}</b>
+              <span>{{ pillar.descriptionKey | translate }}</span>
             </div>
           </div>
         }

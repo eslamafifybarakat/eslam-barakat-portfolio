@@ -4,7 +4,7 @@ import { ConfigService } from '../config/config.service';
 import { LanguageService } from '../i18n/language.service';
 import { TranslationService } from '../i18n/translation.service';
 import { LANGUAGES, mirrorPath } from '../i18n/i18n.model';
-import type { SeoMetaInput } from './seo.model';
+import type { OgType, SeoMetaInput, SeoPayload } from './seo.model';
 
 const DYNAMIC_LINK_MARKER = 'data-seo-dynamic';
 
@@ -55,6 +55,65 @@ export class SeoService {
     this.meta.updateTag({ name: 'twitter:image', content: image });
 
     this.setLinks(canonicalPath, siteUrl, canonicalUrl);
+  }
+
+  /** Same as `set()`, but sourced from a domain data item's `SeoPayload` —
+   * `meta_title`/`meta_description`/`meta_keywords`/`img_alt` are
+   * translation keys, resolved here; a `null` field falls back to
+   * `input.fallbackTitleKey`/`fallbackDescriptionKey` (or is simply
+   * omitted, for the optional fields). `source`/`img_title`/
+   * `img_description` carry through the payload for schema completeness
+   * but have no page-level meta-tag equivalent today. */
+  setFromPayload(
+    payload: SeoPayload | null | undefined,
+    input: {
+      readonly path: string;
+      readonly fallbackTitleKey: string;
+      readonly fallbackDescriptionKey: string;
+      readonly type?: OgType;
+      readonly noindex?: boolean;
+    },
+  ): void {
+    const title = this.translation.translate(payload?.meta_title ?? input.fallbackTitleKey);
+    const description = this.translation.translate(payload?.meta_description ?? input.fallbackDescriptionKey);
+
+    this.set({
+      title,
+      description,
+      path: input.path,
+      image: payload?.img ?? undefined,
+      type: input.type,
+      noindex: input.noindex,
+    });
+
+    if (payload?.canonical) {
+      const canonicalLink = this.document.head.querySelector<HTMLLinkElement>(
+        `link[rel="canonical"][${DYNAMIC_LINK_MARKER}]`,
+      );
+      canonicalLink?.setAttribute('href', payload.canonical);
+    }
+
+    const keywords = payload?.meta_keywords ? this.translation.translate(payload.meta_keywords) : null;
+    const imgAlt = payload?.img_alt ? this.translation.translate(payload.img_alt) : null;
+    const imgWidth = payload?.img_width != null ? String(payload.img_width) : null;
+    const imgHeight = payload?.img_height != null ? String(payload.img_height) : null;
+
+    this.setOrRemoveTag('name="keywords"', { name: 'keywords' }, keywords);
+    this.setOrRemoveTag('property="og:image:alt"', { property: 'og:image:alt' }, imgAlt);
+    this.setOrRemoveTag('property="og:image:width"', { property: 'og:image:width' }, imgWidth);
+    this.setOrRemoveTag('property="og:image:height"', { property: 'og:image:height' }, imgHeight);
+  }
+
+  private setOrRemoveTag(
+    selector: string,
+    tag: { name: string } | { property: string },
+    content: string | null,
+  ): void {
+    if (content) {
+      this.meta.updateTag({ ...tag, content });
+    } else {
+      this.meta.removeTag(selector);
+    }
   }
 
   private setLinks(canonicalPath: string, siteUrl: string, canonicalUrl: string): void {

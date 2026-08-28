@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, DOCUMENT, computed, inject } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { ButtonComponent } from '../../../../shared/ui/button/button.component';
-import { SpecListComponent } from '../../../../shared/ui/spec-list/spec-list.component';
-import { StatCounterComponent } from '../../../../shared/ui/stat-counter/stat-counter.component';
-import { RevealOnScrollDirective } from '../../../../shared/directives/reveal-on-scroll.directive';
-import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
+import { ButtonComponent } from '@shared/ui/button/button.component';
+import { SpecListComponent } from '@shared/ui/spec-list/spec-list.component';
+import { StatCounterComponent } from '@shared/ui/stat-counter/stat-counter.component';
+import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 import { ProfileService } from '../../application/profile.service';
-import { TranslationService } from '../../../../core/i18n/translation.service';
-import { ConfigService } from '../../../../core/config/config.service';
+import { TranslationService } from '@core/i18n/translation.service';
+import { ConfigService } from '@core/config/config.service';
 
 /** The one-page hero — name, role, lede, primary/secondary CTAs, portrait
  * panel with spec sheet and stat counters. The portrait is the page's LCP

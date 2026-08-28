@@ -27,14 +27,14 @@
               class="row"
               [href]="row.href"
               [attr.target]="isExternal(row.href) ? '_blank' : null"
-              [attr.rel]="isExternal(row.href) ? 'noopener' : null"
+              [attr.rel]="relFor(row)"
               [appCopyToClipboard]="row.copy ? row.value : ''"
               (copied)="onCopied()"
             >
               <span class="row__ic"><app-icon [name]="row.icon" /></span>
               <span class="row__txt">
                 <span class="row__k">{{ row.labelKey | translate }}</span>
-                <span class="row__v" [class.row__v--ltr]="row.ltr">{{ row.value }}</span>
+                <span class="row__v" [class.row__v--ltr]="row.ltr" [attr.lang]="row.ltr ? 'en' : null">{{ row.valueKey ? (row.valueKey | translate) : row.value }}</span>
               </span>
               <span class="row__go"><app-icon [name]="row.copy ? 'copy' : 'arrow'" /></span>
             </a>

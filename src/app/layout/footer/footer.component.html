@@ -1,6 +1,9 @@
 <footer>
   <div class="wrap">
     <app-brand-lockup variant="full" class="brand" />
-    <span class="mono">© <span class="ltr">{{ year() }}</span> · {{ builtBy() }}</span>
+    <span class="mono">
+      © <span class="ltr" lang="en">{{ year() }}</span> · {{ builtBy() }} ·
+      <a class="audit-link" [href]="auditPdfHref" target="_blank" rel="noopener">{{ auditLinkLabel() }}</a>
+    </span>
   </div>
 </footer>

@@ -21,7 +21,7 @@ describe('ButtonComponent', () => {
     fixture.detectChanges();
     const link = fixture.debugElement.query(By.css('a.btn')).nativeElement as HTMLAnchorElement;
     expect(link.getAttribute('target')).toBe('_blank');
-    expect(link.getAttribute('rel')).toBe('noopener');
+    expect(link.getAttribute('rel')).toBe('noopener noreferrer');
   });
 
   it('applies the ghost/sm modifier classes', () => {

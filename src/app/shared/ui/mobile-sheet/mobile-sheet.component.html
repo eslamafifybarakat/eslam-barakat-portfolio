@@ -4,12 +4,38 @@
   <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
   <div class="sheet__veil" (click)="close()"></div>
   <aside class="sheetp" role="dialog" aria-modal="true" [attr.aria-label]="menuLabel" [appFocusTrap]="open">
+    <svg class="sheetp__art" viewBox="0 0 390 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <pattern id="sheetp-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+          <path d="M48 0H0v48" fill="none" stroke="var(--art-grid)" stroke-width="1" />
+        </pattern>
+        <linearGradient id="sheetp-fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity="1" />
+          <stop offset="0.5" stop-color="#fff" stop-opacity=".3" />
+          <stop offset="1" stop-color="#fff" stop-opacity="0" />
+        </linearGradient>
+        <mask id="sheetp-mask"><rect width="390" height="900" fill="url(#sheetp-fade)" /></mask>
+      </defs>
+
+      <g mask="url(#sheetp-mask)"><rect width="390" height="900" fill="url(#sheetp-grid)" /></g>
+
+      <g fill="none" stroke="var(--art-line)" opacity=".55">
+        <circle cx="344" cy="66" r="54" />
+        <circle cx="344" cy="66" r="96" />
+        <circle cx="344" cy="66" r="142" stroke-dasharray="3 9" />
+      </g>
+
+      <path d="M0 452h146" stroke="var(--art-line)" stroke-width="1" stroke-dasharray="6 10" opacity=".4" />
+      <path d="M0 610h92" stroke="var(--art-line)" stroke-width="1" stroke-dasharray="6 10" opacity=".4" />
+      <path d="M390 780v120" stroke="var(--art-line)" stroke-width="1" stroke-dasharray="6 10" opacity=".4" />
+    </svg>
+
     <div class="sheetp__top">
       <app-brand-lockup variant="mark" />
       <app-icon-button icon="close" [ariaLabel]="closeLabel" (click)="close()" />
     </div>
 
-    <nav class="sheetnav">
+    <nav class="sheetnav" [attr.aria-label]="navLabel">
       @for (item of navItems; track item.id) {
         <a [href]="item.href" [attr.aria-current]="item.id === activeSection ? 'true' : null" (click)="$event.preventDefault(); navigate(item.href)">
           <span class="tile"><app-icon [name]="item.icon" /></span>
@@ -29,8 +55,10 @@
         }}</app-button>
       </div>
       <div class="sheetp__row">
-        <app-language-toggle />
-        <app-theme-toggle />
+        <div class="sheetp__toggles">
+          <app-language-toggle />
+          <app-theme-toggle />
+        </div>
         <span class="mono slogan">{{ slogan }}</span>
       </div>
     </div>

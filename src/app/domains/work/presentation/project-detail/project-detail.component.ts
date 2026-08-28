@@ -1,23 +1,22 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalComponent } from '../../../../shared/ui/modal/modal.component';
-import { GalleryComponent } from '../../../../shared/ui/gallery/gallery.component';
-import { ProjectPosterComponent } from '../../../../shared/ui/project-poster/project-poster.component';
-import { ButtonComponent } from '../../../../shared/ui/button/button.component';
-import { IconComponent } from '../../../../shared/ui/icon/icon.component';
+import { ModalComponent } from '@shared/ui/modal/modal.component';
+import { GalleryComponent } from '@shared/ui/gallery/gallery.component';
+import { ProjectPosterComponent } from '@shared/ui/project-poster/project-poster.component';
+import { ButtonComponent } from '@shared/ui/button/button.component';
+import { IconComponent } from '@shared/ui/icon/icon.component';
 import { ProjectCardComponent } from '../project-card/project-card.component';
-import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
-import { LocalizedTextPipe } from '../../../../shared/pipes/localized-text.pipe';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 import { WorkService } from '../../application/work.service';
 import { GalleryProbeService } from '../../application/gallery-probe.service';
-import { LanguageService } from '../../../../core/i18n/language.service';
-import { TranslationService } from '../../../../core/i18n/translation.service';
-import { SeoService } from '../../../../core/seo/seo.service';
-import { JsonLdService } from '../../../../core/seo/json-ld.service';
-import { ConfigService } from '../../../../core/config/config.service';
-import { LANG_URL_PREFIX } from '../../../../core/i18n/i18n.model';
-import { hostFromUrl } from '../../../../shared/utils/host-from-url';
+import { LanguageService } from '@core/i18n/language.service';
+import { TranslationService } from '@core/i18n/translation.service';
+import { LANG_URL_PREFIX } from '@core/i18n/i18n.model';
+import { SeoService } from '@core/seo/seo.service';
+import { JsonLdService } from '@core/seo/json-ld.service';
+import { ConfigService } from '@core/config/config.service';
+import { hostFromUrl } from '@shared/utils/host-from-url';
 import type { Project } from '../../domain/project.model';
 
 /**
@@ -41,7 +40,6 @@ import type { Project } from '../../domain/project.model';
     IconComponent,
     ProjectCardComponent,
     TranslatePipe,
-    LocalizedTextPipe,
   ],
   templateUrl: './project-detail.component.html',
   styleUrl: './project-detail.component.scss',
@@ -115,23 +113,33 @@ export class ProjectDetailComponent {
     const siteUrl = this.config.config().siteUrl;
     const path = `${LANG_URL_PREFIX[lang]}/work/${project.slug}`;
     const siteName = this.translation.translate('portfolio_seo_site_name');
+    const description = this.translation.translate(project.descriptionKey);
 
-    this.seo.set({
-      title: `${project.name} — ${siteName}`,
-      description: project.description[lang],
-      path,
-      type: 'article',
-    });
+    if (project.seo) {
+      this.seo.setFromPayload(project.seo, {
+        path,
+        fallbackTitleKey: project.descriptionKey,
+        fallbackDescriptionKey: project.descriptionKey,
+        type: 'article',
+      });
+    } else {
+      this.seo.set({
+        title: `${project.name} — ${siteName}`,
+        description,
+        path,
+        type: 'article',
+      });
+    }
 
     this.jsonLd.set('project', {
       '@context': 'https://schema.org',
       '@type': project.kind === 'ng' ? 'SoftwareApplication' : 'CreativeWork',
       name: project.name,
-      description: project.description[lang],
+      description,
       url: project.links[0],
       applicationCategory: project.kind === 'ng' ? 'WebApplication' : undefined,
       keywords: project.stack.join(', '),
-      temporalCoverage: project.period.en,
+      temporalCoverage: this.translation.translate(project.periodKey, undefined, 'en'),
     });
 
     this.jsonLd.set('breadcrumbs', {

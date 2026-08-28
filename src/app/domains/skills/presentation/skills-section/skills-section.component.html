@@ -6,11 +6,11 @@
       [lede]="'portfolio_stack_lede' | translate"
     />
     <div class="skills">
-      @for (group of skillsService.groups(); track group.label.en) {
+      @for (group of skillsService.groups(); track group.labelKey) {
         <div class="skill" appRevealOnScroll>
           <div class="skill__k">
             <app-icon [name]="group.icon" />
-            {{ group.label | localizedText }}
+            {{ group.labelKey | translate }}
           </div>
           <div class="chips">
             @for (tech of group.technologies; track tech) {

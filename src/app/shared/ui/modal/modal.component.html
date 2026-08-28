@@ -7,7 +7,15 @@
     <div class="modal__box" role="dialog" aria-modal="true" [attr.aria-labelledby]="titleId" [appFocusTrap]="open">
       <app-icon-button class="modal__x" icon="close" [ariaLabel]="closeLabel" (click)="close()" />
       <ng-content select="[modal-gallery]" />
-      <h3 [id]="titleId"><ng-content select="[modal-title]" /></h3>
+      <!-- role="heading" + aria-level, not a literal h2/h3: `<ng-content
+           select>` can only appear once per selector in a template — an
+           @if/@else pair of <h2>/<h3> would each need their own
+           ng-content, and Angular silently drops the projected content
+           from whichever one isn't rendered. One real element with a
+           runtime-set level is the standard fix (WAI-ARIA APG). -->
+      <div class="modal__title" role="heading" [attr.aria-level]="titleLevel" [id]="titleId">
+        <ng-content select="[modal-title]" />
+      </div>
       <ng-content />
     </div>
   </div>

@@ -3,7 +3,7 @@
     class="brand-lockup"
     viewBox="0 0 470 96"
     role="img"
-    aria-label="Eslam Afify Barakat — Software Engineer, Web Developer"
+    [attr.aria-label]="fullAriaLabel()"
   >
     <title>Eslam Afify Barakat</title>
     <rect x="2.8" y="2.8" width="90.4" height="90.4" rx="24" fill="none" class="frame" stroke-width="3.2" />
@@ -49,12 +49,12 @@
       letter-spacing="2.4"
       class="subtitle"
     >
-      SOFTWARE ENGINEER &#183; WEB DEVELOPER
+      {{ subtitle() }}
     </text>
   </svg>
 } @else {
   <svg class="brand-lockup" viewBox="0 0 96 96" role="img" aria-label="Eslam Afify Barakat">
-    <title>EB monogram</title>
+    <title>{{ monogramTitle() }}</title>
     <rect x="2.8" y="2.8" width="90.4" height="90.4" rx="24" fill="none" class="frame" stroke-width="3.2" />
     <rect
       x="10"

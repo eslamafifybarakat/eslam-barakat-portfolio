@@ -1,6 +1,10 @@
 <div class="sec__head">
   <app-eyebrow>{{ eyebrow }}</app-eyebrow>
-  <h2 class="sec-t">{{ heading }}</h2>
+  @if (level === 1) {
+    <h1 class="sec-t">{{ heading }}</h1>
+  } @else {
+    <h2 class="sec-t">{{ heading }}</h2>
+  }
   @if (lede) {
     <p class="sec-lede">{{ lede }}</p>
   }

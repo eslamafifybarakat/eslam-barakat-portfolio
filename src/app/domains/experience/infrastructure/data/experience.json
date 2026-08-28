@@ -1,0 +1,48 @@
+{
+  "status": true,
+  "message": null,
+  "data": {
+    "jobs": [
+      {
+        "company": "Talbinah — تلبينة",
+        "whenKey": "portfolio_experience_talbinah_when",
+        "roleKey": "portfolio_experience_talbinah_role",
+        "metaKey": "portfolio_experience_talbinah_meta",
+        "site": "https://talbinah.net/",
+        "bulletKeys": [
+          "portfolio_experience_talbinah_bullet_1",
+          "portfolio_experience_talbinah_bullet_2",
+          "portfolio_experience_talbinah_bullet_3",
+          "portfolio_experience_talbinah_bullet_4",
+          "portfolio_experience_talbinah_bullet_5",
+          "portfolio_experience_talbinah_bullet_6"
+        ]
+      },
+      {
+        "company": "AppzLabz",
+        "whenKey": "portfolio_experience_appzlabz_when",
+        "roleKey": "portfolio_experience_appzlabz_role",
+        "metaKey": "portfolio_experience_appzlabz_meta",
+        "bulletKeys": [
+          "portfolio_experience_appzlabz_bullet_1",
+          "portfolio_experience_appzlabz_bullet_2",
+          "portfolio_experience_appzlabz_bullet_3",
+          "portfolio_experience_appzlabz_bullet_4",
+          "portfolio_experience_appzlabz_bullet_5"
+        ]
+      },
+      {
+        "company": "Hashstudio Inc.",
+        "whenKey": "portfolio_experience_hashstudio_when",
+        "roleKey": "portfolio_experience_hashstudio_role",
+        "metaKey": "portfolio_experience_hashstudio_meta",
+        "site": "https://hashstudio.dev/",
+        "bulletKeys": [
+          "portfolio_experience_hashstudio_bullet_1",
+          "portfolio_experience_hashstudio_bullet_2",
+          "portfolio_experience_hashstudio_bullet_3"
+        ]
+      }
+    ]
+  }
+}

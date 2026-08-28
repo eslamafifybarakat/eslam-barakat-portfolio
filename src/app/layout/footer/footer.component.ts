@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, afterNextRender, computed, inject, signal } from '@angular/core';
-import { BrandLockupComponent } from '../../shared/ui/brand-lockup/brand-lockup.component';
-import { TranslationService } from '../../core/i18n/translation.service';
+import { BrandLockupComponent } from '@shared/ui/brand-lockup/brand-lockup.component';
+import { TranslationService } from '@core/i18n/translation.service';
 
 @Component({
   selector: 'app-footer',
@@ -19,6 +19,8 @@ export class FooterComponent {
   // deploys.
   protected readonly year = signal(new Date().getFullYear());
   protected readonly builtBy = computed(() => this.translation.translate('portfolio_footer_built_by'));
+  protected readonly auditLinkLabel = computed(() => this.translation.translate('portfolio_footer_audit_link'));
+  protected readonly auditPdfHref = '/Eslam_Afify_Barakat_Portfolio_Performance_Audit.pdf';
 
   constructor() {
     afterNextRender(() => this.year.set(new Date().getFullYear()));

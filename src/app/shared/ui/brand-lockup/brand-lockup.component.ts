@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, computed, inject } from '@angular/core';
+import { TranslationService } from '@core/i18n/translation.service';
 
 /**
  * The `EB` monogram (and, in `variant="full"`, the full wordmark lockup),
@@ -17,5 +18,13 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrandLockupComponent {
+  private readonly translation = inject(TranslationService);
+
   @Input() variant: 'mark' | 'full' = 'mark';
+
+  /** The name is a proper noun, kept literal in both languages — only the
+   * role subtitle is translated. */
+  protected readonly subtitle = computed(() => this.translation.translate('portfolio_shell_brand_subtitle'));
+  protected readonly fullAriaLabel = computed(() => `Eslam Afify Barakat — ${this.subtitle()}`);
+  protected readonly monogramTitle = computed(() => this.translation.translate('portfolio_brand_monogram_title'));
 }

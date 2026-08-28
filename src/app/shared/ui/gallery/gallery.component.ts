@@ -9,6 +9,7 @@ import {
   inject,
 } from '@angular/core';
 import { ImgFallbackDirective } from '../../directives/img-fallback.directive';
+import { LazyLoadImgDirective } from '../../directives/lazy-load-img.directive';
 
 /**
  * The project modal's image gallery — main image + thumbnail strip, poster
@@ -24,7 +25,7 @@ import { ImgFallbackDirective } from '../../directives/img-fallback.directive';
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [ImgFallbackDirective],
+  imports: [ImgFallbackDirective, LazyLoadImgDirective],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

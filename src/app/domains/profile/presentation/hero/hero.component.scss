@@ -20,13 +20,24 @@
   align-items: center;
 }
 
+.hero__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.hero__intro-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
 .hero__available {
   color: var(--dim);
 }
 
 .hero h1 {
   font-size: clamp(2.5rem, 6.6vw, 4.7rem);
-  margin: var(--s3) 0 0;
 }
 
 .hero h1 .metal {
@@ -42,7 +53,6 @@
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-block: var(--s3) 0;
 }
 
 html[dir='rtl'] .hero__role {
@@ -55,14 +65,12 @@ html[dir='rtl'] .hero__role {
   color: var(--muted);
   font-size: clamp(1rem, 1.6vw, 1.11rem);
   max-width: 52ch;
-  margin-block-start: var(--s3);
 }
 
 .hero__cta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.625rem;
-  margin-block-start: var(--s4);
 }
 
 .panel {
@@ -71,13 +79,15 @@ html[dir='rtl'] .hero__role {
   background: var(--surface);
   padding: var(--s4);
   box-shadow: var(--lift);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
 }
 
 .panel__top {
   display: flex;
   gap: var(--s3);
   align-items: center;
-  margin-block-end: var(--s4);
 }
 
 .portrait {
@@ -153,7 +163,6 @@ html[dir='rtl'] .hero__role {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--s3);
-  margin-block-start: var(--s4);
 }
 
 @media (max-width: 67.5rem) {

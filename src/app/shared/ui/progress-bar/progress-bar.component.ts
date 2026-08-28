@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ScrollProgressService } from '../../../core/scroll/scroll-progress.service';
+import { ScrollProgressService } from '@core/scroll/scroll-progress.service';
 
 /** The fixed 2px scroll-progress bar, `--accent` → `--cta`, direction-aware
  * via the global `--flow` custom property. */

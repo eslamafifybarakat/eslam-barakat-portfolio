@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, DOCUMENT, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { ProgressBarComponent } from './shared/ui/progress-bar/progress-bar.component';
-import { BackToTopComponent } from './shared/ui/back-to-top/back-to-top.component';
-import { ToastComponent } from './shared/ui/toast/toast.component';
-import { IconSpriteComponent } from './shared/ui/icon/icon-sprite.component';
-import { PosterSpriteComponent } from './shared/ui/project-poster/poster-sprite.component';
-import { TranslatePipe } from './shared/pipes/translate.pipe';
-import { ThemeService } from './core/theme/theme.service';
-import { LanguageService } from './core/i18n/language.service';
+import { HeaderComponent } from '@layout/header/header.component';
+import { FooterComponent } from '@layout/footer/footer.component';
+import { ProgressBarComponent } from '@shared/ui/progress-bar/progress-bar.component';
+import { BackToTopComponent } from '@shared/ui/back-to-top/back-to-top.component';
+import { ToastComponent } from '@shared/ui/toast/toast.component';
+import { IconSpriteComponent } from '@shared/ui/icon/icon-sprite.component';
+import { PosterSpriteComponent } from '@shared/ui/project-poster/poster-sprite.component';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
+import { ThemeService } from '@core/theme/theme.service';
+import { LanguageService } from '@core/i18n/language.service';
 
 @Component({
   selector: 'app-root',

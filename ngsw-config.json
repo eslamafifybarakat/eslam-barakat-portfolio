@@ -1,0 +1,36 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "navigationRequestStrategy": "freshness",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": ["/favicon.ico", "/favicon.svg", "/index.html", "/manifest.webmanifest", "/site.webmanifest", "/*.css", "/*.js"]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/fonts/**",
+          "/img/**",
+          "/og/**",
+          "/*.png",
+          "/*.svg",
+          "/*.webp",
+          "/*.avif",
+          "/apple-touch-icon.png",
+          "/icon-192.png",
+          "/icon-512.png",
+          "/icon-512-maskable.png",
+          "/mask-icon.svg"
+        ]
+      }
+    }
+  ]
+}

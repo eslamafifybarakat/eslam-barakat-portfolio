@@ -34,7 +34,9 @@
 
 .search ::ng-deep .i {
   position: absolute;
+  top: 50%;
   inset-inline-start: 0.75rem;
+  transform: translateY(-50%);
   color: var(--dim);
   pointer-events: none;
 }

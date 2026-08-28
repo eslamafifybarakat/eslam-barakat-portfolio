@@ -15,8 +15,8 @@
 
     <span modal-title>{{ p.name }}</span>
 
-    <p class="modal__when">{{ p.period | localizedText }}</p>
-    <p class="modal__desc">{{ p.description | localizedText }}</p>
+    <p class="modal__when">{{ p.periodKey | translate }}</p>
+    <p class="modal__desc">{{ p.descriptionKey | translate }}</p>
 
     <dl class="kv">
       <dt>{{ 'portfolio_work_detail_stack_label' | translate }}</dt>
@@ -26,16 +26,16 @@
       <dt>{{ 'portfolio_work_detail_links_label' | translate }}</dt>
       <dd class="linklist">
         @for (link of p.links; track link) {
-          <a [href]="link" target="_blank" rel="noopener">
+          <a [href]="link" target="_blank" rel="noopener noreferrer">
             <app-icon name="external" />
-            <span class="ltr">{{ link }}</span>
+            <span class="ltr" lang="en">{{ link }}</span>
           </a>
         }
       </dd>
     </dl>
 
-    @if (p.note) {
-      <p class="note">{{ 'portfolio_work_infrastructure_note_label' | translate }}: {{ p.note | localizedText }}</p>
+    @if (p.noteKey) {
+      <p class="note">{{ 'portfolio_work_infrastructure_note_label' | translate }}: {{ p.noteKey | translate }}</p>
     }
 
     <div class="modal__cta">
@@ -49,7 +49,7 @@
         <p class="related__title mono">{{ 'portfolio_work_related_title' | translate }}</p>
         <div class="related__grid">
           @for (r of related(); track r.slug) {
-            <app-project-card [project]="r" (openDetails)="openRelated(r.slug)" />
+            <app-project-card [project]="r" [headingLevel]="4" (openDetails)="openRelated(r.slug)" />
           }
         </div>
       </div>

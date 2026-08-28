@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, DOCUMENT, PLATFORM_ID, computed, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
-import { ScrollProgressService } from '../../../core/scroll/scroll-progress.service';
-import { TranslationService } from '../../../core/i18n/translation.service';
+import { ScrollProgressService } from '@core/scroll/scroll-progress.service';
+import { TranslationService } from '@core/i18n/translation.service';
 import { prefersReducedMotion } from '../../utils/reduced-motion';
 
 const APPEAR_AFTER_PX = 600;

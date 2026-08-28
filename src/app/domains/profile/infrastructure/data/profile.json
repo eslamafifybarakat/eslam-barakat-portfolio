@@ -1,0 +1,39 @@
+{
+  "status": true,
+  "message": null,
+  "data": {
+    "aboutParagraphKeys": [
+      "portfolio_about_paragraph_1",
+      "portfolio_about_paragraph_2",
+      "portfolio_about_paragraph_3"
+    ],
+    "pillars": [
+      {
+        "icon": "layers",
+        "titleKey": "portfolio_pillar_signals_title",
+        "descriptionKey": "portfolio_pillar_signals_description"
+      },
+      {
+        "icon": "wave",
+        "titleKey": "portfolio_pillar_realtime_title",
+        "descriptionKey": "portfolio_pillar_realtime_description"
+      },
+      {
+        "icon": "mirror",
+        "titleKey": "portfolio_pillar_bilingual_title",
+        "descriptionKey": "portfolio_pillar_bilingual_description"
+      },
+      {
+        "icon": "seo",
+        "titleKey": "portfolio_pillar_seo_title",
+        "descriptionKey": "portfolio_pillar_seo_description"
+      }
+    ],
+    "stats": {
+      "years": 5,
+      "yearsSuffix": "+",
+      "projects": 30,
+      "languages": 2
+    }
+  }
+}

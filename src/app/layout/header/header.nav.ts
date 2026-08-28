@@ -1,5 +1,5 @@
-import type { IconName } from '../../shared/ui/icon/icon.model';
-import { SECTION_IDS, SectionId } from '../../core/scroll/section-spy.service';
+import type { IconName } from '@shared/ui/icon/icon.model';
+import { SECTION_IDS, SectionId } from '@core/scroll/section-spy.service';
 
 interface NavMeta {
   readonly id: SectionId;

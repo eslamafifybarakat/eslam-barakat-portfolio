@@ -1,0 +1,23 @@
+{
+  "status": true,
+  "message": null,
+  "data": {
+    "titleKey": "portfolio_404_title",
+    "messageKey": "portfolio_404_message",
+    "ctaHomeKey": "portfolio_404_cta_home",
+    "ctaWorkKey": "portfolio_404_cta_work",
+    "seo": {
+      "meta_title": "portfolio_seo_404_title",
+      "meta_description": "portfolio_404_message",
+      "meta_keywords": null,
+      "source": null,
+      "img": null,
+      "img_alt": null,
+      "img_title": null,
+      "img_description": null,
+      "img_width": null,
+      "img_height": null,
+      "canonical": null
+    }
+  }
+}

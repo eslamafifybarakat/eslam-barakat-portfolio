@@ -13,6 +13,7 @@ import type { FilterOption } from './filter-chips.model';
 export class FilterChipsComponent {
   @Input({ required: true }) options!: readonly FilterOption[];
   @Input({ required: true }) active!: string;
+  @Input() ariaLabel?: string;
   @Output() readonly activeChange = new EventEmitter<string>();
 
   select(key: string): void {

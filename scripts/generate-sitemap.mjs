@@ -10,7 +10,12 @@ import path from 'node:path';
 
 const SITE_URL = 'https://eslam-barakat-portfolio.vercel.app';
 const root = path.dirname(fileURLToPath(import.meta.url));
-const browserDir = path.join(root, '..', 'dist', 'eslam-barakat-portfolio', 'browser');
+// Same override as scripts/lighthouse.mjs — lets an isolated build (e.g.
+// `ng build --output-path=...`) generate its own sitemap without touching
+// the shared dist/ output. Default is unchanged.
+const browserDir = process.env.LH_BROWSER_DIR
+  ? path.resolve(process.env.LH_BROWSER_DIR)
+  : path.join(root, '..', 'dist', 'eslam-barakat-portfolio', 'browser');
 
 if (!existsSync(browserDir)) {
   console.error(`Build output not found at ${browserDir} — run "ng build" first.`);

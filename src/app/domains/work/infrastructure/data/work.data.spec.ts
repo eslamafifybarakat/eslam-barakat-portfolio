@@ -16,11 +16,10 @@ describe('PROJECTS data', () => {
     expect(PROJECTS.filter((p) => p.kind === 'js').length).toBe(12);
   });
 
-  it('every project has at least one live link and a bilingual description', () => {
+  it('every project has at least one live link and a description key', () => {
     for (const project of PROJECTS) {
       expect(project.links.length).toBeGreaterThan(0);
-      expect(project.description.en.length).toBeGreaterThan(0);
-      expect(project.description.ar.length).toBeGreaterThan(0);
+      expect(project.descriptionKey.length).toBeGreaterThan(0);
     }
   });
 });

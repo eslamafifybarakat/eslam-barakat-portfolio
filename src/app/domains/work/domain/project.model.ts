@@ -1,5 +1,5 @@
-import type { LocalizedText } from '../../../core/i18n/i18n.model';
-import type { PosterScene } from '../../../shared/ui/project-poster/project-poster.model';
+import type { PosterScene } from '@shared/ui/project-poster/project-poster.model';
+import type { SeoPayload } from '@core/seo/seo.model';
 
 export type ProjectKind = 'ng' | 'js';
 
@@ -11,16 +11,20 @@ export interface Project {
   readonly name: string;
   readonly kind: ProjectKind;
   readonly flagship: boolean;
-  readonly period: LocalizedText;
-  readonly description: LocalizedText;
+  readonly periodKey: string;
+  readonly descriptionKey: string;
   /** `·`-joined in the reference; kept as a real array here. */
   readonly stack: readonly string[];
   readonly links: readonly string[];
-  readonly note?: LocalizedText;
+  readonly noteKey?: string;
   /** Candidate screenshot filenames (relative to `/assets/shots/`) — not
    * verified here; the gallery probes them at render time and falls back
    * to the poster silently if a file is missing. */
   readonly shot?: string;
   readonly shots?: readonly string[];
   readonly posterScene: PosterScene;
+  /** Per-project SEO override — absent for every project today;
+   * `project-detail` falls back to a computed title/description from
+   * `name`/`descriptionKey` when this is absent or `null`. */
+  readonly seo?: SeoPayload | null;
 }

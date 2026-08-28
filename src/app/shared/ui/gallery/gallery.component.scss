@@ -62,7 +62,7 @@
   letter-spacing: 0.11em;
   color: var(--dim);
   text-transform: uppercase;
-  margin: 0.5625rem 0 var(--s4);
+  margin-block: 0.5625rem var(--s4);
 }
 
 html[dir='rtl'] .gal__cap {

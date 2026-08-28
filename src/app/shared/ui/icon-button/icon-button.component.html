@@ -1,12 +1,33 @@
-<button
-  class="iconbtn"
-  [type]="type"
-  [attr.aria-label]="ariaLabel"
-  [attr.aria-expanded]="expanded === undefined ? null : expanded"
->
+@if (href) {
+  <a
+    class="iconbtn"
+    [href]="href"
+    [attr.hreflang]="hreflang || null"
+    [attr.aria-label]="ariaLabel"
+    [attr.aria-expanded]="expanded === undefined ? null : expanded"
+  >
+    <ng-container *ngTemplateOutlet="inner" />
+  </a>
+} @else {
+  <button
+    class="iconbtn"
+    [type]="type"
+    [attr.aria-label]="ariaLabel"
+    [attr.aria-expanded]="expanded === undefined ? null : expanded"
+  >
+    <ng-container *ngTemplateOutlet="inner" />
+  </button>
+}
+
+<!-- Exactly one <ng-content> declaration, reused via ngTemplateOutlet from
+     both branches above — this Angular version silently drops projected
+     content when the same default-slot <ng-content> appears more than once
+     across a component's template, even across mutually-exclusive @if
+     branches. See button.component.html for the same pattern/bug. -->
+<ng-template #inner>
   @if (icon) {
     <app-icon [name]="icon" />
   } @else {
     <ng-content />
   }
-</button>
+</ng-template>

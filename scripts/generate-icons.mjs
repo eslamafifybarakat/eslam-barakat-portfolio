@@ -11,9 +11,13 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(root, '..', 'public');
 const markSvg = readFileSync(path.join(publicDir, 'mark-color.svg'));
 const markWhiteSvg = readFileSync(path.join(publicDir, 'mark-white.svg'));
+// favicon.svg carries its own (smaller, size-appropriate) corner radius for
+// the browser tab — kept independent of mark-color.svg so the other icons
+// (apple touch, PWA, maskable) stay on the standard mark radius.
+const faviconSvg = readFileSync(path.join(publicDir, 'favicon.svg'));
 
-async function renderPng(size, background = { r: 0, g: 0, b: 0, alpha: 0 }) {
-  return sharp(markSvg, { density: 384 })
+async function renderPng(size, background = { r: 0, g: 0, b: 0, alpha: 0 }, source = markSvg) {
+  return sharp(source, { density: 384 })
     .resize(size, size, { fit: 'contain', background })
     .png()
     .toBuffer();
@@ -71,8 +75,8 @@ function buildIco(entries) {
 
 async function main() {
   const [png16, png32, png180, png192, png512, png512Maskable] = await Promise.all([
-    renderPng(16),
-    renderPng(32),
+    renderPng(16, undefined, faviconSvg),
+    renderPng(32, undefined, faviconSvg),
     renderPng(180, { r: 255, g: 255, b: 255, alpha: 1 }),
     renderPng(192),
     renderPng(512),

@@ -2,12 +2,12 @@
   <div class="wrap sec">
     <app-section-head [eyebrow]="'portfolio_education_eyebrow' | translate" [heading]="'portfolio_education_title' | translate" />
     <div class="edu">
-      @for (entry of entries(); track entry.title.en) {
+      @for (entry of entries(); track entry.titleKey) {
         <div class="edu__row" appRevealOnScroll>
           <app-icon [name]="entry.icon" />
-          <b>{{ entry.title | localizedText }}</b>
-          <span>{{ entry.place | localizedText }}</span>
-          <em>{{ entry.when | localizedText }}</em>
+          <b>{{ entry.titleKey | translate }}</b>
+          <span>{{ entry.placeKey | translate }}</span>
+          <em>{{ entry.whenKey | translate }}</em>
         </div>
       }
     </div>

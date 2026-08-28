@@ -7,9 +7,9 @@
   <p class="job__meta">
     <span>{{ item.meta }}</span>
     @if (item.site) {
-      <a class="act" [href]="item.site" target="_blank" rel="noopener">
+      <a class="act" [href]="item.site" target="_blank" rel="noopener noreferrer">
         <app-icon name="external" />
-        <span class="ltr">{{ item.siteHost }}</span>
+        <span class="ltr" lang="en">{{ item.siteHost }}</span>
       </a>
     }
   </p>

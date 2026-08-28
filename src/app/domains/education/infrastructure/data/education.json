@@ -1,0 +1,26 @@
+{
+  "status": true,
+  "message": null,
+  "data": {
+    "entries": [
+      {
+        "icon": "cap",
+        "titleKey": "portfolio_education_degree_title",
+        "placeKey": "portfolio_education_degree_place",
+        "whenKey": "portfolio_education_degree_when"
+      },
+      {
+        "icon": "doc",
+        "titleKey": "portfolio_education_diploma_title",
+        "placeKey": "portfolio_education_diploma_place",
+        "whenKey": "portfolio_education_diploma_when"
+      },
+      {
+        "icon": "globe",
+        "titleKey": "portfolio_education_languages_title",
+        "placeKey": "portfolio_education_languages_place",
+        "whenKey": "portfolio_education_languages_when"
+      }
+    ]
+  }
+}

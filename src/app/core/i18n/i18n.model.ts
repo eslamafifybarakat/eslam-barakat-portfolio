@@ -22,13 +22,6 @@ export function isLang(value: string | null | undefined): value is Lang {
   return value === 'en' || value === 'ar';
 }
 
-/** A field authored once in each of the two languages — used throughout the
- * domain data layer for long-form bilingual content (§13 of the brief). */
-export interface LocalizedText {
-  readonly en: string;
-  readonly ar: string;
-}
-
 export const LANG_STORAGE_KEY = 'eb-portfolio-lang';
 export const LANG_COOKIE_KEY = 'eb_lang';
 

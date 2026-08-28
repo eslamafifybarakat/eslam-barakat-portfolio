@@ -4,24 +4,31 @@
       [eyebrow]="'portfolio_work_eyebrow' | translate"
       [heading]="'portfolio_work_title' | translate"
       [lede]="'portfolio_work_lede' | translate"
+      [level]="headingLevel"
     />
-    <div>
+    <div class="results">
       <div class="toolbar">
         <app-filter-chips
           [options]="filterOptions()"
           [active]="workService.filter()"
+          [ariaLabel]="'portfolio_work_filter_group_label' | translate"
           (activeChange)="workService.setFilter($any($event))"
         />
         <app-search-input
           [value]="workService.query()"
           [placeholder]="'portfolio_work_search_placeholder' | translate"
+          [ariaLabel]="'portfolio_work_search_label' | translate"
           (valueChange)="workService.setQuery($event)"
         />
       </div>
-      <p class="count">{{ countText() }}</p>
+      <p class="count" role="status" aria-live="polite">{{ countText() }}</p>
       <div class="grid">
         @for (project of visible(); track project.slug) {
-          <app-project-card [project]="project" (openDetails)="openProject(project.slug)" />
+          <app-project-card
+            [project]="project"
+            [headingLevel]="headingLevel === 1 ? 2 : 3"
+            (openDetails)="openProject(project.slug)"
+          />
         } @empty {
           <p class="empty">{{ 'portfolio_work_empty' | translate }}</p>
         }

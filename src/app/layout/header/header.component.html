@@ -1,5 +1,5 @@
 <header class="top">
-  <a class="lock" [routerLink]="homePath()" fragment="home" aria-label="Eslam Afify Barakat — top">
+  <a class="lock" [routerLink]="homePath()" fragment="home" [attr.aria-label]="logoAriaLabel()">
     <app-brand-lockup variant="mark" class="lock__mark" />
     <span class="lock__txt">
       <b>Eslam Afify Barakat</b>
@@ -7,7 +7,7 @@
     </span>
   </a>
 
-  <nav class="nav">
+  <nav class="nav" [attr.aria-label]="primaryNavLabel()">
     @for (item of navItems(); track item.id) {
       <a
         class="navlink"
@@ -40,4 +40,5 @@
   [whatsappLabel]="whatsappLabel()"
   [closeLabel]="closeLabel()"
   [menuLabel]="menuLabel()"
+  [navLabel]="mobileNavLabel()"
 />

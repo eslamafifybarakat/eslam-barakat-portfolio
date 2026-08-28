@@ -4,7 +4,9 @@
     #inputEl
     type="search"
     autocomplete="off"
+    enterkeyhint="search"
     [placeholder]="placeholder"
+    [attr.aria-label]="ariaLabel || placeholder"
     [value]="value"
     (input)="onInput($event)"
   />

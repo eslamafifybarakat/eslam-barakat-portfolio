@@ -58,6 +58,7 @@ export class MobileSheetComponent {
   @Input({ required: true }) whatsappLabel!: string;
   @Input({ required: true }) closeLabel!: string;
   @Input({ required: true }) menuLabel!: string;
+  @Input({ required: true }) navLabel!: string;
 
   constructor() {
     effect(() => {

@@ -1,0 +1,103 @@
+{
+  "status": true,
+  "message": null,
+  "data": {
+    "groups": [
+      {
+        "icon": "code",
+        "labelKey": "portfolio_skills_languages_label",
+        "technologies": ["TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "SCSS/SASS", "jQuery (legacy)"]
+      },
+      {
+        "icon": "layers",
+        "labelKey": "portfolio_skills_angular_label",
+        "technologies": [
+          "Angular 16 / 19 / 20 / 21",
+          "Standalone Components",
+          "Signals",
+          "RxJS",
+          "SSR / Angular Universal",
+          "typed route constants",
+          "Reactive Forms",
+          "Guards & Interceptors",
+          "Angular CDK",
+          "Angular Material",
+          "PrimeNG",
+          "ngx-translate",
+          "NgRx"
+        ]
+      },
+      {
+        "icon": "route",
+        "labelKey": "portfolio_skills_architecture_label",
+        "technologies": [
+          "Domain-Driven Design",
+          "Facade",
+          "Repository",
+          "Store",
+          "reactive Signals state",
+          "feature-based modules",
+          "reusable component libraries",
+          "design systems",
+          "BEM",
+          "SOLID"
+        ]
+      },
+      {
+        "icon": "wave",
+        "labelKey": "portfolio_skills_realtime_label",
+        "technologies": [
+          "Agora RTC SDK",
+          "Socket.io",
+          "Pusher",
+          "Firebase / AngularFire",
+          "REST APIs",
+          "AI chat integration (text & voice)",
+          "Google Maps"
+        ]
+      },
+      {
+        "icon": "mirror",
+        "labelKey": "portfolio_skills_ui_label",
+        "technologies": [
+          "Responsive Web Design",
+          "Tailwind CSS",
+          "Bootstrap 5",
+          "custom design systems",
+          "RTL/LTR",
+          "i18n",
+          "Arabic–English interfaces"
+        ]
+      },
+      {
+        "icon": "gauge",
+        "labelKey": "portfolio_skills_quality_label",
+        "technologies": [
+          "Karma & Jasmine",
+          "Core Web Vitals (LCP, CLS, INP, FCP, TTFB)",
+          "technical SEO",
+          "semantic HTML",
+          "JSON-LD",
+          "sitemaps",
+          "WCAG",
+          "Lighthouse"
+        ]
+      },
+      {
+        "icon": "shield",
+        "labelKey": "portfolio_skills_tooling_label",
+        "technologies": [
+          "Git",
+          "GitHub",
+          "Azure DevOps",
+          "Node.js / Express SSR",
+          "Vercel",
+          "Netlify",
+          "Agile / Scrum",
+          "code review",
+          "QA coordination"
+        ]
+      }
+    ]
+  }
+}

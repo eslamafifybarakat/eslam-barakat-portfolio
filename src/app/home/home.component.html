@@ -1,5 +1,10 @@
 <app-hero />
-<app-about />
+
+@defer (hydrate on viewport) {
+  <app-about />
+} @placeholder {
+  <div class="section-placeholder"><app-skeleton variant="list" [lines]="5" /></div>
+}
 
 @defer (hydrate on viewport) {
   <app-skills-section />

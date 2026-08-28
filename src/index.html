@@ -35,11 +35,19 @@
       name="description"
       content="Senior Angular Frontend Developer. Interfaces that work in both directions — bilingual Arabic/English SSR platforms built with Angular, Signals and Domain-Driven architecture."
     />
+    <!-- Safe-by-default: every prerendered route overwrites this via
+         SeoService during SSR (Meta.updateTag matches on name="robots" and
+         replaces the content). Only index.csr.html — the client-only shell
+         for genuinely unmatched paths (`**` -> RenderMode.Client, see
+         app.routes.server.ts) — skips server execution entirely and so
+         ships with this noindex baseline intact, keeping a soft-404 out of
+         the index instead of defaulting to indexable. -->
+    <meta name="robots" content="noindex, nofollow" />
     <base href="/" />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="mask-icon" href="/mask-icon.svg" color="#0D4A78" />
     <link rel="manifest" href="/site.webmanifest" />
 

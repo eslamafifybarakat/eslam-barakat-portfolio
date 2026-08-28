@@ -1,16 +1,16 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, computed, effect, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SectionHeadComponent } from '../../../../shared/ui/section-head/section-head.component';
-import { FilterChipsComponent } from '../../../../shared/ui/filter-chips/filter-chips.component';
-import { SearchInputComponent } from '../../../../shared/ui/search-input/search-input.component';
+import { SectionHeadComponent } from '@shared/ui/section-head/section-head.component';
+import { FilterChipsComponent } from '@shared/ui/filter-chips/filter-chips.component';
+import { SearchInputComponent } from '@shared/ui/search-input/search-input.component';
 import { ProjectCardComponent } from '../project-card/project-card.component';
-import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 import { WorkService } from '../../application/work.service';
-import { TranslationService } from '../../../../core/i18n/translation.service';
-import { LanguageService } from '../../../../core/i18n/language.service';
-import { LANG_URL_PREFIX } from '../../../../core/i18n/i18n.model';
+import { TranslationService } from '@core/i18n/translation.service';
+import { LanguageService } from '@core/i18n/language.service';
+import { LANG_URL_PREFIX } from '@core/i18n/i18n.model';
 import { isWorkFilterKey, WorkFilterKey } from '../../domain/work-filter.model';
-import type { FilterOption } from '../../../../shared/ui/filter-chips/filter-chips.model';
+import type { FilterOption } from '@shared/ui/filter-chips/filter-chips.model';
 
 const FILTER_LABEL_KEYS: Record<WorkFilterKey, string> = {
   all: 'portfolio_work_filter_all',
@@ -35,6 +35,11 @@ const FILTER_LABEL_KEYS: Record<WorkFilterKey, string> = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WorkSectionComponent {
+  /** `1` when mounted standalone on `/work` (which has no other page
+   * heading); `2` (default) when embedded in Home, which already has its
+   * own `h1` in the hero. */
+  @Input() headingLevel: 1 | 2 = 2;
+
   protected readonly workService = inject(WorkService);
   private readonly translation = inject(TranslationService);
   private readonly languageService = inject(LanguageService);

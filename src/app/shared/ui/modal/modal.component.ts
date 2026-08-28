@@ -35,6 +35,10 @@ export class ModalComponent {
   @Input() open = false;
   @Output() readonly openChange = new EventEmitter<boolean>();
   @Input({ required: true }) closeLabel!: string;
+  /** `3` (default) — correct for every current caller, which always nests
+   * the modal under a page's `h1`/`h2`. Overridable so a future standalone
+   * use (no heading ancestor) isn't stuck with an orphaned `h3`. */
+  @Input() titleLevel: 2 | 3 = 3;
 
   constructor() {
     effect(() => {

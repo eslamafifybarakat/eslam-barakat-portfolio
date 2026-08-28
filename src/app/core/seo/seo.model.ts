@@ -21,3 +21,24 @@ export interface BreadcrumbEntry {
   readonly label: string;
   readonly path: string;
 }
+
+/** Mirrors the API's SEO envelope. `meta_title`, `meta_description`,
+ * `meta_keywords` and `img_alt`/`img_title`/`img_description` hold
+ * translation keys (resolved via `TranslationService`), same as every other
+ * text field across the domain data layer — not literal text. `source`,
+ * `img`, `img_width`, `img_height` and `canonical` are literal. Any field
+ * may be `null`; `SeoService.setFromPayload` falls back to the caller's
+ * defaults when a field is `null`. */
+export interface SeoPayload {
+  readonly meta_title: string | null;
+  readonly meta_description: string | null;
+  readonly meta_keywords: string | null;
+  readonly source: string | null;
+  readonly img: string | null;
+  readonly img_alt: string | null;
+  readonly img_title: string | null;
+  readonly img_description: string | null;
+  readonly img_width: number | null;
+  readonly img_height: number | null;
+  readonly canonical: string | null;
+}

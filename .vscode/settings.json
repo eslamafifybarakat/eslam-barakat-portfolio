@@ -1,0 +1,21 @@
+{
+  // node_modules ships its own tsconfig.json files (e.g. chrome-launcher) that
+  // are meaningless outside their package and are not part of this project's
+  // TS Server project graph. Hiding/excluding node_modules stops them from
+  // ever being opened, watched, or surfaced as false "Problems" entries.
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true
+  },
+  "typescript.tsserver.watchOptions": {
+    "excludeDirectories": ["**/node_modules", "**/dist"]
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

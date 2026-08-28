@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ThemeToggleComponent } from './theme-toggle.component';
-import { ThemeService } from '../../../core/theme/theme.service';
+import { ThemeService } from '@core/theme/theme.service';
 
 describe('ThemeToggleComponent', () => {
   beforeEach(async () => {

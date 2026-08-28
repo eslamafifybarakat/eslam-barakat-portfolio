@@ -1,10 +1,9 @@
-import type { LocalizedText } from '../../../core/i18n/i18n.model';
-import type { IconName } from '../../../shared/ui/icon/icon.model';
+import type { IconName } from '@shared/ui/icon/icon.model';
 
 export interface Pillar {
   readonly icon: IconName;
-  readonly title: LocalizedText;
-  readonly description: LocalizedText;
+  readonly titleKey: string;
+  readonly descriptionKey: string;
 }
 
 export interface ProfileStats {
@@ -15,7 +14,7 @@ export interface ProfileStats {
 }
 
 export interface Profile {
-  readonly aboutParagraphs: readonly LocalizedText[];
+  readonly aboutParagraphKeys: readonly string[];
   readonly pillars: readonly Pillar[];
   readonly stats: ProfileStats;
 }

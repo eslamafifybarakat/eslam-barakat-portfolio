@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { IconComponent } from '../../../../shared/ui/icon/icon.component';
-import { ButtonComponent } from '../../../../shared/ui/button/button.component';
-import { EyebrowComponent } from '../../../../shared/ui/eyebrow/eyebrow.component';
-import { CopyToClipboardDirective } from '../../../../shared/directives/copy-to-clipboard.directive';
-import { RevealOnScrollDirective } from '../../../../shared/directives/reveal-on-scroll.directive';
-import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
+import { IconComponent } from '@shared/ui/icon/icon.component';
+import { ButtonComponent } from '@shared/ui/button/button.component';
+import { EyebrowComponent } from '@shared/ui/eyebrow/eyebrow.component';
+import { ToastService } from '@shared/ui/toast/toast.service';
+import { CopyToClipboardDirective } from '@shared/directives/copy-to-clipboard.directive';
+import { RevealOnScrollDirective } from '@shared/directives/reveal-on-scroll.directive';
+import { TranslatePipe } from '@shared/pipes/translate.pipe';
 import { ContactService } from '../../application/contact.service';
-import { TranslationService } from '../../../../core/i18n/translation.service';
-import { ConfigService } from '../../../../core/config/config.service';
-import { ToastService } from '../../../../shared/ui/toast/toast.service';
+import type { ContactRow } from '../../domain/contact-row.model';
+import { TranslationService } from '@core/i18n/translation.service';
+import { ConfigService } from '@core/config/config.service';
 
 /** The Contact section — availability, CTAs and the 6 contact rows. */
 @Component({
@@ -39,5 +40,10 @@ export class ContactSectionComponent {
 
   isExternal(href: string): boolean {
     return href.startsWith('http');
+  }
+
+  relFor(row: ContactRow): string | null {
+    if (!this.isExternal(row.href)) return null;
+    return row.rel ? `${row.rel} noopener noreferrer` : 'noopener noreferrer';
   }
 }

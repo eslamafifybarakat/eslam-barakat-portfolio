@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
-import { ThemeService } from '../../../core/theme/theme.service';
-import { TranslationService } from '../../../core/i18n/translation.service';
+import { ThemeService } from '@core/theme/theme.service';
+import { TranslationService } from '@core/i18n/translation.service';
 
 /** Keyboard-accessible theme toggle with a visible focus ring and an
  * accessible name that always describes the *next* state. */

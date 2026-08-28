@@ -73,7 +73,11 @@ export class LanguageService {
     for (const href of hrefs) {
       const link = this.document.createElement('link');
       link.rel = 'preload';
-      link.as = 'font';
+      // `.as` is an IDL property that Angular's server-side DOM doesn't
+      // reflect back to an attribute — SSR output would ship
+      // <link rel="preload"> with no `as`, which Chrome flags as invalid.
+      // setAttribute renders correctly on both server and client.
+      link.setAttribute('as', 'font');
       link.type = 'font/woff2';
       link.href = href;
       link.crossOrigin = 'anonymous';
@@ -87,12 +91,23 @@ export class LanguageService {
   switchTo(lang: Lang): void {
     this.persist(lang);
     if (lang === this._lang()) return;
+    this.router.navigateByUrl(this.mirroredUrlTree(lang));
+  }
 
+  /** The full mirrored URL (path + query + fragment) for `lang`, serialized
+   * as a real href — so the language toggle can be a genuine `<a>` (crawlable,
+   * openable in a new tab, works with JS disabled) rather than a JS-only
+   * button, while `switchTo` still drives the actual SPA navigation. */
+  mirroredHref(lang: Lang): string {
+    return this.router.serializeUrl(this.mirroredUrlTree(lang));
+  }
+
+  private mirroredUrlTree(lang: Lang) {
     const currentTree = this.router.parseUrl(this.router.url);
     const currentPath = this.router.url.split(/[?#]/)[0] || '/';
     const mirrored = mirrorPath(currentPath, lang);
 
-    this.router.navigate([mirrored], {
+    return this.router.createUrlTree([mirrored], {
       queryParams: currentTree.queryParams,
       fragment: currentTree.fragment ?? undefined,
     });

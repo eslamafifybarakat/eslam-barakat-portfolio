@@ -27,3 +27,16 @@ footer {
 footer .mono {
   color: var(--dim);
 }
+
+.audit-link {
+  color: var(--dim);
+  text-decoration: underline;
+  text-decoration-color: var(--line-2);
+  text-underline-offset: 0.2em;
+}
+
+.audit-link:hover,
+.audit-link:focus-visible {
+  color: var(--text);
+  text-decoration-color: var(--accent);
+}

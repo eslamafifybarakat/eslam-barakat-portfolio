@@ -1,19 +1,23 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { HeroComponent } from '../domains/profile/presentation/hero/hero.component';
-import { AboutComponent } from '../domains/profile/presentation/about/about.component';
-import { SkillsSectionComponent } from '../domains/skills/presentation/skills-section/skills-section.component';
-import { ExperienceSectionComponent } from '../domains/experience/presentation/experience-section/experience-section.component';
-import { WorkSectionComponent } from '../domains/work/presentation/work-section/work-section.component';
-import { EducationSectionComponent } from '../domains/education/presentation/education-section/education-section.component';
-import { ContactSectionComponent } from '../domains/contact/presentation/contact-section/contact-section.component';
-import { SkeletonComponent } from '../shared/ui/skeleton/skeleton.component';
-import { SeoService } from '../core/seo/seo.service';
-import { JsonLdService } from '../core/seo/json-ld.service';
-import { LanguageService } from '../core/i18n/language.service';
-import { TranslationService } from '../core/i18n/translation.service';
-import { ConfigService } from '../core/config/config.service';
-import { SKILL_GROUPS } from '../domains/skills/infrastructure/data/skills.data';
-import { LANG_URL_PREFIX } from '../core/i18n/i18n.model';
+import { HeroComponent } from '@domains/profile/presentation/hero/hero.component';
+import { AboutComponent } from '@domains/profile/presentation/about/about.component';
+import { SkillsSectionComponent } from '@domains/skills/presentation/skills-section/skills-section.component';
+import { SkillsService } from '@domains/skills/application/skills.service';
+import { ExperienceSectionComponent } from '@domains/experience/presentation/experience-section/experience-section.component';
+import { WorkSectionComponent } from '@domains/work/presentation/work-section/work-section.component';
+import { EducationSectionComponent } from '@domains/education/presentation/education-section/education-section.component';
+import { ContactSectionComponent } from '@domains/contact/presentation/contact-section/contact-section.component';
+import { SkeletonComponent } from '@shared/ui/skeleton/skeleton.component';
+import { SeoService } from '@core/seo/seo.service';
+import { JsonLdService } from '@core/seo/json-ld.service';
+import { LanguageService } from '@core/i18n/language.service';
+import { TranslationService } from '@core/i18n/translation.service';
+import { LANG_URL_PREFIX } from '@core/i18n/i18n.model';
+import { ConfigService } from '@core/config/config.service';
+import type { ApiResponse } from '@core/data/api-response.model';
+import { readApiResponse } from '@core/data/read-api-response';
+import type { SeoPayload } from '@core/seo/seo.model';
+import homeSeoResponse from './home.seo.json';
 
 /**
  * `/` (and `/ar`) — the one-page composition: `profile → about/pillars →
@@ -46,16 +50,18 @@ export class HomeComponent {
   private readonly languageService = inject(LanguageService);
   private readonly translation = inject(TranslationService);
   private readonly config = inject(ConfigService);
+  private readonly skillsService = inject(SkillsService);
 
   constructor() {
     const lang = this.languageService.lang();
     const cfg = this.config.config();
     const path = LANG_URL_PREFIX[lang] || '/';
 
-    this.seo.set({
-      title: this.translation.translate('portfolio_seo_home_title'),
-      description: this.translation.translate('portfolio_seo_home_description'),
+    const { seo } = readApiResponse(homeSeoResponse as ApiResponse<{ seo: SeoPayload }>, 'home');
+    this.seo.setFromPayload(seo, {
       path,
+      fallbackTitleKey: 'portfolio_seo_home_title',
+      fallbackDescriptionKey: 'portfolio_seo_home_description',
       type: 'profile',
     });
 
@@ -63,12 +69,16 @@ export class HomeComponent {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Eslam Afify Barakat',
-      jobTitle: 'Senior Angular Frontend Developer',
+      jobTitle: this.translation.translate('portfolio_hero_role'),
       email: `mailto:${cfg.contact.email}`,
       telephone: cfg.contact.phone,
-      address: { '@type': 'PostalAddress', addressLocality: 'Cairo', addressCountry: 'EG' },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: this.translation.translate('portfolio_seo_locality_cairo'),
+        addressCountry: 'EG',
+      },
       sameAs: [cfg.contact.linkedin, cfg.contact.github],
-      knowsAbout: SKILL_GROUPS.flatMap((g) => g.technologies),
+      knowsAbout: this.skillsService.groups().flatMap((g) => g.technologies),
       alumniOf: { '@type': 'CollegeOrUniversity', name: 'Menoufia University' },
       knowsLanguage: ['ar', 'en'],
       url: cfg.siteUrl,

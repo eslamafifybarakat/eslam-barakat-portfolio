@@ -8,12 +8,12 @@
   letter-spacing: 0.1em;
   color: var(--accent);
   text-transform: uppercase;
-  margin: 0 0 var(--s3);
+  margin-block-end: var(--s3);
 }
 
 ::ng-deep .modal__box .modal__desc {
   color: var(--muted);
-  margin: 0 0 var(--s3);
+  margin-block-end: var(--s3);
 }
 
 ::ng-deep .modal__box .kv {
@@ -65,7 +65,7 @@
   color: var(--dim);
   font-size: 0.81rem;
   font-style: italic;
-  margin: var(--s2) 0 0;
+  margin-block-start: var(--s2);
 }
 
 ::ng-deep .modal__box .modal__cta {
@@ -83,12 +83,12 @@
 
 ::ng-deep .modal__box .related__title {
   color: var(--accent);
-  margin: 0 0 var(--s3);
+  margin-block-end: var(--s3);
 }
 
 ::ng-deep .modal__box .related__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13.75rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(13.75rem, 100%), 1fr));
   gap: 0.75rem;
 }
 

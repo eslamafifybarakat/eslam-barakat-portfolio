@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform, inject } from '@angular/core';
-import { LanguageService } from '../../core/i18n/language.service';
+import { LanguageService } from '@core/i18n/language.service';
 
 /** Formats a `Date`/ISO string with `Intl.DateTimeFormat` in the current
  * language's locale (`ar-EG` / `en-US`). The portfolio's own project and job
- * periods are pre-authored bilingual strings, not `Date`s (see
- * `LocalizedText`) — this pipe is for the few genuinely computed dates
- * (the footer's copyright year, JSON-LD timestamps). */
+ * periods are pre-authored bilingual translation-catalog entries, not
+ * `Date`s — this pipe is for the few genuinely computed dates (the footer's
+ * copyright year, JSON-LD timestamps). */
 @Pipe({ name: 'localizedDate', pure: false })
 export class LocalizedDatePipe implements PipeTransform {
   private readonly language = inject(LanguageService);

@@ -1,5 +1,5 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
-import { PROJECTS } from './domains/work/infrastructure/data/work.data';
+import { PROJECTS } from '@domains/work/infrastructure/data/work.data';
 
 /** Every route is fully static, so everything prerenders at build time —
  * best possible TTFB, no serverless cold start. `@angular/ssr` stays in the

@@ -1,3 +1,5 @@
+@use 'mixins' as m;
+
 :host {
   display: contents;
 }
@@ -23,13 +25,26 @@
 .modal__box {
   position: relative;
   width: min(50rem, 100%);
+  max-width: 100%;
   max-height: 88vh;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: break-word;
   background: var(--bg-2);
   border: 0.0625rem solid var(--line-2);
   border-radius: var(--r-xl);
   padding: clamp(1rem, 3vw, 1.75rem);
   animation: pop 0.4s var(--ease);
+  @include m.custom-scrollbar;
+}
+
+// projected content (gallery, kv lists, link lists, related grid, …) can
+// otherwise blow out the box's width — flex/grid items default to a
+// content-based min-width, so one long unbroken string (e.g. a live URL)
+// forces the whole row wider instead of wrapping
+:host ::ng-deep .modal__box * {
+  min-width: 0;
 }
 
 :host ::ng-deep .modal__box app-icon-button.modal__x .iconbtn {
@@ -39,16 +54,13 @@
   z-index: 2;
 }
 
-.modal__box h3 {
+.modal__box .modal__title {
   font-family: var(--f-display);
   font-size: clamp(1.3rem, 3vw, 1.85rem);
   font-weight: 600;
-  margin: 0 2.5rem var(--s1) 0;
+  margin-inline-end: 2.5rem;
+  margin-block-end: var(--s1);
   letter-spacing: -0.02em;
-}
-
-html[dir='rtl'] .modal__box h3 {
-  margin: 0 0 var(--s1) 2.5rem;
 }
 
 @media (max-width: 42.5rem) {

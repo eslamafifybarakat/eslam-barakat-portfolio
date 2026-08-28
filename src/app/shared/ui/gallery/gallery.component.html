@@ -17,7 +17,7 @@
           [attr.aria-label]="alt + ' ' + (i + 1)"
           (click)="select(i)"
         >
-          <img [src]="img" alt="" appImgFallback />
+          <img [src]="img" alt="" appImgFallback appLazyLoadImg />
         </button>
       }
     </div>

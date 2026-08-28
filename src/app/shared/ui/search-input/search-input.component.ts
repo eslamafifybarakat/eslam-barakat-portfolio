@@ -18,6 +18,10 @@ export class SearchInputComponent {
 
   @Input() value = '';
   @Input({ required: true }) placeholder!: string;
+  /** Accessible name for the input — falls back to `placeholder` when
+   * omitted, but placeholder-only labeling disappears once the user types,
+   * so callers should pass a dedicated label where one exists. */
+  @Input() ariaLabel?: string;
   @Output() readonly valueChange = new EventEmitter<string>();
 
   onInput(event: Event): void {

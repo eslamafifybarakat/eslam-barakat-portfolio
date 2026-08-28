@@ -25,7 +25,7 @@ $-arabic-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1,
   font-family: 'Archivo';
   font-style: normal;
   font-weight: 500 800;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/archivo-var-latin.woff2') format('woff2');
   unicode-range: $-latin-range;
 }
@@ -34,7 +34,7 @@ $-arabic-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1,
   font-family: 'IBM Plex Sans';
   font-style: normal;
   font-weight: 400 600;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/ibm-plex-sans-var-latin.woff2') format('woff2');
   unicode-range: $-latin-range;
 }
@@ -43,7 +43,7 @@ $-arabic-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1,
   font-family: 'IBM Plex Mono';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/ibm-plex-mono-400-latin.woff2') format('woff2');
   unicode-range: $-latin-range;
 }
@@ -52,7 +52,7 @@ $-arabic-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1,
   font-family: 'IBM Plex Mono';
   font-style: normal;
   font-weight: 500;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/ibm-plex-mono-500-latin.woff2') format('woff2');
   unicode-range: $-latin-range;
 }
@@ -62,7 +62,7 @@ $-arabic-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1,
     font-family: 'IBM Plex Sans Arabic';
     font-style: normal;
     font-weight: $weight;
-    font-display: swap;
+    font-display: optional;
     src: url('/fonts/ibm-plex-sans-arabic-#{$weight}-latin.woff2') format('woff2');
     unicode-range: $-latin-range;
   }
@@ -71,7 +71,7 @@ $-arabic-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1,
     font-family: 'IBM Plex Sans Arabic';
     font-style: normal;
     font-weight: $weight;
-    font-display: swap;
+    font-display: optional;
     src: url('/fonts/ibm-plex-sans-arabic-#{$weight}-arabic.woff2') format('woff2');
     unicode-range: $-arabic-range;
   }

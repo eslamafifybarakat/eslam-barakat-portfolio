@@ -16,27 +16,33 @@
     </app-badge>
   </span>
 
-  <span card-name>{{ project.name }}</span>
-  <span card-when>{{ project.period | localizedText }}</span>
-  <span card-desc>{{ project.description | localizedText }}</span>
+  @if (headingLevel === 2) {
+    <h2 card-name>{{ project.name }}</h2>
+  } @else if (headingLevel === 4) {
+    <h4 card-name>{{ project.name }}</h4>
+  } @else {
+    <h3 card-name>{{ project.name }}</h3>
+  }
+  <span card-when>{{ project.periodKey | translate }}</span>
+  <span card-desc>{{ project.descriptionKey | translate }}</span>
 
   <span card-foot>
     <app-chip variant="tag">{{ kindLabel() }}</app-chip>
     <span class="card__acts">
-      <button type="button" class="cbtn" (click)="openDetails.emit()">
+      <button type="button" class="cbtn" (click)="openDetails.emit(); $event.stopPropagation()">
         <app-icon name="grid" />
-        {{ 'portfolio_work_details_cta' | translate }}
+        <span class="cbtn__label">{{ 'portfolio_work_details_cta' | translate }}</span>
       </button>
       <a
         class="cbtn cbtn--go"
         [href]="liveHref()"
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
         [attr.aria-label]="('portfolio_work_open_live' | translate) + ' — ' + project.name"
         (click)="$event.stopPropagation()"
       >
         <app-icon name="external" />
-        {{ 'portfolio_work_open_live' | translate }}
+        <span class="cbtn__label">{{ 'portfolio_work_open_live' | translate }}</span>
       </a>
     </span>
   </span>

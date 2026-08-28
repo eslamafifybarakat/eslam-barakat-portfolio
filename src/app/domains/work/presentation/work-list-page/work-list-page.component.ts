@@ -2,12 +2,16 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WorkSectionComponent } from '../work-section/work-section.component';
 import { WorkService } from '../../application/work.service';
-import { SeoService } from '../../../../core/seo/seo.service';
-import { JsonLdService } from '../../../../core/seo/json-ld.service';
-import { LanguageService } from '../../../../core/i18n/language.service';
-import { TranslationService } from '../../../../core/i18n/translation.service';
-import { ConfigService } from '../../../../core/config/config.service';
-import { LANG_URL_PREFIX } from '../../../../core/i18n/i18n.model';
+import { SeoService } from '@core/seo/seo.service';
+import { JsonLdService } from '@core/seo/json-ld.service';
+import { LanguageService } from '@core/i18n/language.service';
+import { TranslationService } from '@core/i18n/translation.service';
+import { ConfigService } from '@core/config/config.service';
+import { LANG_URL_PREFIX } from '@core/i18n/i18n.model';
+import type { ApiResponse } from '@core/data/api-response.model';
+import { readApiResponse } from '@core/data/read-api-response';
+import type { SeoPayload } from '@core/seo/seo.model';
+import workListSeoResponse from './work-list.seo.json';
 
 /** `/work` — the standalone work index route: SEO + `ItemList`/
  * `BreadcrumbList` JSON-LD for the full grid, plus a `<router-outlet>` for
@@ -17,7 +21,7 @@ import { LANG_URL_PREFIX } from '../../../../core/i18n/i18n.model';
   standalone: true,
   imports: [WorkSectionComponent, RouterOutlet],
   template: `
-    <app-work-section />
+    <app-work-section [headingLevel]="1" />
     <router-outlet />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,10 +40,11 @@ export class WorkListPageComponent {
     const path = `${LANG_URL_PREFIX[lang]}/work`;
     const siteName = this.translation.translate('portfolio_seo_site_name');
 
-    this.seo.set({
-      title: this.translation.translate('portfolio_seo_work_title'),
-      description: this.translation.translate('portfolio_seo_work_description'),
+    const { seo } = readApiResponse(workListSeoResponse as ApiResponse<{ seo: SeoPayload }>, 'work-list');
+    this.seo.setFromPayload(seo, {
       path,
+      fallbackTitleKey: 'portfolio_seo_work_title',
+      fallbackDescriptionKey: 'portfolio_seo_work_description',
     });
 
     this.jsonLd.set('work-item-list', {
