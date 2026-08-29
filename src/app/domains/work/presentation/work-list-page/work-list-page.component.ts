@@ -40,11 +40,14 @@ export class WorkListPageComponent {
     const path = `${LANG_URL_PREFIX[lang]}/work`;
     const siteName = this.translation.translate('portfolio_seo_site_name');
 
+    const keywords = Array.from(new Set(this.workService.all().flatMap((p) => p.stack)));
+
     const { seo } = readApiResponse(workListSeoResponse as ApiResponse<{ seo: SeoPayload }>, 'work-list');
     this.seo.setFromPayload(seo, {
       path,
       fallbackTitleKey: 'portfolio_seo_work_title',
       fallbackDescriptionKey: 'portfolio_seo_work_description',
+      fallbackKeywords: keywords.join(', '),
     });
 
     this.jsonLd.set('work-item-list', {

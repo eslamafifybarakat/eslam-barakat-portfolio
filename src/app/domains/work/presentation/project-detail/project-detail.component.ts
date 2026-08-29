@@ -115,11 +115,14 @@ export class ProjectDetailComponent {
     const siteName = this.translation.translate('portfolio_seo_site_name');
     const description = this.translation.translate(project.descriptionKey);
 
+    const keywords = project.stack.join(', ');
+
     if (project.seo) {
       this.seo.setFromPayload(project.seo, {
         path,
         fallbackTitleKey: project.descriptionKey,
         fallbackDescriptionKey: project.descriptionKey,
+        fallbackKeywords: keywords,
         type: 'article',
       });
     } else {
@@ -127,6 +130,7 @@ export class ProjectDetailComponent {
         title: `${project.name} — ${siteName}`,
         description,
         path,
+        keywords,
         type: 'article',
       });
     }

@@ -13,6 +13,18 @@ export interface SeoMetaInput {
   /** Root-relative or absolute OG/Twitter image. Defaults to the route's
    * generated `/og/*.png` when omitted. */
   readonly image?: string;
+  /** Defaults to 1200×630 — every image `scripts/generate-og-images.mjs`
+   * produces is exactly that size, so these are only ever overridden by a
+   * real, differently-sized image supplied through `SeoPayload`. */
+  readonly imageWidth?: number;
+  readonly imageHeight?: number;
+  /** Defaults to `title` — a real, if generic, description of the image is
+   * better than none for accessibility/social-scraper purposes. */
+  readonly imageAlt?: string;
+  /** Comma-separated real keywords (e.g. a project's tech stack, or the
+   * site's skill list) — omitted entirely rather than filled with anything
+   * fabricated when a route has no genuine keyword data (see `NotFoundComponent`). */
+  readonly keywords?: string;
   readonly type?: OgType;
   readonly noindex?: boolean;
 }

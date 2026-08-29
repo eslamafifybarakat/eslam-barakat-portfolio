@@ -57,11 +57,14 @@ export class HomeComponent {
     const cfg = this.config.config();
     const path = LANG_URL_PREFIX[lang] || '/';
 
+    const skills = this.skillsService.groups().flatMap((g) => g.technologies);
+
     const { seo } = readApiResponse(homeSeoResponse as ApiResponse<{ seo: SeoPayload }>, 'home');
     this.seo.setFromPayload(seo, {
       path,
       fallbackTitleKey: 'portfolio_seo_home_title',
       fallbackDescriptionKey: 'portfolio_seo_home_description',
+      fallbackKeywords: skills.join(', '),
       type: 'profile',
     });
 
@@ -78,7 +81,7 @@ export class HomeComponent {
         addressCountry: 'EG',
       },
       sameAs: [cfg.contact.linkedin, cfg.contact.github],
-      knowsAbout: this.skillsService.groups().flatMap((g) => g.technologies),
+      knowsAbout: skills,
       alumniOf: { '@type': 'CollegeOrUniversity', name: 'Menoufia University' },
       knowsLanguage: ['ar', 'en'],
       url: cfg.siteUrl,
