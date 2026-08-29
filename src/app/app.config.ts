@@ -5,7 +5,12 @@ import {
   provideZonelessChangeDetection,
   inject,
 } from '@angular/core';
-import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
+import {
+  provideRouter,
+  withComponentInputBinding,
+  withInMemoryScrolling,
+  withRouterConfig,
+} from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
 
 import { routes } from './app.routes';
@@ -22,6 +27,16 @@ export const appConfig: ApplicationConfig = {
       routes,
       withComponentInputBinding(),
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
+      // Default 'ignore' means a routerLink to a fragment matching the
+      // *current* URL is silently dropped — no NavigationEnd, no
+      // scrollToAnchor. That's exactly the one-page nav's steady state: once
+      // you've clicked into a section (or the logo, whose target is
+      // `home`), the URL already carries that fragment, so re-clicking the
+      // same link (or the logo from the top of that same section) stopped
+      // scrolling entirely. 'reload' makes every click genuinely re-run
+      // navigation and re-fire the anchor scroll, regardless of whether the
+      // URL changed.
+      withRouterConfig({ onSameUrlNavigation: 'reload' }),
     ),
     provideClientHydration(withEventReplay()),
     // Offline/poor-network resilience: caches the app shell (JS/CSS) and

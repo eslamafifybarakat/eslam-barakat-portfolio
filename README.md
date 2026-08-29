@@ -260,6 +260,16 @@ Deployed on Vercel from the `main` branch. `vercel.json` sets:
 `.github/workflows/ci.yml` runs lint, type-check, unit tests, and a
 production build on every push/PR to `main`.
 
+`scripts/vercel-build.mjs` deletes `dist/eslam-barakat-portfolio/server/`
+once the build finishes. `@angular/build` still emits that bundle — it's
+needed *during* the build to drive prerendering — but Vercel's zero-config
+Angular support auto-wires any `server/` directory it finds into a Node.js
+Serverless Function. Since every route is prerendered (see the Routes
+section above), that function would never legitimately run; left in place
+it's a pure timeout risk (a cold start or an unexpected fallthrough
+returning a 504) for zero benefit. Deleting it guarantees the deployed
+output is 100% static.
+
 ## Decisions
 
 Judgment calls made where the two source prompts conflicted, or where a
